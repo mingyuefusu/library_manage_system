@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录页面</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="./public/css/animate.css">
+<link rel="stylesheet" href="./public/css/login.css" />
+
+</head>
+<body>
+	<div class="container main">
+		<div id="login" class="contain animated fadeInDown">
+			<h1>用户登录</h1>
+			<form method="post">
+					<input type="text" name="username" class="form-control my_input" placeholder="请输入账号" required="required">
+					<input type="password" name="password" class="form-control my_input" placeholder="请输入密码" required="required">
+					<input type="submit" class="form-control" value="登录" onclick="javascript:void(0);">
+			</form>
+		</div>
+	</div>
+	<script src="./public/js/layer/layer.js"></script>
+	<script>
+	$(function(){
+		//登录	
+		$("input[type=submit]").click(function(){
+			
+			$.ajax({
+				url: "./adminLogin",
+				type: "post",
+				data: $("form").serialize(),
+				dataType: "json",
+				success: function( data ){
+					if(data.code == 0){
+						layer.msg("登录成功", {
+							icon: 6,
+							time: 1000
+						}, function(){
+							location.href = data.url;
+						})
+					}else{
+						layer.open({
+							title: "登录失败",
+							content: data.msg,
+							icon: 5,
+							anim: 6
+						})
+					}
+				}
+			})
+			return false;
+		})
+	})
+	</script>
+</body>
+</html>
