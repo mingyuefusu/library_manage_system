@@ -13,7 +13,7 @@ import com.mysql.jdbc.PreparedStatement;
 public class Base {
 	
 	private static String driver = "com.mysql.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost:3306/library?useSSl=true&userUnicode=true&characterEncoding=utf-8";
+	private static String url = "jdbc:mysql://localhost:3306/library?useSSl=true&useUnicode=true&characterEncoding=utf-8";
 	private static String username = "root";
 	private static String password = "root";
 	
@@ -67,7 +67,7 @@ public class Base {
     	if(preparedStatement == null){
             preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
         }
-        for(int i = 0; i < params.length; i++){
+        for(int i = 0; params != null && i < params.length; i++){
             preparedStatement.setObject(i+1, params[i]);
         }
         int updateRows = preparedStatement.executeUpdate();
