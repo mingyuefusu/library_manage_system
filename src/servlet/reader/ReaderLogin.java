@@ -1,4 +1,4 @@
-package servlet.admin;
+package servlet.reader;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,17 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import javabean.Admin;
+import javabean.Reader;
 import net.sf.json.JSONObject;
 
-/**
- * 管理员登录
- * 
- * @author Mingyue
- *
- */
-@WebServlet("/adminLogin")
-public class AdminLogin extends HttpServlet {
+@WebServlet("/readerLogin")
+public class ReaderLogin extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,24 +29,24 @@ public class AdminLogin extends HttpServlet {
 		response.setContentType("application/json; charset=utf8");
 		PrintWriter out = response.getWriter();
 		// 获取账号密码
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String user = request.getParameter("user");
+		String psw = request.getParameter("psw");
 		// 设置响应map
 		HashMap<String, Object> hashMap = new HashMap<String, Object>();
 
-		Admin admin = new Admin();
+		Reader reader = new Reader();
 		String result = null;
 		try {
-			result = admin.login(username, password);
+			result = reader.login(user, psw);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 		if (result.equals("1")) {
 			HttpSession session = request.getSession();
-			session.setAttribute("admin", username);
+			session.setAttribute("reader", user);
 			hashMap.put("code", 0);
 			hashMap.put("msg", "登录成功");
-			hashMap.put("url", request.getContextPath() + "/admin/admin.jsp");
+			hashMap.put("url", request.getContextPath() + "/reader/04readerFrame.html");
 		} else {
 			hashMap.put("code", 1);
 			hashMap.put("msg", result);

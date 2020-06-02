@@ -2,10 +2,7 @@ package test;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-
+s
 import  javabean.Base;
 
 public class Test {

@@ -5,33 +5,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Admin {
-	/**
-	 * 用户登录
-	 * 
-	 * @param username
-	 * @param password
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 */
+public class Reader {
 	@SuppressWarnings("null")
-	public String login(String username, String password) throws ClassNotFoundException, SQLException {
+	public String login(String user, String psw) throws ClassNotFoundException, SQLException {
 
-		if (username == null || username.trim().equals("")) {
+		if (user == null || user.trim().equals("")) {
 			return "账号不能为空";
-		} else if (password == null || password.trim().equals("")) {
+		} else if (psw == null || psw.trim().equals("")) {
 			return "密码不能为空";
 		}
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
 		System.out.println("????");
-		String sql = "select * from system_manager where username=? and password=? limit 1";
+		String sql = "select * from borrow_card where ID=? and PASSWORD=?";
 		connection = Base.getConnection();
 		pstmt = (PreparedStatement) connection.prepareStatement(sql);
-		pstmt.setString(1, username);
-		pstmt.setString(2, password);
+		pstmt.setString(1, user);
+		pstmt.setString(2, psw);
 		resultSet = pstmt.executeQuery();
 		if (resultSet.next()) {
 			return "1";
