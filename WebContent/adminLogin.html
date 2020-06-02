@@ -18,7 +18,7 @@
 <body>
 	<div class="container main">
 		<div id="login" class="contain animated fadeInDown">
-			<h1>用户登录</h1>
+			<h1>系统管理员登录</h1>
 			<form method="post">
 					<input type="text" name="username" class="form-control my_input" placeholder="请输入账号" required="required">
 					<input type="password" name="password" class="form-control my_input" placeholder="请输入密码" required="required">
@@ -43,7 +43,7 @@
 							icon: 6,
 							time: 1000
 						}, function(){
-							//location.href = data.url;
+							location.href = data.url;
 						})
 					}else{
 						layer.open({

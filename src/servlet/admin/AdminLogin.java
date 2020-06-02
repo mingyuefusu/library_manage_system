@@ -50,12 +50,12 @@ public class AdminLogin extends HttpServlet {
 			session.setAttribute("admin", username);
 			hashMap.put("code", 0);
 			hashMap.put("msg", "登录成功");
-			hashMap.put("url", request.getContextPath() +"/admin/index");
+			hashMap.put("url", request.getContextPath() +"/admin/index.jsp");
 		}else {
 			hashMap.put("code", 1);
 			hashMap.put("msg", result);
 		}
-		//response.sendRedirect(request.getContextPath() +"/test.jsp");
+		
 		JSONObject json = JSONObject.fromObject(hashMap);
 		out.write(json.toString());
 		

@@ -7,7 +7,9 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * 系统管理员过滤
@@ -22,7 +24,12 @@ public class AdminFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		//TODO
-		
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpSession session = req.getSession();
+		if(session == null || session.getAttribute("admin") == null) {
+			HttpServletResponse rep = (HttpServletResponse)response;
+			rep.sendRedirect(req.getContextPath() +"/adminLogin.html");
+		}
 		chain.doFilter(request, response);
 	}
 
