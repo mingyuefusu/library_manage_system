@@ -1,10 +1,11 @@
 package javabean;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
+
 
 public class Admin {
 	/**
@@ -26,7 +27,7 @@ public class Admin {
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
-		String sql = "select * from system_manager where username=? and password=? limit 1";
+		String sql = "select * from system_manager where username=?  and password=? limit 1";
 		connection = Base.getConnection();
 		pstmt = (PreparedStatement) connection.prepareStatement(sql);
 		pstmt.setString(1, username);
