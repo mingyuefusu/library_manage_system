@@ -13,7 +13,6 @@
 <body>
 	<jsp:useBean id="check" scope="session" class="javabean.JDBCBean"></jsp:useBean>
 	<%
-		//request.setCharacterEncoding("utf-8");
 		String psw1 = request.getParameter("psw1");
 		String psw2 = request.getParameter("psw2");
 

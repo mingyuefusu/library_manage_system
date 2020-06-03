@@ -26,8 +26,8 @@
 <div class="table-responsive">
   <table class="table table-hover">
 			<tr align="center">
+				<th>借阅证号</th>
 				<th>图书编号</th>
-				<th>图书名称</th>
 				<th>借阅日期</th>
 				<th>截止日期</th>
 				<th>归还日期</th>
@@ -35,14 +35,14 @@
 				<th>处理信息的管理员</th>
 			</tr>
 <%
-		request.setCharacterEncoding("utf-8");
-		String sql="select*from borrow_books;";
+		String id = session.getAttribute("reader").toString();
+		String sql="select*from borrow_books where CARD_ID = " + id;
 		ResultSet rs = check.executeQuery(sql);
 		while (rs.next()) {
 %>
 	
 			<tr align="center">
-				<td><%=rs.getString("BOOK_ID")%></td>
+				<td><%=rs.getString("CARD_ID")%></td>
 				<td><%=rs.getString("BOOK_ID")%></td>
 				<td><%=rs.getString("BORROW_DATE")%></td>
 				<td><%=rs.getString("END_DATE")%></td>

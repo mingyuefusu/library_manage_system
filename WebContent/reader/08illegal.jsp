@@ -12,6 +12,9 @@
 <div class="table-responsive">
   <table class="table table-hover">
 			<tr align="center">
+				<th>图书编号</th>
+				<th>日期</th>
+				<th>日期</th>
 				<th>日期</th>
 				<th>违章信息</th>
 			</tr>

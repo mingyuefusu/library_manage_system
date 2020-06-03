@@ -27,7 +27,8 @@ public class Admin {
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
 		System.out.println("????");
-		String sql = "select * from system_manager where username=? and password=? limit 1";
+		String sql = "select * from admin where username=? and password=? limit 1";
+		System.out.println("????s");
 		connection = Base.getConnection();
 		pstmt = (PreparedStatement) connection.prepareStatement(sql);
 		pstmt.setString(1, username);
