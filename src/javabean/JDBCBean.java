@@ -1,4 +1,5 @@
 package javabean;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -6,12 +7,12 @@ import java.sql.Statement;
 
 public class JDBCBean {
 	private static String driver = "com.mysql.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost:3306/library?useSSl=true&useUnicode=true&characterEncoding=utf-8";
+	private static String url = "jdbc:mysql://localhost:3306/library?&useSSL=false&serverTimezone=UTC";
 	private static String username = "root";
 	private static String password = "root";
 	private Connection conn = null;
 	private Statement stmt = null;
-	
+
 	public JDBCBean() {
 		try {
 			Class.forName(driver);
@@ -49,7 +50,7 @@ public class JDBCBean {
 			stmt.close();
 			conn.close();
 		} catch (Exception e) {
-			
+
 		}
 	}
 }
