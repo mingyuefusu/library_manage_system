@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,19 +78,6 @@
     </div>
   </div>
 </form>
- <script>
- 	window.onload = function(){
- 		layer.open({
-		  type: 2,
-		  title: "test",
-		  area: ['800px', '600px'],
-		  closeBtn: 0,
-		  shadeClose: true,
-		  content: "booklist.html"
-		});
- 	}
-	
-</script>
 <script>
 
 

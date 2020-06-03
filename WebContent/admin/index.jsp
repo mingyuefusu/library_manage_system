@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>系统管理员</title>
 	<!-- layui -->
 	<link rel="stylesheet" href="../public/layui/css/layui.css">
 	<script src="../public/layui/layui.js"></script>
@@ -47,14 +47,14 @@
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="./booklist.html"  target="content"><i class="layui-icon layui-icon-read" style="font-size: 16px; color: #1E9FFF;"></i> 书籍管理</a>
+          <a class="" href="./booklist.jsp"  target="content"><i class="layui-icon layui-icon-read" style="font-size: 16px; color: #1E9FFF;"></i> 书籍管理</a>
         </li>
         <li class="layui-nav-item">
-          <a href="./cardlist.html"  target="content"><i class="layui-icon layui-icon-template-1" style="font-size: 16px; color: #1E9FFF;"> </i>读书证管理</a>
+          <a href="./cardlist.jsp"  target="content"><i class="layui-icon layui-icon-template-1" style="font-size: 16px; color: #1E9FFF;"> </i>读书证管理</a>
         </li>
-        <li class="layui-nav-item"><a href="./rulelist.html"  target="content"><i class="layui-icon layui-icon-file-b" style="font-size: 16px; color: #1E9FFF;"> </i>借阅规则管理</a></li>
-        <li class="layui-nav-item"><a href="./managelist.html" target="content"><i class="layui-icon layui-icon-group" style="font-size: 16px; color: #1E9FFF;"></i>图书管理员管理</a></li>
-        <li class="layui-nav-item"><a href="./system.html" target="content"><i class="layui-icon layui-icon-windows" style="font-size: 16px; color: #1E9FFF;"> </i>系统管理</a></li>
+        <li class="layui-nav-item"><a href="./rulelist.jsp"  target="content"><i class="layui-icon layui-icon-file-b" style="font-size: 16px; color: #1E9FFF;"> </i>借阅规则管理</a></li>
+        <li class="layui-nav-item"><a href="./managelist.jsp" target="content"><i class="layui-icon layui-icon-group" style="font-size: 16px; color: #1E9FFF;"></i>图书管理员管理</a></li>
+        <li class="layui-nav-item"><a href="./system.jsp" target="content"><i class="layui-icon layui-icon-windows" style="font-size: 16px; color: #1E9FFF;"> </i>系统管理</a></li>
       </ul>
     </div>
   </div>
@@ -69,7 +69,6 @@
     © layui.com - 底部固定区域
   </div>
 </div>
-<script src="../src/layui.js"></script>
 <script>
 //JavaScript代码区域
 layui.use('element', function(){
