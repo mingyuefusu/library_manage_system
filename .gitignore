@@ -2,7 +2,7 @@
 .project
 .metadata
 .settings
-/build
-/WebContent/WEB-INF/lib
-/src/javabean/Base.java
-/src/JDBCBean.java
+build/
+WebContent/WEB-INF/lib/
+src/javabean/Base.java
+src/javabean/JDBCBean.java
