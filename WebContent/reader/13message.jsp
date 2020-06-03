@@ -29,8 +29,10 @@
 					<textarea id="mes"  placeholder="请输入您的留言"></textarea>
 					<label for="date">日期</label>
 					<input id="date" type="text" placeholder="请输入时间"/><br>&emsp;&emsp;&emsp;
-                    <button type="submit" class="btn btn-warning">提交</button>&emsp;&emsp;&emsp;
-                    <button type="reset" class="btn btn-danger">重置</button>
+                    <div align="center">
+                    <button type="submit" class="btn btn-warning" style="margin-left:0">提交</button>&emsp;&emsp;&emsp;
+                    <button type="reset" class="btn btn-danger" style="margin-right:0">重置</button>
+					</div>
 				</form>
 			</div>
 		</div>
