@@ -58,7 +58,7 @@
 				<td><%=rs.getString("LIBRARY_ID")%></td>
 				<td><%=rs.getString("SORT_ID")%></td>
 				<td><%=rs.getString("POSITION")%></td>
-				<td><%=rs.getString("STATE")%></td>
+				<td><%=rs.getString("STATUS")%></td>
 				<td><%=rs.getString("DESCRIPTION")%></td>
 			</tr>
 	
