@@ -1,12 +1,15 @@
 			body{
-				background: rgba(0,0,0,0.9);
+				background: rgba(0,0,0,1);
 				color: #DDD;
 				font-family: 'Helvetica', 'Lucida Grande', 'Arial', sans-serif;
 			}
-			.border,
-			.rain{
-				height: 500px;
+			.border{
+				height: 99%;
 				width: 30%;
+			}
+			.rain{
+				height: 400px;
+				width: 35%;
 			}
 			/* Layout with mask */
 			.rain{

@@ -11,20 +11,31 @@
 
 <!-- Bootstrap -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap-table.css" rel="stylesheet">
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-table.js"></script>
+<script src="../bootstrap-table-zh-CN.js"></script>
 <style>
 	th{
 		vertical-align: middle !important;
 		text-align: center;
 	}
 </style>
+
 </head>
 <body>
+<script>
+    $("#tb").bootstrapTable({
+        pagination: true,   //是否显示分页条
+        pageSize: 3,   //一页显示的行数
+        paginationLoop: false,   //是否开启分页条无限循环，最后一页时点击下一页是否转到第一页
+        pageList: [5, 10, 20]   //选择每页显示多少行，数据过少时可能会没有效果
+    });
+</script>
 <jsp:useBean id="check" scope="session" class="javabean.JDBCBean"></jsp:useBean>
 <div class="table-responsive">
-  <table class="table table-hover">
+  <table class="table table-hover" id="tb">
 			<tr align="center">
 				<th>图书编号</th>
 				<th>图书名称</th>
@@ -47,7 +58,7 @@
 				<td><%=rs.getString("LIBRARY_ID")%></td>
 				<td><%=rs.getString("SORT_ID")%></td>
 				<td><%=rs.getString("POSITION")%></td>
-				<td><%=rs.getString("STATE")%></td>
+				<td><%=rs.getString("STATUS")%></td>
 				<td><%=rs.getString("DESCRIPTION")%></td>
 			</tr>
 	

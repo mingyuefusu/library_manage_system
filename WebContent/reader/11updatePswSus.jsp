@@ -40,8 +40,6 @@
 	</script>
 	<%
 		}
-	%>
-	<%
 		} catch (Exception e) {
 	%>
 	<script>

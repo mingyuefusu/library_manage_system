@@ -13,20 +13,27 @@
 <script src="../js/bootstrap.min.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse " role="navigation">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
+			     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        			<span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+     			</button>
 				<a class="navbar-brand" href="#">欢迎登陆图书管理系统</a>
 			</div>
-			<div>
-					<p class="navbar-text" style="margin-left:5%;">借阅者页面</p>
-			</div>
+
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+        			<li><p style="margin-top:25%;color:grey;">借阅者页面<span class="sr-only">(current)</span></p></li>
+				</ul>
+				
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">退出</a></li>
+					<li><a href="../loginReader.html" target = "_top">退出</a></li>
 				</ul>
 			</div>
 		</div>

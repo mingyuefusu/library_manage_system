@@ -6,9 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 public class Base {
-
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost:3306/library?&useSSL=false&serverTimezone=UTC&userUnicode=true&characterEncoding=UTF-8";
 	private static String username = "root";

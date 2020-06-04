@@ -31,12 +31,10 @@
 				<th>借阅日期</th>
 				<th>截止日期</th>
 				<th>归还日期</th>
-				<th>违章信息</th>
-				<th>处理信息的管理员</th>
 			</tr>
 <%
 		String id = session.getAttribute("reader").toString();
-		String sql="select*from borrow_books where CARD_ID = " + id;
+		String sql="select CARD_ID,BOOK_ID,BORROW_DATE,END_DATE,RETURN_DATE from borrow_books where CARD_ID = " + id;
 		ResultSet rs = check.executeQuery(sql);
 		while (rs.next()) {
 %>
@@ -47,8 +45,7 @@
 				<td><%=rs.getString("BORROW_DATE")%></td>
 				<td><%=rs.getString("END_DATE")%></td>
 				<td><%=rs.getString("RETURN_DATE")%></td>
-				<td><%=rs.getString("ILLEGAL")%></td>
-				<td><%=rs.getString("MANAGER_ID")%></td>
+
 			</tr>
 	
 	
