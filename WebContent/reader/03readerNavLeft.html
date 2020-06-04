@@ -10,18 +10,31 @@
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<style>
+.sidebar li a:hover{
+	background:#337ab7;
+	color:white;
+} 
+.faq-tabbable li a:focus{
+	background:skyblue;
+	color:white;
+} 
+</style>
 
 </head>
 <body>
-	<div style="text-align:center;width:100%;">
-		<ul class="nav nav-pills nav-stacked">
-			<li role="presentation" class="active"><a href="05searchBooks.jsp" target="view_frame">图书查询</a></li>
+
+	<div style="text-align:center;width:100%;height:100%;">
+		<ul class="nav nav-pills nav-stacked nav-inverse sidebar faq-tabbable">
+			<li role="presentation"><a href="01main.jsp" target="view_frame">首页</a></li>
+			<li role="presentation"><a href="05searchBooks.jsp" target="view_frame">图书查询</a></li>
 			<li role="presentation"><a href="06borrowBooks.jsp" target="view_frame">借阅信息</a></li>
-			<li role="presentation"><a href="#" target="view_frame">查看公告</a></li>
-			<li role="presentation"><a href="#" target="view_frame">违章信息</a></li>
+			<li role="presentation"><a href="07announcement.jsp" target="view_frame">查看公告</a></li>
+			<li role="presentation"><a href="08illegal.jsp" target="view_frame">违章信息</a></li>
 			<li role="presentation"><a href="09cardInfo.jsp" target="view_frame">个人信息</a></li>
 			<li role="presentation"><a href="#" target="view_frame">读者规则</a></li>
 			<li role="presentation"><a href="13message.jsp" target="view_frame">读者留言</a></li>
+			
 		</ul>
 	</div>
 </body>

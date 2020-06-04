@@ -14,21 +14,25 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" id="templatecss" type="text/css"
-	href="../public/css/message.css">
+<link rel="stylesheet" id="templatecss" type="text/css" href="../public/css/message.css">
 </head>
 <body id="home">
+<script>
+//$(document).ready(function () {
+//	var date = new Date(+new Date()+8*3600*1000).toISOString().replace(/T/g,' ').replace(/\.[\d]{3}Z/,'');
+//	alert(date);//2017-01-22 11:08:46
+//	$('#date_info').val(today);
+//})
+</script>
 		<div class="rain">
 			<div class="border start">
-				<form>
-					<label for="card">借阅证号</label>
-					<input id="card" type="text" placeholder="请输入您的借阅证号"/>
-					<label for="book">书籍编号</label>
-					<input id="book" type="text" placeholder="请输入您的书籍编号"/>
-					<label for="mes">留言</label>
-					<textarea id="mes"  placeholder="请输入您的留言"></textarea>
-					<label for="date">日期</label>
-					<input id="date" type="text" placeholder="请输入时间"/><br>&emsp;&emsp;&emsp;
+				<form action="14messageSub.jsp" method="post">
+					<label for="mes" style="margin-left:36%;">留言板</label>
+					<textarea id="mes" name="msg" placeholder="请输入您的留言" style="height:50%;width:90%"></textarea>
+					<!-- <label for="date">日期</label>-->
+					<!-- <input id="date" type="text" name="time" placeholder="请输入时间" style="width:90%"/><br> -->
+					<!-- <input type="datetime_local" id="date_info" placeholder="请输入时间"/> -->
+ 					<br><br>
                     <div align="center">
                     <button type="submit" class="btn btn-warning" style="margin-left:0">提交</button>&emsp;&emsp;&emsp;
                     <button type="reset" class="btn btn-danger" style="margin-right:0">重置</button>

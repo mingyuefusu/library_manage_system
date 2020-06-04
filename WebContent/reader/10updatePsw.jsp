@@ -48,7 +48,7 @@ th {
 						<input type="password" class="form-control" name="psw2" id="password2" placeholder="请再次输入密码进行确认"/><br>
 					</div>
 				</div>
-				<input type="submit" class="btn btn-primary" value="确认">
+				<input type="submit" class="btn btn-primary" value="确认">&emsp;&emsp;&emsp;
 				<a onclick="check()" href="09cardInfo.jsp" class="btn btn-primary">返回</a> <br>
 				<br>
 			</form>

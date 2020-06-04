@@ -51,7 +51,7 @@
 				<td><%=rs.getString("READER")%></td>
 				<td><%=rs.getString("RULE_ID")%></td>
 				<td><%=rs.getString("STATE")%></td>
-				<td><a onclick="check()" href=<% out.print("10updatePsw.jsp?id="+rs.getInt("ID"));%> class="btn btn-primary">修改</a></td>
+				<td><a onclick="check()" href=<% out.print("10updatePsw.jsp?id="+rs.getInt("ID"));%> class="btn btn-primary">修改密码</a></td>
 			</tr>
 	
 	
