@@ -41,7 +41,7 @@
 	%>
 	<script>
 		alert('留言成功！');
-		window.location.href = "13message.jsp";
+		window.location.href = "15checkMessage.jsp";
 	</script>
 	<%
 		}
@@ -57,7 +57,7 @@
 		} else {
 	%>
 	<script>
-		alert('留言未成功！');
+		alert('留言未成功！留言不能为空！');
 		window.location.href = "13message.jsp";
 	</script>
 	<%
@@ -68,7 +68,7 @@
 			%>
 	<script>
 		alert('留言未成功！请先登录！');
-		window.location.href = "13message.jsp";
+		window.location.href = "06borrowBooks.jsp";
 	</script>
 			<%
 		}

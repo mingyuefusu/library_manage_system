@@ -39,19 +39,33 @@ $(function () {
 		String sql="select*from announcement";
 		ResultSet rs = check.executeQuery(sql);
 		while (rs.next()) {
-%>
 
+	if(Integer.parseInt(rs.getString("ID")) % 2== 1){
+%>
 	<button type="button" class="btn " title="<%=rs.getString("title")%>"  
 			data-container="body" data-trigger="focus" data-toggle="popover" data-placement="left" 
 			data-content="<%=rs.getString("detail")%>" style="width:40%;">
+			
 			<%=rs.getString("title")%><br>
 			发布时间：<%=rs.getString("publish_date")%>
+		
 	</button><br><br>
-
+<%
+		}else{
+			%>
+			<button type="button" class="btn " title="<%=rs.getString("title")%>"  
+					data-container="body" data-trigger="focus" data-toggle="popover" data-placement="right" 
+					data-content="<%=rs.getString("detail")%>" style="width:40%;">
+					
+					<%=rs.getString("title")%><br>
+					发布时间：<%=rs.getString("publish_date")%>
+				
+			</button><br><br>
 <%
 		}
+		}
  %>
-</table>
+
 </div>
 </body>
 </html>

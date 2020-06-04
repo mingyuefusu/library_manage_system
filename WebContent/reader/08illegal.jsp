@@ -4,16 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
 <title></title>
-
-<!-- Bootstrap -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script> 
+<link rel="stylesheet" href="../public/css/animate.css">
+<link rel="stylesheet" href="../public/css/login.css" />
 <style>
 	th{
 		vertical-align: middle !important;
@@ -22,6 +21,15 @@
 </style>
 </head>
 <body>
+<%
+	if(session.getAttribute("reader") == null){
+%>
+<script>
+	location.href="../loginReader.html";
+</script>
+<%
+	}
+%>
 <jsp:useBean id="ill" scope="session" class="javabean.JDBCBean"></jsp:useBean>
 <div class="table-responsive">
   <table class="table table-hover">
@@ -34,6 +42,7 @@
 				<th>处理信息的管理员</th>
 			</tr>
 <%
+	try{
 		String id=session.getAttribute("reader").toString();
 		String sql="select BOOK_ID,BORROW_DATE,END_DATE,RETURN_DATE,ILLEGAL,MANAGER_ID from borrow_books where ILLEGAL is not null AND CARD_ID = " + id;
 		//out.println(sql);
@@ -52,6 +61,9 @@
 	
 	
 <%
+		}
+	}catch(Exception e){
+
 		}
  %>
  </table>
