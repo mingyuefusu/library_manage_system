@@ -35,7 +35,8 @@
  					<br><br>
                     <div align="center">
                     <button type="submit" class="btn btn-warning" style="margin-left:0">提交</button>&emsp;&emsp;&emsp;
-                    <button type="reset" class="btn btn-danger" style="margin-right:0">重置</button>
+                    <button type="reset" class="btn btn-danger" style="margin-right:0">重置</button>&emsp;&emsp;&emsp;
+                    <button type="reset" class="btn btn-info" style="margin-right:0" onClick="location.href='15checkMessage.jsp'">查看留言</button>
 					</div>
 				</form>
 			</div>

@@ -44,9 +44,10 @@ public class ReaderLogin extends HttpServlet {
 		if (result.equals("1")) {
 			HttpSession session = request.getSession();
 			session.setAttribute("reader", user);
+			session.setAttribute("reader_first", "1"); // 登录
 			hashMap.put("code", 0);
 			hashMap.put("msg", "登录成功");
-			hashMap.put("url", request.getContextPath() + "/reader/04readerFrame.html");
+			hashMap.put("url", request.getContextPath() + "/reader/01main.jsp");
 		} else {
 			hashMap.put("code", 1);
 			hashMap.put("msg", result);

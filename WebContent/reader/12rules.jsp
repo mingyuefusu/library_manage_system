@@ -1,8 +1,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
-<%@ page import="javabean.DateTime"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,34 +17,35 @@
 <script src="../js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" id="templatecss" type="text/css" href="../public/css/message.css">
-<style type="text/css">
-	.text-dark{
-		color:black;
-		font-family:YouYuan;
-	}
+<style>
 	body{
 		background-color:#fff;
-		font-size:16px;
+		color:black;
 	}
 </style>
 </head>
 <body>
-	<jsp:useBean id="msg" scope="session" class="javabean.JDBCBean"></jsp:useBean>
-	<div align="center"><h3 style="color:#F08080;">☆★留言板★☆</h3></div>
+<jsp:useBean id="msg" scope="session" class="javabean.JDBCBean"></jsp:useBean>
+	
 <%		
-		String sql = "select CARD_ID,DETAIL,PUBLIC_DATE from message";
+		String sql = "select * from rules";
 		
 			ResultSet rs = msg.executeQuery(sql);
 		
 			while (rs.next()) {
 	%>
-	<div class="panel panel-default" style="width:60%;height:80%; margin-left:20%;">
-	  	<div class="panel-body" align="center">
-			<p class="bg-info text-dark"><%=rs.getString("CARD_ID")%></p>
-			<div style="word-wrap:break-word;"><p class="bg-warning text-dark"><%=rs.getString("DETAIL")%></p></div>
-			<p class="bg-danger text-dark"><%=rs.getString("PUBLIC_DATE")%></p>
+	<div class="panel panel-info" style="width:50%;height:80%; margin-left:25%;">
+		<div class="panel-heading" align="center">
+		    <h4>借阅证规则编号：<%=rs.getString("ID") %></h4>
+		</div>
+		<div class="panel-body">
+			<p>可借阅数量：<%=rs.getString("BORROW_NUM") %></p>
+			<p>可借阅图书馆：<%=rs.getString("BORROW_LIBRARY") %></p>
+			<p>过期扣费/天：<%=rs.getString("OVERTIME_FEE") %></p>
+		
 		</div>
 	</div>
+
 
 <%
 		}
