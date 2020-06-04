@@ -11,13 +11,13 @@
  
   <style>
     .layui-form{
-      margin-top: 10px;
-      margin-right: 10px;
+      margin: 10px 20px;
+      
     }
   </style>
 </head>
 <body>
-  <form class="layui-form" action="">
+  <form class="layui-form   layui-form-pane" action="">
   <div class="layui-form-item">
     <label class="layui-form-label">书名</label>
     <div class="layui-input-block">
@@ -59,12 +59,21 @@
       <input type="radio" name="status" value="0" title="不可借">
     </div>
   </div>
+  <!-- 
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">书籍简介</label>
     <div class="layui-input-block">
       <textarea name="description" placeholder="请输入内容" class="layui-textarea"></textarea>
     </div>
+  </div>-->
+   
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">书籍简介</label>
+    <div class="layui-input-block">
+      <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+    </div>
   </div>
+  
   <div class="layui-form-item">
     <div class="layui-input-block">
       <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
@@ -74,9 +83,11 @@
 </form>
 <script>
 
-layui.use('form', function(){
-  var form = layui.form;
-  
+layui.use(['form', 'layedit'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit;
+  var editIndex = layedit.build('LAY_demo_editor');
   //监听提交
   form.on('submit(formDemo)', function(data){
     layer.msg(JSON.stringify(data.field));

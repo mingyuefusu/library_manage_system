@@ -102,34 +102,58 @@ public class Admin {
 			}
 			i++;
 		}
-		System.out.println("result: " +result);
 		map.put("data", result);
 		
 		// 获取总数count，重写sql
 		int count = 0;
 		sql = "select count(*) as count  from books ";
 		if(where!=null && !where.isEmpty()) {
-			//sql += " where "+where.get("condition") +" = " +where.get("conditionValue");
 			sql += whereString;
 		}
-		System.out.println("countSql: " +sql);
 		pstmt = connection.prepareStatement(sql);
 		resultSet = pstmt.executeQuery();
 		if(resultSet.next()) {
 			count = resultSet.getInt("count");
 		}
-		System.out.println("count" +count);
-		map.put("count:", count);
+		map.put("count", count);
 		Base.closeResource(connection, pstmt, resultSet);
 		return map;
 		
 	}
 	
-
+	/**
+	 * 通过id(String)获取分类名称
+	 * @param id
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public static String getSortName(String id) throws ClassNotFoundException, SQLException {
+		if(id==null || id.equals(""))
+			return "参数错误";
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet resultSet = null;
+		String sql = null;
+		String result = null;
+		connection =  Base.getConnection();
+		sql = "select name from book_sort where id=?";
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setString(1, id);
+		resultSet = pstmt.executeQuery();
+		if(resultSet.next()) {
+			result = resultSet.getString("name");
+		}else {
+			result = "查询失败";
+		}
+		return result;
+	}
+	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		//Common common = new Common();
 		//System.out.println(common.getCount("books"));
 		Admin admin = new Admin();
+		System.out.println(admin.getSortName("2"));
 		//Map map =  admin.getBookList("1", "100");
 		//System.out.println( map.get("count"));
 	}

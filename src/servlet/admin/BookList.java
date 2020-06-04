@@ -68,6 +68,7 @@ public class BookList extends HttpServlet {
     		json.put("code", 0);
     		json.put("msg", "success");
 			json.put("count", map.get("count"));
+			System.out.println("count: " +map.get("count"));
     		result = "[" +result +"]";
     		json.put("data", result);
     	}
