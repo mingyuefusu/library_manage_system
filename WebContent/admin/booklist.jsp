@@ -100,13 +100,18 @@
 		    } else if(layEvent === 'edit'){ //编辑
 		      //do something
 		     
+		      // 页面编辑
 		      layer.open({
 				  type: 2,
 				  title: "更改信息",
 				  area: ['800px', '600px'],
 				  maxmin: true, //开启最大化最小化按钮
 				  shadeClose: true,
-				  content: "bookedit.jsp?id="+ id
+				  content: "bookedit.jsp?id="+ id,
+				  end: function () {
+					  console.log("finish edit");
+					  //location.reload();
+				  }
 				});
 		      
 		      //同步更新缓存对应的值

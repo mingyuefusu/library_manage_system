@@ -149,6 +149,31 @@ public class Admin {
 		return result;
 	}
 	
+	/**
+	 * 根据id获取书籍信息
+	 * @param id
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public static ResultSet getBookInfo(int id) throws ClassNotFoundException, SQLException {
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet resultSet = null;
+		String sql = "select * from books where id=? ";
+		connection = Base.getConnection();
+		pstmt = connection.prepareStatement(sql);
+		pstmt.setInt(1, id);
+		resultSet = pstmt.executeQuery();
+		//Base.closeResource(null, null, null);
+		connection.close();
+		if(resultSet.next()) {
+			return resultSet;
+		}
+		
+		return null;
+	}
+	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		//Common common = new Common();
 		//System.out.println(common.getCount("books"));

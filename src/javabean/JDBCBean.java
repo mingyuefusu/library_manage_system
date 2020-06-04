@@ -40,7 +40,7 @@ public class JDBCBean {
 		try {
 			rs = stmt.executeQuery(s);
 		} catch (Exception e) {
-			System.out.println("执行查询错误！");
+			System.out.println("执行查询错误！ "+e.getMessage());
 		}
 		return rs;
 	}
