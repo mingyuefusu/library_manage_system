@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="utf-8">
@@ -33,7 +35,13 @@
 				</ul>
 				
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="../loginReader.html" target = "_top">退出</a></li>
+				    <%if(session.getAttribute("reader") !=null) {%>
+					<li><a href="04readerFrame.jsp" target="self" onClick="">退出</a></li>
+					<%}else{%>
+					<li><a href="04readerFrame.jsp" target="self" onClick="">登录</a></li>	
+					<%}
+					%>
+					}
 				</ul>
 			</div>
 		</div>

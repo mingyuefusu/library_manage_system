@@ -34,6 +34,18 @@ font{
 </style>
 </head>
 <body>
+<%
+	if(session.getAttribute("reader")!=null && session.getAttribute("reader_first")!=null &&session.getAttribute("reader_first").equals("1")){
+		session.setAttribute("reader_first", "2");
+		//session.setAttribute("reader", session.getAttribute("reader"));
+		
+%>
+		<script>window.parent.location.href = "./04readerFrame.jsp";</script>
+		
+<%
+	}
+%>
+
 
 <div id="carousel-example-generic" class="carousel slide showCarousel" data-ride="carousel" data-interval="2000" style="width:96%;margin-left:2%;">
   <!-- Indicators -->
