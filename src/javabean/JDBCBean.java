@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class JDBCBean {
-	private static String driver = "com.mysql.jdbc.Driver";
+	private static String driver = "com.mysql.cj.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost:3306/library?&useSSL=false&serverTimezone=UTC&userUnicode=true&characterEncoding=UTF-8";
 	private static String username = "root";
 	private static String password = "root";
@@ -40,7 +40,7 @@ public class JDBCBean {
 		try {
 			rs = stmt.executeQuery(s);
 		} catch (Exception e) {
-			System.out.println("执行查询错误！ "+e.getMessage());
+			System.out.println("执行查询错误！ " + e.getMessage());
 		}
 		return rs;
 	}
