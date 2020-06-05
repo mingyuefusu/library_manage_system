@@ -32,9 +32,10 @@
 		  </select>
 	 	 </div>
 	 	 <div class="layui-inline">
-	  	  <input class="layui-input" name="conditionValue" id="conditionValue" autocomplete="off">
+	  	  <input class="layui-input" name="conditionValue" id="conditionValue" autocomplete="off" placeholder="请输入搜索内容">
 	 	 </div>
 	 	 <button class="layui-btn" data-type="reload" lay-event="search">搜索</button>
+		 <button type="button" class="layui-btn  layui-btn-sm"  lay-event="add"><i class="layui-icon"></i></button>
 	</div>
 	</script>
     
@@ -50,7 +51,8 @@
 	</script>
 	<script>
 		
-		layui.use('table',function(){
+		layui.use(['table', 'jquery'],function(){
+		  $ = layui.jquery;
 		  var table = layui.table;
 		  var tableIns =  table.render({
 		     elem: '#demo'
@@ -67,9 +69,9 @@
 		      ,{field: 'name', title: '书名', width:180}
 		      ,{field: 'library_id', title: '图书馆', width:80, edit: true} 
 		      ,{field: 'sort_id', title: '分类', width: 100}
-		      ,{field: 'position', title: '位置', width: 80, sort: true}
+		      ,{field: 'position', title: '位置', width: 120, sort: true}
 		      ,{field: 'status', title: '状态', width: 80, sort: true}
-		      ,{field: 'description', title: '描述', width: 280}
+		      ,{field: 'description', title: '描述', width: 380}
 		      //,{field: 'operate', title: '操作', width: 200, templet: '#operate'}
 		      ,{fixed: 'right', title:'操作', width:150, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
 		    ]]
@@ -92,10 +94,19 @@
 		    var id = data.id;
 		    if(layEvent === 'del'){ //删除
 		      layer.confirm('真的删除行么', function(index){
-		        obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+		        //obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
 		        layer.close(index);
 		        //向服务端发送删除指令
-		        
+		        $.ajax({
+		        	url: './bookdel',
+		        	method: 'get',
+		        	dataType: 'JSON',
+		        	data: "id=" +id,
+		        	success: function(data){
+		        		layer.msg("success");
+		        	}
+	        	})
+		        //location.reload();
 		      });
 		    } else if(layEvent === 'edit'){ //编辑
 		      //do something
@@ -110,7 +121,7 @@
 				  content: "bookedit.jsp?id="+ id,
 				  end: function () {
 					  console.log("finish edit");
-					  //location.reload();
+					  location.reload();
 				  }
 				});
 		      
@@ -132,19 +143,34 @@
 			  var data = obj.data;
 			  switch(obj.event){
 			    case 'search':
-		    	 var conditionValue = $('#conditionValue');
-		    	 var condition = $('#condition');
-			    	//这里以搜索为例
-				  tableIns.reload({
-				    where: { //设定异步数据接口的额外参数，任意设
-				    	"condition": condition.val(),
-				    	"conditionValue": conditionValue.val()
-				    }
-				    ,page: {
-				      curr: 1 //重新从第 1 页开始
-				    }
-				  });
-			    break;
+			    	 var conditionValue = $('#conditionValue');
+			    	 var condition = $('#condition');
+				    	//这里以搜索为例
+					  tableIns.reload({
+					    where: { //设定异步数据接口的额外参数，任意设
+					    	"condition": condition.val(),
+					    	"conditionValue": conditionValue.val()
+					    }
+					    ,page: {
+					      curr: 1 //重新从第 1 页开始
+					    }
+					  });
+			    	break;
+			    case 'add':
+			    	var addBookLayer = layer.open({
+						  type: 2,
+						  title: "添加书籍",
+						  area: ['800px', '600px'],
+						  maxmin: true, //开启最大化最小化按钮
+						  shadeClose: true,
+						  content: "bookadd.jsp",
+						  end: function () {
+							  console.log("finish add");
+							  //location.reload();
+						  }
+						});
+			    	layer.full(addBookLayer);
+			    	break;
 			    
 			  };
 			});

@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="javabean.JDBCBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,69 +13,79 @@
  
   <style>
     .layui-form{
-      margin-top: 10px;
-      margin-right: 10px;
+      margin: 10px 20px;
+      
     }
+  </style>
   </style>
 </head>
 <body>
-  <form class="layui-form" action="">
+  <%
+	ResultSet librarySet = null;
+	ResultSet bookSortSet = null;
+	// 获取图书馆列表
+	JDBCBean db2 = new JDBCBean();
+	String librarySql = "select * from library";
+	librarySet = db2.executeQuery( librarySql );
+	// 获取书籍分类
+	JDBCBean db3 = new JDBCBean();
+	String bookSortSql = "select * from book_sort";
+	bookSortSet = db3.executeQuery( bookSortSql );
+  %>
+    <form class="layui-form   layui-form-pane" action="">
+  <input type="id" name="id" value="3" class="layui-hide">
   <div class="layui-form-item">
-    <label class="layui-form-label">输入框</label>
+    <label class="layui-form-label">书名</label>
     <div class="layui-input-block">
-      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+      <input type="text" name="name" required="" lay-verify="required" placeholder="请输入书名" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">密码框</label>
-    <div class="layui-input-inline">
-      <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-    </div>
-    <div class="layui-form-mid layui-word-aux">辅助文字</div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">选择框</label>
+    <label class="layui-form-label">图书馆</label>
     <div class="layui-input-block">
-      <select name="city" lay-verify="required">
-        <option value=""></option>
-        <option value="0">北京</option>
-        <option value="1">上海</option>
-        <option value="2">广州</option>
-        <option value="3">深圳</option>
-        <option value="4">杭州</option>
+      <select name="library_id" lay-verify="required">
+      	<option value=""></option>
+      	<% while( librarySet.next() ){ %>
+        	<option value=<%=librarySet.getString("id") %>  ><%=librarySet.getString("name") %></option>
+        <%} %>
+      </select>
+    </div>
+  </div>
+   <div class="layui-form-item">
+    <label class="layui-form-label">分类</label>
+    <div class="layui-input-block">
+      <select name="sort_id" lay-verify="required">
+      <option value=""></option>
+        <% while(bookSortSet.next()){ %>
+        <option value=<%=bookSortSet.getInt("id") %> ><%=bookSortSet.getString("name") %></option>
+        <%} %>
       </select>
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">复选框</label>
+    <label class="layui-form-label">位置</label>
     <div class="layui-input-block">
-      <input type="checkbox" name="like[write]" title="写作">
-      <input type="checkbox" name="like[read]" title="阅读" checked>
-      <input type="checkbox" name="like[dai]" title="发呆">
+      <input type="text" name="position" required="" lay-verify="required" placeholder="请输入位置编号" autocomplete="off" class="layui-input">
     </div>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">开关</label>
+    <label class="layui-form-label">状态</label>
     <div class="layui-input-block">
-      <input type="checkbox" name="switch" lay-skin="switch">
+      <input type="radio" name="status" value="1" title="可借" checked="checked"><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>可借</div></div>
+      <input type="radio" name="status" value="0" title="不可借"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>不可借</div></div>
     </div>
   </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">单选框</label>
-    <div class="layui-input-block">
-      <input type="radio" name="sex" value="男" title="男">
-      <input type="radio" name="sex" value="女" title="女" checked>
-    </div>
-  </div>
+   
   <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">文本域</label>
+    <label class="layui-form-label">书籍简介</label>
     <div class="layui-input-block">
-      <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+      <textarea class="layui-textarea layui-hide"  name="description" lay-verify="content" id="LAY_demo_editor"></textarea>
     </div>
   </div>
+  
   <div class="layui-form-item">
     <div class="layui-input-block">
-      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+      <button class="layui-btn" lay-submit="" lay-filter="bookForm">立即提交</button>
       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>
   </div>
@@ -81,15 +93,45 @@
 <script>
 
 
-layui.use('form', function(){
-  var form = layui.form;
-  
-  //监听提交
-  form.on('submit(formDemo)', function(data){
-    layer.msg(JSON.stringify(data.field));
-    return false;
-  });
-});
+layui.use(['form', 'layedit', 'jquery'], function(){
+	  //layer.closeAll();
+	  $ = layui.jquery;
+	  var form = layui.form
+	  ,layer = layui.layer
+	  ,layedit = layui.layedit;
+	  var editIndex = layedit.build('LAY_demo_editor');
+	  // 自定义验证规则
+	  form.verify({
+		  // 解决异步传输问题
+		  content: function(value){
+			  return layedit.sync(editIndex);
+		  }
+	  })
+	  //监听提交
+	  form.on('submit(bookForm)', function(data){
+	    $.ajax({
+	    	url: './bookAdd',
+	    	method: 'post',
+	    	data: data.field, //JSON.stringify(data.field),
+	    	dataType: 'JSON',
+	    	success: function(data){
+	    		if(data.code == "0"){
+	    			parent.layer.msg("添加成功");
+	        		var index = parent.layer.getFrameIndex(window.name);
+	        		parent.layer.close(index);
+	    		}else{
+	    			leyer.msg("添加失败");
+	    		}
+	    			
+	    	    //parent.layer.msg('您将标记 [ sdf ] 成功传送给了父窗口');
+	    	    
+	    	}
+	    })
+	    
+	    
+	    return false;
+	  });
+	});
 
 </script>
 

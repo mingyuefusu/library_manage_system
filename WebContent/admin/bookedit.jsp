@@ -50,6 +50,7 @@
   	
   %>
   <form class="layui-form   layui-form-pane" action="">
+  <input type="id" name="id" value=<%=id %> class="layui-hide">
   <div class="layui-form-item">
     <label class="layui-form-label">书名</label>
     <div class="layui-input-block">
@@ -72,7 +73,7 @@
     <label class="layui-form-label">分类</label>
     <div class="layui-input-block">
       <select name="sort_id" lay-verify="required">
-        <option value=""></option>
+      <option value=""></option>
         <% while(bookSortSet.next()){ %>
         <option value=<%=bookSortSet.getInt("id") %> <% if(bookSortSet.getInt("id") == sort_id) out.print("selected"); %>><%=bookSortSet.getString("name") %></option>
         <%} %>
@@ -103,7 +104,7 @@
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">书籍简介</label>
     <div class="layui-input-block">
-      <textarea class="layui-textarea layui-hide"  name="content" lay-verify="content" id="LAY_demo_editor"><%=description %></textarea>
+      <textarea class="layui-textarea layui-hide"  name="description" lay-verify="content" id="LAY_demo_editor"><%=description %></textarea>
     </div>
   </div>
   
@@ -116,20 +117,43 @@
 </form>
 <script>
 
-layui.use(['form', 'layedit'], function(){
+layui.use(['form', 'layedit', 'jquery'], function(){
   //layer.closeAll();
+  $ = layui.jquery;
   var form = layui.form
   ,layer = layui.layer
   ,layedit = layui.layedit;
   var editIndex = layedit.build('LAY_demo_editor');
+  // 自定义验证规则
+  form.verify({
+	  // 解决异步传输问题
+	  content: function(value){
+		  return layedit.sync(editIndex);
+	  }
+  })
   //监听提交
   form.on('submit(formDemo)', function(data){
-    layer.msg(JSON.stringify(data.field));
-    var index = parent.layer.getFrameIndex(window.name);
-    parent.layer.msg('您将标记 [ sdf ] 成功传送给了父窗口');
-    parent.layer.close(index);
+    $.ajax({
+    	url: './bookEdit',
+    	method: 'post',
+    	data: data.field, //JSON.stringify(data.field),
+    	dataType: 'JSON',
+    	success: function(data){
+    		if(data.code == "0"){
+    			parent.layer.msg("修改成功");
+        		var index = parent.layer.getFrameIndex(window.name);
+        		parent.layer.close(index);
+    		}else{
+    			leyer.msg("修改失败");
+    		}
+    			
+    	    //parent.layer.msg('您将标记 [ sdf ] 成功传送给了父窗口');
+    	    
+    	}
+    })
     
-    //return false;
+    
+    return false;
   });
 });
 
