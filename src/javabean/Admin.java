@@ -74,8 +74,8 @@ public class Admin {
 			whereString += " where "+where.get("condition") +" like '%" +where.get("conditionValue") +"%' ";
 			sql += whereString;
 		}
-		sql += " limit ?,? ";
-		System.out.println("sql: " +sql);
+		sql += "order by id desc limit ?,? ";
+		//System.out.println("sql: " +sql);  debug
 		pstmt = (PreparedStatement) connection.prepareStatement(sql);
 		pstmt.setInt(1, (number-1) * size );
 		pstmt.setInt(2, size);

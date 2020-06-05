@@ -123,9 +123,13 @@ layui.use(['form', 'layedit', 'jquery'], function(){
 	    	dataType: 'JSON',
 	    	success: function(data){
 	    		if(data.code == "0"){
-	    			parent.layer.msg("添加成功");
-	        		var index = parent.layer.getFrameIndex(window.name);
-	        		parent.layer.close(index);
+	    			parent.layer.msg("添加成功",{
+	    				icon: 6,
+	    				time: 500
+	    			});
+	    			setTimeout(function(){
+	    				parent.location.reload();
+	    			}, 500);
 	    		}else{
 	    			leyer.msg("添加失败");
 	    		}

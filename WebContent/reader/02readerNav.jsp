@@ -40,7 +40,7 @@
 					<%}else{%>
 					<li><a href="04readerFrame.jsp" target="_parent" onClick="">登录</a></li>	
 					<%}
-					%>s
+					%>
 					
 				</ul>
 			</div>

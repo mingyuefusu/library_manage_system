@@ -13,7 +13,6 @@
   <!-- layui -->
   <link rel="stylesheet" href="../public/layui/css/layui.css">
   <script src="../public/layui/layui.js"></script>
-  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
   <style>
     .layui-table, .layui-table-view{
     	margin-top: 0px;
@@ -92,15 +91,6 @@
 		var bookSortJson = <%=bookSortJson %>
 	</script>
 	
-	<script type="text/html" id="libraryTemp">
-		{{# 
-			var id = }}
-		{{=d.id}}
-		{{# 
-			console.log(id);
-		}}
-		
-	</script>
 	
 	 
 	<script>
@@ -147,7 +137,7 @@
 			});
 		  
 		  
-		// 监听工具条  编辑，删除
+		// 监听侧边工具条  编辑，删除
 		 table.on('tool(form)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
 		    var data = obj.data; //获得当前行数据
 		    var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
@@ -172,11 +162,8 @@
 		        		
 		        	}
 	        	})
-		        //location.reload();
 		      });
 		    } else if(layEvent === 'edit'){ //编辑
-		      //do something
-		     
 		      // 页面编辑
 		      layer.open({
 				  type: 2,
@@ -185,10 +172,6 @@
 				  maxmin: true, //开启最大化最小化按钮
 				  shadeClose: true,
 				  content: "bookedit.jsp?id="+ id,
-				  end: function () {
-					  console.log("finish edit");
-					  location.reload();
-				  }
 				});
 		      
 		      //同步更新缓存对应的值
@@ -208,6 +191,7 @@
 			  var checkStatus = table.checkStatus(obj.config.id);
 			  var data = obj.data;
 			  switch(obj.event){
+			  	// 条件查找
 			    case 'search':
 			    	 var conditionValue = $('#conditionValue');
 			    	 var condition = $('#condition');
@@ -222,6 +206,7 @@
 					    }
 					  });
 			    	break;
+		    	// 添加书籍
 			    case 'add':
 			    	var addBookLayer = layer.open({
 						  type: 2,

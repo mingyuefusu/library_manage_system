@@ -15,7 +15,6 @@
   <style>
     .layui-form{
       margin: 10px 20px;
-      
     }
   </style>
 </head>
@@ -152,17 +151,21 @@ layui.use(['form', 'layedit', 'jquery'], function(){
     	url: './bookEdit',
     	method: 'post',
     	data: data.field, //JSON.stringify(data.field),
-    	dataType: 'JSON',
+    	dataType: 'json',
     	success: function(data){
     		if(data.code == "0"){
-    			parent.layer.msg("修改成功");
-        		var index = parent.layer.getFrameIndex(window.name);
-        		parent.layer.close(index);
+    			parent.layer.msg("修改成功",{
+    				icon: 6,
+    				time: 1000
+    			});
+    			setTimeout(function(){
+    				parent.location.reload()
+    			}, 1000);
+        		//var index = parent.layer.getFrameIndex(window.name); //操作父页面
+        		//parent.layer.close(index);
     		}else{
     			leyer.msg("修改失败");
     		}
-    			
-    	    //parent.layer.msg('您将标记 [ sdf ] 成功传送给了父窗口');
     	    
     	}
     })
