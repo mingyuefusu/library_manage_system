@@ -20,7 +20,7 @@
 </style>
 </head>
 <body>
- <div style="background: #ef9e9f;height: 30px;;color:#fff;border-radius: 8px;width: 90%;margin:auto auto;">
+ <div style="background: lightblue;height: 30px;;color:#fff;border-radius: 8px;width: 90%;margin:auto auto;">
 <marquee style="font-size:20px;font-family:YouYuan;" behavior="scroll" direction="left"  hspace="0.1%" vspace="0.1%" loop="-1" scrollamount="20" scrolldelay="100" onMouseOut="this.start()" onMouseOver="this.stop()">
     ❤图书馆公告栏，记得查收公告呀！❤
 </marquee> 
