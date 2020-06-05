@@ -40,6 +40,13 @@
       <input type="text" name="name" required="" lay-verify="required" placeholder="请输入书名" autocomplete="off" class="layui-input">
     </div>
   </div>
+  <!-- 作者 -->
+  <div class="layui-form-item">
+    <label class="layui-form-label">作者</label>
+    <div class="layui-input-block">
+      <input type="text" name="author" required  lay-verify="required" placeholder="请输入作者" autocomplete="off" class="layui-input">
+    </div>
+  </div>
   <div class="layui-form-item">
     <label class="layui-form-label">图书馆</label>
     <div class="layui-input-block">

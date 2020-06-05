@@ -1,3 +1,8 @@
+<%@page import="net.sf.json.JSONObject"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="javabean.JDBCBean"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,6 +21,36 @@
   </style>
 </head>
 <body>
+	<%
+		
+		JDBCBean libraryDb = new JDBCBean();
+		JDBCBean bookSortDb = new JDBCBean();
+		ResultSet librarySet = null;
+		ResultSet bookSortSet = null;
+		// 准备sql
+		String librarySql = "select * from library";
+		String bookSortSql = "select * from book_sort";
+		// 进行查询
+		librarySet = libraryDb.executeQuery( librarySql );
+		bookSortSet = bookSortDb.executeQuery( bookSortSql );
+		// 准备json
+		JSONObject libraryJson = new JSONObject();
+		JSONObject bookSortJson = new JSONObject();
+		
+		// 遍历set
+		// 获取图书馆json
+		while( librarySet.next() ){
+			libraryJson.put(librarySet.getString("id") , librarySet.getString("name"));
+		}
+		// 获取分类json		
+		while( bookSortSet.next() ){
+			bookSortJson.put(bookSortSet.getString("id") , bookSortSet.getString("name"));
+		}
+		// System.out.print(bookSortJson.toString());
+		librarySet.close();
+		libraryDb.close();
+		
+	%>
 	<!-- 搜索框 -->
 	<script  type="text/html" id="search">
 		<div class="demoTable">
@@ -23,8 +58,9 @@
 		 <div class="layui-inline">
 	  	  <select id="condition" name="condition" lay-verify="required">
         	<option value=""></option>
-        	<option value="id">id</option>
+        	<option value="id">ID</option>
         	<option value="name">书名</option>
+			<option value="author">作者</option>
         	<option value="library">图书馆</option>
         	<option value="position">位置</option>
         	<option value="status">状态</option>
@@ -50,6 +86,24 @@
   		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
 	<script>
+		// 图书馆json
+		var libraryJson = <%=libraryJson %>
+		// 图书分类json
+		var bookSortJson = <%=bookSortJson %>
+	</script>
+	
+	<script type="text/html" id="libraryTemp">
+		{{# 
+			var id = }}
+		{{=d.id}}
+		{{# 
+			console.log(id);
+		}}
+		
+	</script>
+	
+	 
+	<script>
 		
 		layui.use(['table', 'jquery'],function(){
 		  $ = layui.jquery;
@@ -66,13 +120,20 @@
 		    ,cols: [[
 		   	  {type: 'numbers', width:50, fixed:'left'}
 		      ,{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
-		      ,{field: 'name', title: '书名', width:180}
-		      ,{field: 'library_id', title: '图书馆', width:80, edit: true} 
-		      ,{field: 'sort_id', title: '分类', width: 100}
+		      ,{field: 'name', title: '书名', width:180, sort: true}
+		      ,{field: 'author', title: '作者', width: 140, sort: true}
+		      ,{field: 'library_id', title: '图书馆', width:80, edit: true //,templet: '#libraryTemp'}
+		          ,templet: function(d){
+		              return libraryJson[d.library_id];
+		            }}
+		      ,{field: 'sort_id', title: '分类', width: 80, sort: true
+		    	  ,templet: function(d){
+		    		  return bookSortJson[d.sort_id];
+		    	  }}
 		      ,{field: 'position', title: '位置', width: 120, sort: true}
-		      ,{field: 'status', title: '状态', width: 80, sort: true}
+		      ,{field: 'status', title: '状态', width: 50}
 		      ,{field: 'description', title: '描述', width: 380}
-		      //,{field: 'operate', title: '操作', width: 200, templet: '#operate'}
+		      //,{field: 'operate', title: '操作', width: 200, templet: 'titleTpl'}
 		      ,{fixed: 'right', title:'操作', width:150, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
 		    ]]
 		  	,id: 'idTest'
@@ -94,16 +155,21 @@
 		    var id = data.id;
 		    if(layEvent === 'del'){ //删除
 		      layer.confirm('真的删除行么', function(index){
-		        //obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
 		        layer.close(index);
 		        //向服务端发送删除指令
 		        $.ajax({
-		        	url: './bookdel',
+		        	url: './bookDel',
 		        	method: 'get',
 		        	dataType: 'JSON',
 		        	data: "id=" +id,
 		        	success: function(data){
-		        		layer.msg("success");
+		        		if(data.code == 0){
+		        			obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+		        			layer.msg(data.msg);
+		        		}else{
+		        			layer.msg(data.msg);
+		        		}
+		        		
 		        	}
 	        	})
 		        //location.reload();
@@ -166,7 +232,7 @@
 						  content: "bookadd.jsp",
 						  end: function () {
 							  console.log("finish add");
-							  //location.reload();
+							  location.reload();
 						  }
 						});
 			    	layer.full(addBookLayer);

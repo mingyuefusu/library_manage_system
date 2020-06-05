@@ -90,6 +90,7 @@ public class Admin {
 			//System.out.println("????-------" +resultSet.getInt("count"));
 			json.put("id", resultSet.getInt("id"));
 			json.put("name", resultSet.getString("name"));
+			json.put("author", resultSet.getString("author"));
 			json.put("library_id", resultSet.getInt("library_id"));
 			json.put("sort_id", resultSet.getInt("sort_id"));
 			json.put("position", resultSet.getString("position"));

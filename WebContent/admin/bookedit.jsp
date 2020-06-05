@@ -31,6 +31,7 @@
  	resultSet =  db.executeQuery(sql);
  	resultSet.next();
   	String name = resultSet.getString("name");
+  	String author = resultSet.getString("author");
   	int library_id = resultSet.getInt("library_id");
   	int sort_id = resultSet.getInt("sort_id");
   	String position = resultSet.getString("position");
@@ -49,14 +50,25 @@
   	bookSortSet = db3.executeQuery( bookSortSql );
   	
   %>
+  
   <form class="layui-form   layui-form-pane" action="">
+ <%-- 隐藏id --%>
   <input type="id" name="id" value=<%=id %> class="layui-hide">
+  <!-- 书名 -->
   <div class="layui-form-item">
     <label class="layui-form-label">书名</label>
     <div class="layui-input-block">
       <input type="text" name="name" value=<%=name %> required  lay-verify="required" placeholder="请输入书名" autocomplete="off" class="layui-input">
     </div>
   </div>
+  <!-- 作者 -->
+  <div class="layui-form-item">
+    <label class="layui-form-label">作者</label>
+    <div class="layui-input-block">
+      <input type="text" name="author" value=<%=author %> required  lay-verify="required" placeholder="请输入作者" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <!-- 图书馆 -->
   <div class="layui-form-item">
     <label class="layui-form-label">图书馆</label>
     <div class="layui-input-block">
@@ -69,6 +81,7 @@
       </select>
     </div>
   </div>
+  <!-- 分类 -->
   <div class="layui-form-item">
     <label class="layui-form-label">分类</label>
     <div class="layui-input-block">
@@ -80,12 +93,14 @@
       </select>
     </div>
   </div>
+  <!-- 位置 -->
   <div class="layui-form-item">
     <label class="layui-form-label">位置</label>
     <div class="layui-input-block">
       <input type="text" name="position" value=<%=position %> required  lay-verify="required" placeholder="请输入位置编号" autocomplete="off" class="layui-input">
     </div>
   </div>
+  <!-- 位置 -->
   <div class="layui-form-item">
     <label class="layui-form-label">状态</label>
     <div class="layui-input-block">
