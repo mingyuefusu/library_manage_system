@@ -28,7 +28,7 @@
 	%>
 	<script>
 		alert('修改成功！');
-		window.location.href = "09cardInfo.jsp";
+		window.location.href = "index.jsp";
 	</script>
 
 	<%
@@ -36,7 +36,7 @@
 	%>
 	<script>
 		alert('修改未成功！');
-		window.location.href = "10updatePsw.jsp";
+		window.location.href = "index.jsp";
 	</script>
 	<%
 		}
@@ -44,7 +44,7 @@
 	%>
 	<script>
 		alert('修改未成功！');
-		window.location.href = "10updatePsw.jsp";
+		window.location.href = "index.jsp";
 	</script>
 	<%
 		}
@@ -52,7 +52,7 @@
 	%>
 	<script>
 		alert('修改未成功！');
-		window.location.href = "10updatePsw.jsp";
+		window.location.href = "index.jsp";
 	</script>
 	<%
 		}

@@ -46,7 +46,7 @@
 			<p class="bg-danger text-dark"><%=rs.getString("PUBLIC_DATE")%></p>
 		</div>
 	</div>
-
+<hr>
 <%
 		}
  %>

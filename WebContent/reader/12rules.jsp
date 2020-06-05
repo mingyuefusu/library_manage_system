@@ -34,7 +34,7 @@
 		
 			while (rs.next()) {
 	%>
-	<div class="panel panel-info" style="width:50%;height:80%; margin-left:25%;">
+	<div class="panel panel-info" style="width:50%;height:80%; margin-left:25%; margin-top:2%;">
 		<div class="panel-heading" align="center">
 		    <h4>借阅证规则编号：<%=rs.getString("ID") %></h4>
 		</div>
