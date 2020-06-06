@@ -83,10 +83,10 @@
   </div>
   
   <div class="layui-form-item">
-    <label class="layui-form-label">是否可用</label>
+    <label class="layui-form-label">状态</label>
     <div class="layui-input-block">
       <input type="radio" name="status" value="1" title="可用" <%if(infoSet.getString("status").equals("1")) out.print("checked"); %>>
-      <input type="radio" name="status" value="0" title="不可用" <%if(infoSet.getString("status").equals("0")) out.print("checked"); %>>
+      <input type="radio" name="status" value="0" title="挂失" <%if(infoSet.getString("status").equals("0")) out.print("checked"); %>>
     </div>
   </div>
  
@@ -118,8 +118,10 @@ layui.use(['form', 'jquery'], function(){
     				anim: 5,
     				time: 500,
     			});
+    			
     			setTimeout(function(){
-    				parent.location.reload();
+    				var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+    				parent.layer.close(index); //再执行关闭   
     			}, 500)
     			/*
     			parent.layer.open({

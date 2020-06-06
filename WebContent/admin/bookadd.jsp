@@ -109,7 +109,7 @@ layui.use(['form', 'layedit', 'jquery'], function(){
 	  var editIndex = layedit.build('LAY_demo_editor');
 	  // 自定义验证规则
 	  form.verify({
-		  // 解决异步传输问题
+		  // 解决富文本异步传输问题
 		  content: function(value){
 			  return layedit.sync(editIndex);
 		  }
@@ -128,14 +128,13 @@ layui.use(['form', 'layedit', 'jquery'], function(){
 	    				time: 500
 	    			});
 	    			setTimeout(function(){
-	    				parent.location.reload();
+	    				//parent.location.reload();
+	    				var index = parent.layer.getFrameIndex(window.name); //操作父页面
+	            		parent.layer.close(index);
 	    			}, 500);
 	    		}else{
 	    			leyer.msg("添加失败");
 	    		}
-	    			
-	    	    //parent.layer.msg('您将标记 [ sdf ] 成功传送给了父窗口');
-	    	    
 	    	}
 	    })
 	    

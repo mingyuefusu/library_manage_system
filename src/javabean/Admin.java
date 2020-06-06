@@ -146,6 +146,7 @@ public class Admin {
 		}else {
 			result = "查询失败";
 		}
+		Base.closeResource(connection, pstmt, null);
 		return result;
 	}
 	

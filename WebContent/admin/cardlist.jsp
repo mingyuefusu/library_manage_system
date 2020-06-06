@@ -30,17 +30,26 @@
 		  </select>
 	 	 </div>
   		<div class="layui-inline">
-    		<input class="layui-input" id="conditionValue" name="conditionValue" id="demoReload" autocomplete="off">
+    		<input class="layui-input" id="conditionValue" name="conditionValue" id="demoReload" autocomplete="off" placeholder="请输入搜索内容">
   		</div>
   		<button class="layui-btn" name="condition" data-type="reload"  lay-event="search">搜索</button>
 		<button type="button" class="layui-btn  layui-btn-sm" lay-event="add"><i class="layui-icon"></i></button>
 	</script>
 	
-	<!-- 表格后面的操作 -->
+	<!-- 表格侧边栏的操作 -->
 	<script type="text/html" id="operateBar">
   		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
  	 	<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
+	<!-- 状态模板 -->
+	<script type="text/html" id="statusTpl">
+  		{{#  if(d.status == 0){ }}
+   	 		<span style="color:red">挂失<span>
+  		{{#  } else { }}
+    	        可用
+  		{{#  } }}
+	</script>
+	
 	<script> 
 	layui.use(['table','jquery'], function(){
 	  $ = layui.jquery;
@@ -55,7 +64,7 @@
 	      {field:'id', width:180, title: 'ID', sort: true}
 	      ,{field:'reader', width:180, title: '用户名', sort: true}
 	      ,{field:'rule_id', width:180, title: '借阅规则', sort: true}
-	      ,{field:'status', width:180, title: '状态'}
+	      ,{field:'status', width:180, title: '状态', templet: '#statusTpl'}
 	      ,{fixed: 'right', title:'操作', toolbar: '#operateBar', align: 'center', width:150}
 	    ]]
 	    ,page: true
@@ -89,7 +98,11 @@
 		  	  	  	maxmin: true,
 		  	  	  	shadeClose: true,
 		  	  	  	content: 'cardadd.jsp',
+		  	  	  	end: function(){
+		  	  	  		$('.layui-laypage-btn').click();
+		  	  	  	}
 		    	});
+		    	
 		    	//layer.full(addCardLayer);
 		  };
 		});
@@ -109,7 +122,11 @@
 	  	  	  	maxmin: true,
 	  	  	  	shadeClose: true,
 	  	  	  	content: 'cardedit.jsp?id=' +id,
+	  	  	  	end: function(){
+	  	  	  		$(".layui-laypage-btn").click();
+	  	  	  	}
 	  	  	  })
+	  	  	  
 	  	  	break;
 	  	  case 'del':
 	  		  layer.confirm('确认删除么?<br><span style="color:red;">这将删除该借阅证的所有记录</span>',function(index){
@@ -127,9 +144,9 @@
  								  icon: 6,
  								  time: 1500
  							  })
- 							 setTimeout(function(){
- 								 //parent.location.reload();
- 							 },1500)
+ 							 //obj.del();
+ 							 // 还是本页数据
+ 							 $(".layui-laypage-btn").click();
  						  }else{
  							  layer.open({
  								  title: '失败',
@@ -138,9 +155,10 @@
  						  }
  					  },
  					  error:  function(){
- 						  layer.msg("连接超时"); 					  }
+ 						  layer.msg("连接超时"); 					  
+					  }
 	  			  })
-	  			  obj.del();
+	  			  
 	  		  })
 	  	}
 	  })

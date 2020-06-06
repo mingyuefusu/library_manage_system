@@ -90,7 +90,14 @@
 		// 图书分类json
 		var bookSortJson = <%=bookSortJson %>
 	</script>
-	
+	<!-- 状态模板 -->
+	<script type="text/html" id="statusTpl">
+  		{{#  if(d.status == 0){ }}
+   	 		可借
+  		{{#  } else { }}
+    	        借出
+  		{{#  } }}
+	</script>
 	
 	 
 	<script>
@@ -110,7 +117,7 @@
 		    ,cols: [[
 		   	  {type: 'numbers', width:50, fixed:'left'}
 		      ,{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
-		      ,{field: 'name', title: '书名', width:180, sort: true}
+		      ,{field: 'name', title: '书名', width:170, sort: true}
 		      ,{field: 'author', title: '作者', width: 140, sort: true}
 		      ,{field: 'library_id', title: '图书馆', width:80, edit: true //,templet: '#libraryTemp'}
 		          ,templet: function(d){
@@ -120,8 +127,8 @@
 		    	  ,templet: function(d){
 		    		  return bookSortJson[d.sort_id];
 		    	  }}
-		      ,{field: 'position', title: '位置', width: 120, sort: true}
-		      ,{field: 'status', title: '状态', width: 50}
+		      ,{field: 'position', title: '位置', width: 110, sort: true}
+		      ,{field: 'status', title: '状态', width: 60, templet:'#statusTpl'}
 		      ,{field: 'description', title: '描述', width: 380}
 		      //,{field: 'operate', title: '操作', width: 200, templet: 'titleTpl'}
 		      ,{fixed: 'right', title:'操作', width:150, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
@@ -154,8 +161,8 @@
 		        	data: "id=" +id,
 		        	success: function(data){
 		        		if(data.code == 0){
-		        			obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
 		        			layer.msg(data.msg);
+		        			$('.layui-laypage-btn').click();
 		        		}else{
 		        			layer.msg(data.msg);
 		        		}
@@ -172,21 +179,16 @@
 				  maxmin: true, //开启最大化最小化按钮
 				  shadeClose: true,
 				  content: "bookedit.jsp?id="+ id,
+				  end: function(){
+					  $(".layui-laypage-btn").click();
+				  }
 				});
-		      
-		      //同步更新缓存对应的值
-		      obj.update({
-		        username: '123'
-		        ,title: 'xxx'
-		      });
-		    } else if(layEvent === 'LAYTABLE_TIPS'){
-		      layer.alert('Hi，头部工具栏扩展的右侧图标。');
-		    }
+		    } 
 		  });
 		
 		   
 		  
-		  // 工具栏事件
+		  // 顶部工具栏事件
 		  table.on('toolbar(form)', function(obj){
 			  var checkStatus = table.checkStatus(obj.config.id);
 			  var data = obj.data;
@@ -216,8 +218,8 @@
 						  shadeClose: true,
 						  content: "bookadd.jsp",
 						  end: function () {
-							  console.log("finish add");
-							  location.reload();
+							  console.log("finish add");						  
+							  $(".layui-laypage-btn").click();
 						  }
 						});
 			    	layer.full(addBookLayer);

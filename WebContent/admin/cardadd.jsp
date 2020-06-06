@@ -61,10 +61,10 @@
   </div>
   
   <div class="layui-form-item">
-    <label class="layui-form-label">是否可用</label>
+    <label class="layui-form-label">状态</label>
     <div class="layui-input-block">
       <input type="radio" name="status" value="1" title="可用" checked="">
-      <input type="radio" name="status" value="0" title="不可用">
+      <input type="radio" name="status" value="0" title="挂失">
     </div>
   </div>
  
@@ -93,12 +93,14 @@ layui.use(['form', 'jquery'], function(){
     			parent.layer.open({
     				title: '注册账号为',
     				content: data.data['id'],
-    				end: function(){
-    					parent.location.reload();
-    				}
+	    			end: function(){
+						//parent.location.reload();
+						var index = parent.layer.getFrameIndex(window.name); //操作父页面
+	            		parent.layer.close(index);
+					}
     			});
     			/*setTimeout(function(){
-    				parent.location.reload();
+    				
     			}, 500);*/
     		}else{
     			leyer.msg("添加失败");

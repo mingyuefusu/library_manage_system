@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>bookadd</title>
+  <title>bookedit</title>
   <!-- layui -->
   <link rel="stylesheet" href="../public/layui/css/layui.css">
   <script src="../public/layui/layui.js"></script>
@@ -156,13 +156,13 @@ layui.use(['form', 'layedit', 'jquery'], function(){
     		if(data.code == "0"){
     			parent.layer.msg("修改成功",{
     				icon: 6,
-    				time: 1000
+    				time: 500
     			});
     			setTimeout(function(){
-    				parent.location.reload()
-    			}, 1000);
-        		//var index = parent.layer.getFrameIndex(window.name); //操作父页面
-        		//parent.layer.close(index);
+    				var index = parent.layer.getFrameIndex(window.name); //操作父页面
+            		parent.layer.close(index);
+    			}, 500);
+        		
     		}else{
     			leyer.msg("修改失败");
     		}
