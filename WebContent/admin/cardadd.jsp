@@ -1,3 +1,10 @@
+<%@page import="javabean.Base"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="com.mysql.jdbc.Connection"%>
+<%@page import="net.sf.json.JSONObject"%>
+<%@page import="net.sf.json.JSONArray"%>
+<%@page import="javabean.Admin"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,13 +21,26 @@
 </style>
 </head>
 <body>
+<%
+	Connection connection = null;
+	PreparedStatement  pstmt = null;
+	ResultSet ruleSet = null;
+	String sql = "select * from rules";
+	String result = "";
+	connection = (Connection)Base.getConnection();
+	pstmt = connection.prepareStatement(sql);
+	ruleSet = pstmt.executeQuery();
+%>
 <form class="layui-form  layui-form-pane" action="" lay-filter="cardFilter">
+  <!-- 姓名 -->
   <div class="layui-form-item">
     <label class="layui-form-label">姓名</label>
     <div class="layui-input-block">
       <input type="text" name="reader" lay-verify="required" autocomplete="off" placeholder="请输入姓名" class="layui-input">
     </div>
   </div>
+  
+  <!-- 密码 -->
   <div class="layui-form-item">
     <label class="layui-form-label">密码</label>
     <div class="layui-input-block">
@@ -28,16 +48,14 @@
     </div>
   </div>
   
+  <!-- 借阅规则 -->
   <div class="layui-form-item">
     <label class="layui-form-label">规则</label>
     <div class="layui-input-block">
       <select name="rule_id" lay-filter="rule_id"  lay-verify="required">
-        <option value=""></option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="2">3</option>
-        <option value="3">音乐</option>
-        <option value="4">旅行</option>
+        <% while(ruleSet.next()){ %>
+          <option value=<%=ruleSet.getString("id") %>><%=ruleSet.getString("id") %></option>
+        <%} %>
       </select>
     </div>
   </div>
@@ -72,9 +90,12 @@ layui.use(['form', 'jquery'], function(){
     	dataType: 'json',
     	success: function(data){
     		if(data.code == "0"){
-    			parent.layer.msg(data.data["id"],{
-    				icon: 6,
-    				time: 5500
+    			parent.layer.open({
+    				title: '注册账号为',
+    				content: data.data['id'],
+    				end: function(){
+    					parent.location.reload();
+    				}
     			});
     			/*setTimeout(function(){
     				parent.location.reload();
@@ -83,6 +104,7 @@ layui.use(['form', 'jquery'], function(){
     			leyer.msg("添加失败");
     		}
     	}
+	
     });
     return false;
   })

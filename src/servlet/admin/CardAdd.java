@@ -83,19 +83,19 @@ public class CardAdd extends HttpServlet {
 			} catch (SQLException e) {
 				msg = "关闭资源失败";
 			}
-			if(result == 1 && !jsonData.isNullObject()) {
+			if(result == 1 && !jsonData.isNullObject() && !jsonData.isEmpty()) {
 				System.out.println(jsonData.toString());  //debug
 				code = "0";
 				msg = "添加成功";
 			}else {
 				code = "1";
+				msg = "执行失败";
 			}
 		}
 		json.put("code", code);
 		json.put("msg", msg);
 		json.put("data", jsonData.toString());
 		PrintWriter out = resp.getWriter();
-		//out.print("{\"code\": 0,\"msg\": \"success\"}");
 		out.print(json.toString());
 	}
 

@@ -175,6 +175,31 @@ public class Admin {
 		return null;
 	}
 	
+	/* 没用 */
+	public static JSONArray getRules() throws ClassNotFoundException, SQLException {
+		Connection connection = null;
+	 	PreparedStatement pstmt = null;
+	 	ResultSet resultSet = null;
+	 	String sql = "select * from rules";
+	 	JSONObject jsonObject = new JSONObject();
+	 	JSONArray jsonArray = new JSONArray();
+	 	String result = "";
+	 	connection = Base.getConnection();
+	 	pstmt = connection.prepareStatement(sql);
+	 	resultSet = pstmt.executeQuery();
+	 	while(resultSet.next()) {
+	 		jsonObject.put("id", resultSet.getString("id"));
+	 		jsonObject.put("borrow_num", resultSet.getString("borrow_num"));
+	 		jsonObject.put("borrow_library", resultSet.getString("borrow_library"));
+	 		jsonObject.put("overtime_fee", resultSet.getString("overtime_fee"));
+	 		jsonArray.add(jsonObject);
+	 		System.out.println(jsonArray.toString());
+	 	}
+	 	Base.closeResource(connection, pstmt, resultSet);
+		return jsonArray;
+		
+	}
+	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		//Common common = new Common();
 		//System.out.println(common.getCount("books"));

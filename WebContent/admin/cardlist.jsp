@@ -24,12 +24,9 @@
 	  	  <select id="condition" name="condition" lay-verify="required">
         	<option value=""></option>
         	<option value="id">ID</option>
-        	<option value="name">书名</option>
-			<option value="author">作者</option>
-        	<option value="library">图书馆</option>
-        	<option value="position">位置</option>
+        	<option value="reader">姓名</option>
+			<option value="rule_id">借阅规则</option>
         	<option value="status">状态</option>
-			<option value="description">描述</option>
 		  </select>
 	 	 </div>
   		<div class="layui-inline">
@@ -51,18 +48,13 @@
 	  // 进行渲染
 	  var tableIns =  table.render({
 	    elem: '#cardTable'
-	    ,url:'./data.json'
+	    ,url:'./cardList'
 	    ,toolbar: '#headBar'
 	    ,cols: [[
-	      {field:'id', width:80, title: 'ID', sort: true}
-	      ,{field:'username', width:80, title: '用户名'}
-	      ,{field:'sex', width:80, title: '性别', sort: true}
-	      ,{field:'city', width:80, title: '城市'}
-	      ,{field:'sign', title: '签名', minWidth: 150}
-	      ,{field:'experience', width:80, title: '积分', sort: true}
-	      ,{field:'score', width:80, title: '评分', sort: true}
-	      ,{field:'classify', width:80, title: '职业'}
-	      ,{field:'wealth', width:135, title: '财富', sort: true}
+	      {field:'id', width:180, title: 'ID', sort: true}
+	      ,{field:'reader', width:180, title: '用户名', sort: true}
+	      ,{field:'rule_id', width:180, title: '借阅规则', sort: true}
+	      ,{field:'status', width:180, title: '状态'}
 	      ,{fixed: 'right', title:'操作', toolbar: '#operateBar', align: 'center', width:150}
 	    ]]
 	    ,page: true
