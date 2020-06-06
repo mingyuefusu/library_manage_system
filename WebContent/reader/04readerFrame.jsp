@@ -20,7 +20,7 @@
 	<frame src="02readerNav.jsp" scrolling="no">
 
 	<frameset cols="14%,*" frameborder="no"  border="0">
-		<frame src="03readerNavLeft.html">
+		<frame src="03readerNavLeft.jsp">
 		<%
 			if(session.getAttribute("reader") == null){
 		%>

@@ -55,7 +55,7 @@
 				<td><%=rs.getString("BORROW_DATE")%></td>
 				<td><%=rs.getString("END_DATE")%></td>
 				<td><%=rs.getString("RETURN_DATE")%></td>
-				<td><%=rs.getString("ILLEGAL")%></td>
+				<td><span class="label label-danger" style="font-size:13px;font-family:YouYuan;"><%=rs.getString("ILLEGAL")%></span></td>
 				<td><%=rs.getString("MANAGER_ID")%></td>
 			</tr>
 	

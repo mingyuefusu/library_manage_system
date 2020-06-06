@@ -25,30 +25,44 @@
 </style>
 </head>
 <body>
+<script>
+$(function () { 
+	$("[data-toggle='popover']").popover();
+});
+</script>
 <jsp:useBean id="msg" scope="session" class="javabean.JDBCBean"></jsp:useBean>
-	
+<div align="center"><h1 style="color:steelblue;font-family:YouYuan;font-weight:900;">读者规则信息查看</h1></div>
+<div style="margin-top:5%;" align="center">
+
 <%		
 		String sql = "select * from rules";
 		
 			ResultSet rs = msg.executeQuery(sql);
 		
 			while (rs.next()) {
-	%>
-	<div class="panel panel-info" style="width:50%;height:80%; margin-left:25%; margin-top:2%;">
-		<div class="panel-heading" align="center">
-		    <h4>借阅证规则编号：<%=rs.getString("ID") %></h4>
-		</div>
-		<div class="panel-body">
-			<p>可借阅数量：<%=rs.getString("BORROW_NUM") %></p>
-			<p>可借阅图书馆：<%=rs.getString("BORROW_LIBRARY") %></p>
-			<p>过期扣费/天：<%=rs.getString("OVERTIME_FEE") %></p>
+		if(Integer.parseInt(rs.getString("ID")) % 2== 1){
+%>
+	<button type="button" class="btn btn-lg btn-info" title="可借阅数量：<%=rs.getString("BORROW_NUM") %>"   data-html="true"
+			data-container="body" data-trigger="focus" data-toggle="popover" data-placement="left" 
+			data-content="可借阅图书馆：<%=rs.getString("BORROW_LIBRARY") %><br>过期扣费/天：<%=rs.getString("OVERTIME_FEE") %>" style="width:40%;height:100%;font-size:17px;margin-top:4%;">
+			
+			借阅证规则编号：<%=rs.getString("ID")%>
 		
-		</div>
-	</div>
-
-
+	</button><br><br>
+<%
+		}else{
+			%>
+			<button type="button" class="btn btn-lg  btn-primary" title="可借阅数量：<%=rs.getString("BORROW_NUM") %>"   data-html="true"
+					data-container="body" data-trigger="focus" data-toggle="popover" data-placement="right" 
+					data-content="可借阅图书馆：<%=rs.getString("BORROW_LIBRARY") %><br>过期扣费/天：<%=rs.getString("OVERTIME_FEE") %>" style="width:40%;height:100%;font-size:17px;margin-top:4%;">
+					
+			借阅证规则编号：<%=rs.getString("ID")%>
+				
+			</button><br><br>
 <%
 		}
+		}
  %>
+ </div>
 </body>
 </html>
