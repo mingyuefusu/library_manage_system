@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>layout 后台大布局 - Layui</title>
+  <title>图书馆管理人员页面</title>
 	<link rel="stylesheet" href="../public/layui/css/layui.css">
 	<script src="../public/layui/layui.js"></script>
 </head>
@@ -49,7 +49,7 @@
           <a class="" href="javascript:;">图书管理</a>
           <dl class="layui-nav-child">
             <dd><a href="02borrow.jsp" target="content">借阅图书</a></dd>
-            <dd><a href="javascript:;" target="content">归还图书</a></dd>
+            <dd><a href="04return.jsp;" target="content">归还图书</a></dd>
 
           </dl>
         </li>

@@ -44,7 +44,7 @@
 <%
 	try{
 		String id=session.getAttribute("reader").toString();
-		String sql="select BOOK_ID,BORROW_DATE,END_DATE,RETURN_DATE,ILLEGAL,MANAGER_ID from borrow_books where ILLEGAL is not null AND CARD_ID = " + id;
+		String sql="select BOOK_ID,BORROW_DATE,END_DATE,RETURN_DATE,ILLEGAL,MANAGER_ID from borrow_books where ILLEGAL is not null and length(trim(illegal))>0 AND CARD_ID = " + id;
 		//out.println(sql);
 		ResultSet rs = ill.executeQuery(sql);
 		while (rs.next()) {
