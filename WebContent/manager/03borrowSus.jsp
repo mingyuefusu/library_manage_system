@@ -17,66 +17,78 @@
 		String sql1 = "select * from borrow_card where ID =" + user;
 		
 		ResultSet rs1 = borrow.executeQuery(sql1);
+		
+		
 		if(session.getAttribute("manager")!=null){
 			if (rs1.next()) {
-				String sql2 = "select * from books where ID =" + book;
-				ResultSet rs2 = borrow.executeQuery(sql2);
-				
-				if(rs2.next()){
-					//out.println(psw1 + " " + psw2);
-					//String id = session.getAttribute("manager").toString();
+				int cardstatus = Integer.parseInt(rs1.getString("STATUS"));
+				if(cardstatus!=0){
+					String sql2 = "select * from books where ID =" + book;
+					ResultSet rs2 = borrow.executeQuery(sql2);
 					
-					int status=Integer.parseInt(rs2.getString("STATUS"));
-					
-					
-					if(status==1){
-						String sql = "insert borrow_books(CARD_ID,BOOK_ID,BORROW_DATE,END_DATE)values('" + user + "','" + book
-								+ "','" + date1 + "','" + date2 + "');";
-						try {
-							int i = borrow.executeUpdate(sql);
-							if (i == 1) {
-								%>
-								<script>
-									alert('借阅成功！');
-									window.location.href = "02borrow.jsp";
-								</script>
-							
-								<%
-									String sql3="update books set STATUS=0 where ID="+book;
-									borrow.executeUpdate(sql3);
+					if(rs2.next()){
+						//out.println(psw1 + " " + psw2);
+						//String id = session.getAttribute("manager").toString();
+						
+						int status=Integer.parseInt(rs2.getString("STATUS"));
+						
+						
+						if(status==1){
+							String sql = "insert borrow_books(CARD_ID,BOOK_ID,BORROW_DATE,END_DATE)values('" + user + "','" + book
+									+ "','" + date1 + "','" + date2 + "');";
+							try {
+								int i = borrow.executeUpdate(sql);
+								if (i == 1) {
+									%>
+									<script>
+										alert('借阅成功！');
+										window.location.href = "02borrow.jsp";
+									</script>
 								
-							} else {
-								%>
-								<script>
-									alert('借阅未成功！');
-									window.location.href = "02borrow.jsp";
-								</script>
-								<%
-									}
-										} catch (Exception e) {
-								%>
-								<script>
-									alert('借阅未成功！');
-									window.location.href = "02borrow.jsp";
-								</script>
-								<%
-									}
+									<%
+										String sql3="update books set STATUS=0 where ID="+book;
+										borrow.executeUpdate(sql3);
+									
+								} else {
+									%>
+									<script>
+										alert('借阅未成功！');
+										window.location.href = "02borrow.jsp";
+									</script>
+									<%
+										}
+											} catch (Exception e) {
+									%>
+									<script>
+										alert('借阅未成功！');
+										window.location.href = "02borrow.jsp";
+									</script>
+									<%
+										}
+						}else{
+							%>
+							<script>
+								alert('该图书已借出！');
+								window.location.href = "02borrow.jsp";
+							</script>
+							<%
+						}
 					}else{
 						%>
 						<script>
-							alert('该图书已借出！');
+							alert('该图书不存在！');
 							window.location.href = "02borrow.jsp";
 						</script>
 						<%
 					}
-			}else{
-				%>
-				<script>
-					alert('该图书不存在！');
-					window.location.href = "02borrow.jsp";
-				</script>
-				<%
-			}
+				}else{
+					%>
+					<script>
+						alert('借阅证已被挂失或注销！');
+						window.location.href = "02borrow.jsp";
+					</script>
+					<%
+				}
 				} else {
 				%>
 				<script>
