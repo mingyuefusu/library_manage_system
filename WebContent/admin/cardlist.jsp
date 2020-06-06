@@ -50,6 +50,7 @@
 	    elem: '#cardTable'
 	    ,url:'./cardList'
 	    ,toolbar: '#headBar'
+    	,height: 600
 	    ,cols: [[
 	      {field:'id', width:180, title: 'ID', sort: true}
 	      ,{field:'reader', width:180, title: '用户名', sort: true}
@@ -99,6 +100,7 @@
 	  	var data = obj.data;
 	  	var layEvent = obj.event;
 	  	var tr = obj.tr;
+	  	var id = data.id;
 	  	switch(obj.event){
 	  	  case 'edit':
 	  	  	  layer.open({
@@ -107,9 +109,40 @@
 	  	  	  	area: ['800px', '600px'],
 	  	  	  	maxmin: true,
 	  	  	  	shadeClose: true,
-	  	  	  	content: 'cardedit.jsp',
+	  	  	  	content: 'cardedit.jsp?id=' +id,
 	  	  	  })
 	  	  	break;
+	  	  case 'del':
+	  		  layer.confirm('确认删除么?<br><span style="color:red;">这将删除该借阅证的所有记录</span>',function(index){
+	  			  layer.close(index);
+	  			  $.ajax({
+	  				  url: './cardDel',
+ 					  type: 'get',
+ 					  data: 'id=' +id,
+ 					  dataType: 'json',
+ 					  timeout: 3000,
+ 					  success: function(data){
+ 						  if(data.code == 0){
+ 							  console.log(data);
+ 							  layer.msg(data.msg,{
+ 								  icon: 6,
+ 								  time: 1500
+ 							  })
+ 							 setTimeout(function(){
+ 								 //parent.location.reload();
+ 							 },1500)
+ 						  }else{
+ 							  layer.open({
+ 								  title: '失败',
+ 								  content: data.msg
+ 							  })
+ 						  }
+ 					  },
+ 					  error:  function(){
+ 						  layer.msg("连接超时"); 					  }
+	  			  })
+	  			  obj.del();
+	  		  })
 	  	}
 	  })
 	});

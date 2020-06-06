@@ -31,7 +31,6 @@ public class CardList extends HttpServlet {
 		String page = req.getParameter("page");
     	String condition = (String) req.getParameter("condition");
     	String conditionValue = (String) req.getParameter("conditionValue");
-    	System.out.println("condition:--" +condition+ "   "+ conditionValue);
     	String where = null; // 无限制条件
 		if(page == null) {
     		page = "1";
@@ -39,7 +38,6 @@ public class CardList extends HttpServlet {
     	if(limit == null) {
     		limit = "10";
     	}
-    	System.out.println(where);
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
@@ -57,20 +55,16 @@ public class CardList extends HttpServlet {
 			sql = "select id,password,reader,rule_id,status from borrow_card";
 			// where
 			if(condition != null && conditionValue != null && !condition.isEmpty() && !conditionValue.isEmpty()) {
-	    		where = " where "+ condition +" like '%" +conditionValue +"%' ";
+	    		where = " where "+ condition +" like '%" +conditionValue +"%'";
 	    		sql = sql+where;
 	    	}
-			System.out.println(sql);
 			// 分页
-			sql +=" limit ?,?";
+			sql +="  order by id desc limit ?,?";
 			pstmt = connection.prepareStatement(sql);
 			try {
-				System.out.println((Integer.parseInt(page)-1) * Integer.parseInt(limit));
-				System.out.println(Integer.parseInt(limit));
 				pstmt.setInt(1, (Integer.parseInt(page)-1) * Integer.parseInt(limit) );
 				pstmt.setInt(2, Integer.parseInt(limit));
 			} catch (NumberFormatException | SQLException e1) {
-				System.out.println("?????sqlerror");
 			}
 			resultSet = pstmt.executeQuery();
 			while(resultSet.next()) {
@@ -114,7 +108,6 @@ public class CardList extends HttpServlet {
 		jsonResult.put("count", count);
 		jsonResult.put("msg", msg);
 		jsonResult.put("data", jsonArray.toString());
-		System.out.println(jsonResult.toString());
 		PrintWriter out = resp.getWriter();
 		out.print(jsonResult.toString());
 		//out.print("{\"code\":0,\"msg\":\"\",\"count\":\"234\",\"data\":[{\"id\":\"1\",\"password\":\"23442\",\"reader\":\"minm\",\"rule_id\":\"1\",\"status\":\"2\"}]}");

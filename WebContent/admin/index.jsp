@@ -50,7 +50,7 @@
           <a class="" href="./booklist.jsp"  target="content"><i class="layui-icon layui-icon-read" style="font-size: 16px; color: #1E9FFF;"></i> 书籍管理</a>
         </li>
         <li class="layui-nav-item">
-          <a href="./cardlist.jsp"  target="content"><i class="layui-icon layui-icon-template-1" style="font-size: 16px; color: #1E9FFF;"> </i>读书证管理</a>
+          <a href="./cardlist.jsp"  target="content"><i class="layui-icon layui-icon-template-1" style="font-size: 16px; color: #1E9FFF;"> </i>借阅证管理</a>
         </li>
         <li class="layui-nav-item"><a href="./rulelist.jsp"  target="content"><i class="layui-icon layui-icon-file-b" style="font-size: 16px; color: #1E9FFF;"> </i>借阅规则管理</a></li>
         <li class="layui-nav-item"><a href="./managelist.jsp" target="content"><i class="layui-icon layui-icon-group" style="font-size: 16px; color: #1E9FFF;"></i>图书管理员管理</a></li>

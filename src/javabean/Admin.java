@@ -75,7 +75,6 @@ public class Admin {
 			sql += whereString;
 		}
 		sql += "order by id desc limit ?,? ";
-		//System.out.println("sql: " +sql);  debug
 		pstmt = (PreparedStatement) connection.prepareStatement(sql);
 		pstmt.setInt(1, (number-1) * size );
 		pstmt.setInt(2, size);
