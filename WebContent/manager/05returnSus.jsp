@@ -33,27 +33,16 @@
 						try {
 							int i = ret.executeUpdate(sql);
 							if (i == 1) {
-								String sql4="select * from manager where ID="+managerid;
-								ResultSet rs3=ret.executeQuery(sql4);
-								if(rs3.next()){
-								%>
-									<script>
-										alert('归还成功！');
-										window.location.href = "04return.jsp";
-									</script>
 								
-									<%
 										String sql3="update books set STATUS=1 where ID="+book;
 										ret.executeUpdate(sql3);
-								}else{
-									%>
-									<script>
-										alert('该管理员不存在！');
-										window.location.href = "04return.jsp";
-									</script>
-								
-									<%
-								}
+										%>
+										<script>
+											alert('归还成功！');
+											window.location.href = "04return.jsp";
+										</script>
+									
+										<%
 								
 							} else {
 								%>

@@ -55,13 +55,13 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">管理员编号</label>
 				<div class="layui-input-inline">
-					<input type="text" name="managerid" lay-verify="required"
-						placeholder="请输入您的编号" autocomplete="off" class="layui-input"><br>
+					<input type="text" name="managerid" readonly="readonly"
+						  class="layui-input" value="<%=session.getAttribute("manager")%>"><br>
 				</div>
 			</div>
 			
 			<div class="layui-form-item" align="center">
-				<button class="layui-btn" lay-submit="" lay-filter="demo2">归还</button>
+				<button class="layui-btn layui-btn-warm" lay-submit="" lay-filter="demo2">归还</button>
 			</div>
 		</form>
 
@@ -77,14 +77,11 @@
 									elem : '#date1',
 									type : 'datetime',
 									format : 'yyyy-M-d H:m:s',
+									min:0,
+									max:0,
 									value: new Date()
 								});
-								laydate.render({
-									elem : '#date2',
-									type : 'datetime',
-									format : 'yyyy-M-d H:m:s'
-								});
-
+								
 								//创建一个编辑器
 								var editIndex = layedit
 										.build('LAY_demo_editor');
