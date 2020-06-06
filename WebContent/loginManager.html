@@ -18,7 +18,7 @@
 <body>
 	<div class="container main">
 		<div id="login" class="contain animated fadeInDown">
-			<h1>借阅者登录</h1>
+			<h1>工作人员登录</h1>
 			<form method="post">
 					<input type="text" name="user" class="form-control my_input" placeholder="请输入账号" required="required">
 					<input type="password" name="psw" class="form-control my_input" placeholder="请输入密码" required="required">
@@ -33,7 +33,7 @@
 		$("input[type=submit]").click(function(){
 			
 			$.ajax({
-				url: "./readerLogin",
+				url: "./managerLogin",
 				type: "post",
 				data: $("form").serialize(),
 				dataType: "json",

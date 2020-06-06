@@ -64,10 +64,10 @@ body{
 /* Keyfram-licious animation */
 @-webkit-keyframes colors {
     0% {background-color: pink;}
-    15% {background-color: steelblue;}
-    30% {background-color: hotpink;}
-    45% {background-color: black;}
-    60% {background-color: rosybrown;}
+    15% {background-color: hotpink;}
+    30% {background-color: rosybrown;}
+    45% {background-color: steelblue;}
+    60% {background-color: black;}
     75% {background-color: #c9c0d3;}
     90% {background-color: darkgreen;}
     100% {background-color: orange;}
@@ -122,12 +122,12 @@ form textarea{
     outline: 1px solid black;
     border: 1px solid grey;
     padding: 5px;
-    color: lightgrey;
+    color: black;
     font-size: 16px;
 }
 form textarea:focus{
     outline: 2px solid white;
-    color: black;
+    color: #c0c0c0;
     background-color: white;
 }
 			

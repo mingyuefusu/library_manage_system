@@ -20,16 +20,12 @@
 </style>
 </head>
 <body>
- <div style="background: lightblue;height: 30px;;color:#fff;border-radius: 8px;width: 90%;margin:auto auto;">
+ <div style="background: steelblue;height: 30px;;color:#fff;border-radius: 8px;width: 90%;margin:auto auto;">
 <marquee style="font-size:20px;font-family:YouYuan;" behavior="scroll" direction="left"  hspace="0.1%" vspace="0.1%" loop="-1" scrollamount="20" scrolldelay="100" onMouseOut="this.start()" onMouseOver="this.stop()">
     ❤图书馆公告栏，记得查收公告呀！❤
 </marquee> 
 </div>
-<script>
-$(function () { 
-	$("[data-toggle='popover']").popover();
-});
-</script>
+
 <div class="a" align="center">
 	
 		<h2>近期公告</h2>
@@ -40,30 +36,20 @@ $(function () {
 		ResultSet rs = check.executeQuery(sql);
 		while (rs.next()) {
 
-	if(Integer.parseInt(rs.getString("ID")) % 2== 1){
 %>
-	<button type="button" class="btn " title="<%=rs.getString("title")%>"  
-			data-container="body" data-trigger="focus" data-toggle="popover" data-placement="left" 
-			data-content="<%=rs.getString("detail")%>" style="width:40%;">
-			
-			<%=rs.getString("title")%><br>
-			发布时间：<%=rs.getString("publish_date")%>
+	<div class="panel panel-info"  style="margin-left:5%;width:80%;">
+		<div class="panel-heading" align="center">
+		    <span><%=rs.getString("TITLE") %></span>
+		    <span style="margin-right:1%;"><%=rs.getString("PUBLISH_DATE") %></span>
+		</div>
+		<div class="panel-body" >
+			<p style="word-wrap:break-word;"><%=rs.getString("DETAIL") %></p>
 		
-	</button><br><br>
-<%
-		}else{
-			%>
-			<button type="button" class="btn " title="<%=rs.getString("title")%>"  
-					data-container="body" data-trigger="focus" data-toggle="popover" data-placement="right" 
-					data-content="<%=rs.getString("detail")%>" style="width:40%;">
-					
-					<%=rs.getString("title")%><br>
-					发布时间：<%=rs.getString("publish_date")%>
-				
-			</button><br><br>
+		</div>
+	</div>
 <%
 		}
-		}
+		
  %>
 
 </div>
