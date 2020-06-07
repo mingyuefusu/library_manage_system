@@ -107,13 +107,6 @@
       <input type="radio" name="status" value="0" title="不可借" <%if(status==0) out.print("checked"); %> >
     </div>
   </div>
-  <!-- 
-  <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">书籍简介</label>
-    <div class="layui-input-block">
-      <textarea name="description" placeholder="请输入内容" class="layui-textarea"></textarea>
-    </div>
-  </div>-->
    
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">书籍简介</label>

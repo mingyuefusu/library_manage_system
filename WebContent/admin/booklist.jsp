@@ -45,7 +45,6 @@
 		while( bookSortSet.next() ){
 			bookSortJson.put(bookSortSet.getString("id") , bookSortSet.getString("name"));
 		}
-		// System.out.print(bookSortJson.toString());
 		librarySet.close();
 		libraryDb.close();
 		
@@ -81,7 +80,7 @@
     
 	<!-- 行操作  -->
 	<script type="text/html" id="barDemo">
-		<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="borrow">查看借阅</a>
+		<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="bookBorrowList">查看借阅</a>
   		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
@@ -151,6 +150,7 @@
 		    var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
 		    var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
 		    var id = data.id;
+		    var name = data.name;
 		    if(layEvent === 'del'){ //删除
 		      layer.confirm('真的删除行么', function(index){
 		        layer.close(index);
@@ -184,7 +184,17 @@
 					  $(".layui-laypage-btn").click();
 				  }
 				});
-		    } 
+		    }else if(layEvent === 'bookBorrowList') { //查看该书籍借阅历史
+		    	layer.open({
+		    		title: '书籍借阅历史',
+		    		type: 2,
+		    		area: ['800px', '600px'],
+		    		maxmin: true,
+		    		shadeClose: true,
+		    		content: "bookborrowlist.jsp?id=" +id +"&name="+name
+		    	})
+		    	
+		    }
 		  });
 		
 		   
