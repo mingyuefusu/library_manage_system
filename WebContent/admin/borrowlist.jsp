@@ -24,6 +24,7 @@
 		<div class="layui-inline">
 	  	  <select id="condition" name="condition" lay-verify="required">
         	<option value=""></option>
+			<option value="other">超期未还</option>
         	<option value="id">ID</option>
         	<option value="card_id">借阅证号</option>
 			<option value="book_id">书籍ID</option>
@@ -38,13 +39,6 @@
     		<input class="layui-input" id="conditionValue" name="conditionValue" id="demoReload" autocomplete="off">
   		</div>
   		<button class="layui-btn" name="condition" data-type="reload"  lay-event="search">搜索</button>
-		<button type="button" class="layui-btn  layui-btn-sm" lay-event="add"><i class="layui-icon"></i></button>
-	</script>
-	
-	<!-- 表格后面的操作 -->
-	<script type="text/html" id="operateBar">
-  		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
- 	 	<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 	</script>
 	<script> 
 	layui.use(['table','jquery'], function(){
@@ -58,13 +52,12 @@
 	    ,cols: [[
 	      {field:'id', width:80, title: 'ID', sort: true}
 	      ,{field:'card_id', width:180, title: '借阅证号'}
-	      ,{field:'book_id', width:180, title: '书籍id', sort: true}
+	      ,{field:'book_id', width:100, title: '书籍ID', sort: true}
 	      ,{field:'borrow_date', width:180, title: '借阅时间'}
-	      ,{field:'end_date', title: '限定时间', minWidth: 150}
+	      ,{field:'end_date', title: '限定时间', width: 180}
 	      ,{field:'return_date', width:180, title: '归还时间', sort: true}
-	      ,{field:'illegal', width:80, title: '违章信息', sort: true}
+	      ,{field:'illegal', width:280, title: '违章信息', sort: true}
 	      ,{field:'manager_id', width:80, title: '处理人'}
-	      ,{fixed: 'right', title:'操作', toolbar: '#operateBar', align: 'center', width:150}
 	    ]]
 	    ,page: true
 	  });
@@ -77,7 +70,6 @@
 		    case 'search':
 		      var conditionValue = $('#conditionValue');
 	    	  var condition = $('#condition');
-	    	  layer.msg(condition.val());
 	    	  // 进行搜索，重新渲染
 	    	  tableIns.reload({
 				    where: { //设定异步数据接口的额外参数，任意设
@@ -89,38 +81,11 @@
 				    }
 				  });
 		    break;
-		    // 添加借书证
-		    case 'add':
-		    	var addCardLayer = layer.open({
-		    		type: 2,
-		    		title: '添加借书证',
-		    		area: ['800px', '500px'],
-		  	  	  	maxmin: true,
-		  	  	  	shadeClose: true,
-		  	  	  	content: 'cardadd.jsp',
-		    	});
-		    	//layer.full(addCardLayer);
+		    
 		  };
 		});
 	 
-	  // 侧边工具栏事件
-	  table.on(('tool(formFilter)'), function(obj){
-	  	var data = obj.data;
-	  	var layEvent = obj.event;
-	  	var tr = obj.tr;
-	  	switch(obj.event){
-	  	  case 'edit':
-	  	  	  layer.open({
-	  	  	  	type: 2,
-	  	  	  	title: '更改信息',
-	  	  	  	area: ['800px', '600px'],
-	  	  	  	maxmin: true,
-	  	  	  	shadeClose: true,
-	  	  	  	content: '',
-	  	  	  })
-	  	  	break;
-	  	}
-	  })
+	  
 	});
 	</script>
 </body>

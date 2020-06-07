@@ -55,12 +55,20 @@ public class BorrowList extends HttpServlet {
 		// 进行查询
 		try {
 			connection = (Connection) Base.getConnection();
-			sql = "select * from borrow_books ";
+			sql = "select id, card_id, book_id, "
+					+ "DATE_FORMAT(borrow_date, '%Y-%m-%d %k:%i:%s') as borrow_date, "
+					+ "DATE_FORMAT(return_date, '%Y-%m-%d %k:%i:%s') as return_date, "
+					+ "DATE_FORMAT(end_date, '%Y-%m-%d %k:%i:%s') as end_date,"
+					+ "illegal, manager_id "
+					+ "from borrow_books";
 			if(condition!=null && conditionValue != null && !condition.equals("") && !conditionValue.equals("")) {
 				where = " where "+ condition +" like '%" +conditionValue +"%' ";
 				sql += where;
+			}else if(condition!=null && condition.equals("other")) {
+				where = " where return_date is null and curtime()>end_date ";
+				sql +=where;
 			}
-			sql += " limit ?,?";//1 10  (1-1)*10
+			sql += " limit ?,?";//1 10  (1-1)*10;
  			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, (Integer.parseInt(page)-1) * Integer.parseInt(limit));
 			pstmt.setInt(2, Integer.parseInt(limit));
@@ -86,6 +94,9 @@ public class BorrowList extends HttpServlet {
 			if(!jsonArray.isEmpty()) {
 				code = 0;
 				msg = "查询成功";
+			}else {
+				code = 0;
+				msg = "没有数据";
 			}
 			
 		} catch (ClassNotFoundException e) {
