@@ -100,7 +100,6 @@ public class CardList extends HttpServlet {
 			try {
 				Base.closeResource(connection, pstmt, resultSet);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				msg = "关闭失败";
 			}
 		}

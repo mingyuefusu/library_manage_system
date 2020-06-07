@@ -52,6 +52,7 @@
         <li class="layui-nav-item">
           <a href="./cardlist.jsp"  target="content"><i class="layui-icon layui-icon-template-1" style="font-size: 16px; color: #1E9FFF;"> </i>借阅证管理</a>
         </li>
+        <li class="layui-nav-item"><a href="./borrowlist.jsp" target="content"><i class="layui-icon layui-icon-chart-screen" style="font-size: 16px; color: #1E9FFF;"></i> 借阅信息查询</a></li>
         <li class="layui-nav-item"><a href="./rulelist.jsp"  target="content"><i class="layui-icon layui-icon-file-b" style="font-size: 16px; color: #1E9FFF;"> </i>借阅规则管理</a></li>
         <li class="layui-nav-item"><a href="./managelist.jsp" target="content"><i class="layui-icon layui-icon-group" style="font-size: 16px; color: #1E9FFF;"></i>图书管理员管理</a></li>
         <li class="layui-nav-item"><a href="./system.jsp" target="content"><i class="layui-icon layui-icon-windows" style="font-size: 16px; color: #1E9FFF;"> </i>系统管理</a></li>
