@@ -81,7 +81,7 @@
 		</h1>
 		</header>
 	
-		<div class="main clearfix" style="font-size:10px;margin-top:3%;font-family:YouYuan;">
+		<div class="main clearfix" style="font-size:10px;margin-top:5%;font-family:YouYuan;">
 			<div class="column">
 <%
 		try{
@@ -92,7 +92,7 @@
 %>
 <% int id = rs.getInt(1);%>
 				<p><span class="glyphicon glyphicon-tags">&nbsp;借阅证编号：<%=rs.getString("ID")%></span></p><br>
-				<p><span class="glyphicon glyphicon-pencil">&nbsp;密码：<%=rs.getString("PASSWORD")%></span></p><br>
+				
 				<p><span class="glyphicon glyphicon-user">&nbsp;借阅证姓名：<%=rs.getString("READER")%></span></p><br>
 				<p><span class="glyphicon glyphicon-tag">&nbsp;规则编号：<%=rs.getString("RULE_ID")%></span></p><br>
 				<p><span class="glyphicon glyphicon-star-empty">&nbsp;状态：
