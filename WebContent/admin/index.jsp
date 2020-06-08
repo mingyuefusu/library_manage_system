@@ -28,11 +28,10 @@
       <li class="layui-nav-item">
         <a href="javascript:;">
           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-          贤心
+          系统管理员
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="">基本资料</a></dd>
-          <dd><a href="">安全设置</a></dd>
+          <dd id="updatePassword"><a href="javascript:;">修改密码</a></dd>
         </dl>
       </li>
       <li class="layui-nav-item"><a href="./logOut">注销</a></li>
@@ -64,14 +63,29 @@
   
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    © layui.com - 底部固定区域
+    ©  图书管理系统
   </div>
 </div>
+
 <script>
 //JavaScript代码区域
-layui.use('element', function(){
-  var element = layui.element;
-  
+layui.use(['element', 'jquery', 'layer'], function(){
+  $ = layui.jquery;
+  var element = layui.element
+  $ = layui.jquery;
+  var form = layui.form
+  ,layer = layui.layer;
+
+  $("#updatePassword").click(function(){
+	  layer.open({
+	    title: '修改密码',
+	    type: 2,
+	    area: ['300px', '300px'],
+	    maxmin: true,
+  	  	shadeClose: true,
+  	  	content: 'updatePassword.jsp'
+	  })
+  })
 });
 </script>
 </body>

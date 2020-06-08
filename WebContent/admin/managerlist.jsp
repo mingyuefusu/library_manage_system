@@ -39,8 +39,8 @@
 	    ,height: 600
 	    ,cols: [[
 	      {field:'id', width:80, title: 'ID', sort: true}
-	      ,{field:'name', width:80, title: '用户名'}
 	      ,{field:'account', width:80, title: '账号', sort: true}
+	      ,{field:'name', width:80, title: '姓名'}
 	      ,{field:'email', title: '邮箱', minWidth: 150}
 	      ,{fixed: 'right', title:'操作', toolbar: '#operateBar', align: 'center', width:150}
 	    ]]

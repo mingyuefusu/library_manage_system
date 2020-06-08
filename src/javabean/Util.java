@@ -1,5 +1,8 @@
 package javabean;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 
 import net.sf.json.JSONObject;
@@ -40,6 +43,9 @@ public class Util {
 		return dateFormat.format(date);
 	}
 	
+	/*
+	 * 返回json数据
+	 */
 	public static String jsonResponse(int code, String msg, String data) {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("code", code);
@@ -47,13 +53,36 @@ public class Util {
 		if( data!=null ) {
 			jsonObject.put("data", data);
 		}
-		
 		return jsonObject.toString();
 	}
 	
+	/*
+	 * md5加密
+	 */
+	public static String stringToMD5(String plainText) {
+        byte[] secretBytes = null;
+        try {
+            secretBytes = MessageDigest.getInstance("md5").digest(
+                    plainText.getBytes());
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("没有这个md5算法！");
+        }
+        String md5code = new BigInteger(1, secretBytes).toString(16);
+        for (int i = 0; i < 32 - md5code.length(); i++) {
+            md5code = "0" + md5code;
+        }
+        return md5code;
+    }
+	
+	public static String passMd5(String password) {
+		String salt = "ew!.E";
+		return Util.stringToMD5(password +salt);
+	}
+	
 	public static void main(String[] args) {
-		java.util.Date date = new java.util.Date();
-		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		System.out.println(dateFormat.format(date));
+		System.out.println(Util.passMd5("admin"));
+		//java.util.Date date = new java.util.Date();
+		//SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		//System.out.println(dateFormat.format(date));
 	}
 }
