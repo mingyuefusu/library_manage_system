@@ -14,19 +14,7 @@
   <div class="layui-header">
     <div class="layui-logo">图书馆管理人员页面</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
-    <ul class="layui-nav layui-layout-left">
-      <li class="layui-nav-item"><a href="">控制台</a></li>
-      <li class="layui-nav-item"><a href="">商品管理</a></li>
-      <li class="layui-nav-item"><a href="">用户</a></li>
-      <li class="layui-nav-item">
-        <a href="javascript:;">其它系统</a>
-        <dl class="layui-nav-child">
-          <dd><a href="">邮件管理</a></dd>
-          <dd><a href="">消息管理</a></dd>
-          <dd><a href="">授权管理</a></dd>
-        </dl>
-      </li>
-    </ul>
+   
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
@@ -34,10 +22,9 @@
         </a>
         <dl class="layui-nav-child">
           <dd><a href="">基本资料</a></dd>
-          <dd><a href="">安全设置</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="">退出</a></li>
+      <li class="layui-nav-item"><a href="./quit" target="_parent">退出</a></li>
     </ul>
   </div>
   
@@ -57,7 +44,7 @@
           <a href="javascript:;">报表管理</a>
           <dl class="layui-nav-child">
             <dd><a href="06borrowTable.jsp" target="content">借书报表</a></dd>
-            <dd><a href="javascript:;" target="content">还书报表</a></dd>
+            <dd><a href="07returnTable.jsp" target="content">还书报表</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item"><a href="">发布公告</a></li>

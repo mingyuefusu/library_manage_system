@@ -92,7 +92,7 @@
 	</script>
 	<!-- 状态模板 -->
 	<script type="text/html" id="statusTpl">
-  		{{#  if(d.status == 0){ }}
+  		{{#  if(d.status == 1){ }}
    	 		可借
   		{{#  } else { }}
     	        借出
