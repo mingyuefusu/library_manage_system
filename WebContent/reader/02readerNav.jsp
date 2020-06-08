@@ -35,12 +35,15 @@
 				</ul>
 				
 				<ul class="nav navbar-nav navbar-right">
+					<li><a href="javascript:;">
+         				<%=session.getAttribute("reader") %>
+        			</a></li>
 				    <%if(session.getAttribute("reader") !=null) {%>
 					<li><a href="./exit" target="_parent">退出</a></li>
 					<%}else{%>
 					<li><a href="04readerFrame.jsp" target="_parent" onClick="">登录</a></li>	
 					<%}
-					%>s
+					%>
 					
 				</ul>
 			</div>

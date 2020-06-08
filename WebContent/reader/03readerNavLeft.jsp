@@ -30,18 +30,18 @@
 		<ul class="nav nav-pills nav-stacked nav-inverse sidebar faq-tabbable">
 		<% if(session.getAttribute("reader")!=null){%>
 			<li role="presentation"><a href="01main.jsp" target="view_frame"><span class="glyphicon glyphicon-picture" aria-hidden="true">&nbsp;首页</span></a></li>
-			<li role="presentation"><a href="05searchBooks.jsp" target="view_frame"><span class="glyphicon glyphicon-search" aria-hidden="true">&nbsp;图书查询</span></a></li>
+			<li role="presentation"><a href="05book.jsp" target="view_frame"><span class="glyphicon glyphicon-search" aria-hidden="true">&nbsp;图书查询</span></a></li>
 			<li role="presentation"><a href="12rules.jsp" target="view_frame"><span class="glyphicon glyphicon-bell" aria-hidden="true">&nbsp;读者规则</span></a></li>
 			<li role="presentation"><a href="07announcement.jsp" target="view_frame"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true">&nbsp;查看公告</span></a></li>
 			<li role="presentation"><a href="index.jsp" target="view_frame"><span class="glyphicon glyphicon-user" aria-hidden="true">&nbsp;个人信息</span></a></li>
-			<li role="presentation"><a href="06borrowBooks.jsp" target="view_frame"><span class="glyphicon glyphicon-book" aria-hidden="true">&nbsp;借阅信息</span></a></li>
-			<li role="presentation"><a href="08illegal.jsp" target="view_frame"><span class="glyphicon glyphicon-remove" aria-hidden="true">&nbsp;违章信息</span></a></li>
+			<li role="presentation"><a href="06borrow.jsp" target="view_frame"><span class="glyphicon glyphicon-book" aria-hidden="true">&nbsp;借阅信息</span></a></li>
+			<li role="presentation"><a href="08illegalInfo.jsp" target="view_frame"><span class="glyphicon glyphicon-remove" aria-hidden="true">&nbsp;违章信息</span></a></li>
 			<li role="presentation"><a href="13message.jsp" target="view_frame"><span class="glyphicon glyphicon-pencil" aria-hidden="true">&nbsp;读者留言</span></a></li>
 		<%
 			}else{ 
 		%>
 			<li role="presentation"><a href="01main.jsp" target="view_frame"><span class="glyphicon glyphicon-picture" aria-hidden="true">&nbsp;首页</span></a></li>
-			<li role="presentation"><a href="05searchBooks.jsp" target="view_frame"><span class="glyphicon glyphicon-search" aria-hidden="true">&nbsp;图书查询</span></a></li>
+			<li role="presentation"><a href="05book.jsp" target="view_frame"><span class="glyphicon glyphicon-search" aria-hidden="true">&nbsp;图书查询</span></a></li>
 			<li role="presentation"><a href="12rules.jsp" target="view_frame"><span class="glyphicon glyphicon-bell" aria-hidden="true">&nbsp;读者规则</span></a></li>
 			<li role="presentation"><a href="07announcement.jsp" target="view_frame"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true">&nbsp;查看公告</span></a></li>
 			<li role="presentation"><a href="15checkMessage.jsp" target="view_frame"><span class="glyphicon glyphicon-envelope" aria-hidden="true">&nbsp;查看留言</span></a></li>
