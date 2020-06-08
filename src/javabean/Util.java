@@ -2,6 +2,8 @@ package javabean;
 
 import java.text.SimpleDateFormat;
 
+import net.sf.json.JSONObject;
+
 public class Util {
 	/**
 	 * 主要用来计算json字符串中对象的个数
@@ -28,12 +30,26 @@ public class Util {
 		return null;
 	}
 	
+	/**
+	 * 获取当前时间
+	 * @return
+	 */
 	public static String getCurrentTimeString() {
 		java.util.Date date = new java.util.Date();
 		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		return dateFormat.format(date);
 	}
 	
+	public static String jsonResponse(int code, String msg, String data) {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("code", code);
+		jsonObject.put("msg", msg);
+		if( data!=null ) {
+			jsonObject.put("data", data);
+		}
+		
+		return jsonObject.toString();
+	}
 	
 	public static void main(String[] args) {
 		java.util.Date date = new java.util.Date();

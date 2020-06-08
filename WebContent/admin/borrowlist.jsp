@@ -16,7 +16,7 @@
 <body>
 	<script src="../public/layui/layui.js" charset="utf-8"></script>
 	<!-- 表单 -->
-	<table class="layui-hide" id="cardTable" lay-filter="formFilter"></table>
+	<table class="layui-hide" id="history" lay-filter="formFilter"></table>
 	
 	<!-- 头部工具栏 -->
 	<script type="text/html" id="headBar">
@@ -46,7 +46,7 @@
 	  var table = layui.table;
 	  // 进行渲染
 	  var tableIns =  table.render({
-	    elem: '#cardTable'
+	    elem: '#history'
 	    ,url:'./borrowList'
 	    ,toolbar: '#headBar'
 	    ,cols: [[
