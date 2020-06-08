@@ -12,13 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 import javabean.Base;
 import javabean.Util;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-
 
 @WebServlet("/admin/managerList")
 public class ManagerList extends HttpServlet {
@@ -41,7 +40,7 @@ public class ManagerList extends HttpServlet {
 			sql = "select * from manager";
 			pstmt = connection.prepareStatement(sql);
 			resultSet = pstmt.executeQuery();
-			while(resultSet.next()) {
+			while (resultSet.next()) {
 				jsonObject.put("id", resultSet.getString("id"));
 				jsonObject.put("name", resultSet.getString("name"));
 				jsonObject.put("account", resultSet.getString("account"));
@@ -49,10 +48,10 @@ public class ManagerList extends HttpServlet {
 				jsonObject.put("email", resultSet.getString("email"));
 				jsonArray.add(jsonObject);
 			}
-			if(!jsonArray.isEmpty()) {
+			if (!jsonArray.isEmpty()) {
 				code = 0;
 				msg = "查询成功";
-			}else {
+			} else {
 				msg = "数据为空";
 			}
 		} catch (ClassNotFoundException e) {
@@ -60,7 +59,7 @@ public class ManagerList extends HttpServlet {
 		} catch (SQLException e) {
 			msg = "sql错误";
 		}
-		out.print( Util.jsonResponse(code, msg, jsonArray.toString()) );
+		out.print(Util.jsonResponse(code, msg, jsonArray.toString()));
 	}
 
 }
