@@ -33,7 +33,7 @@
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="javascript:;">图书管理</a>
+          <a class="" href="javascript:;"><i class="layui-icon layui-icon-read" style="font-size: 20px; color: lightblue;"></i>&nbsp;图书管理</a>
           <dl class="layui-nav-child">
             <dd><a href="02borrow.jsp" target="content">借阅图书</a></dd>
             <dd><a href="04return.jsp;" target="content">归还图书</a></dd>
@@ -41,13 +41,13 @@
           </dl>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;">报表管理</a>
+          <a href="javascript:;"><i class="layui-icon layui-icon-form" style="font-size: 20px; color: orange;"></i>&nbsp;报表管理</a>
           <dl class="layui-nav-child">
             <dd><a href="06borrowTable.jsp" target="content">借书报表</a></dd>
             <dd><a href="07returnTable.jsp" target="content">还书报表</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item"><a href="">发布公告</a></li>
+        <li class="layui-nav-item"><a href=""><i class="layui-icon layui-icon-release" style="font-size: 20px; color: yellow;"></i>&nbsp;发布公告</a></li>
       </ul>
     </div>
   </div>

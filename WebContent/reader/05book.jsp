@@ -27,6 +27,7 @@
 	
 </head>
 <body>
+	<jsp:useBean id="msg" scope="session" class="javabean.JDBCBean"></jsp:useBean>
 	<script src="../public/layui/layui.js" charset="utf-8"></script>
 	<!-- 表单 -->
 	<table class="layui-hide" id="cardTable" lay-filter="formFilter"></table>
@@ -52,7 +53,9 @@
   		</div>
   		<button class="layui-btn layui-bg-blue" name="condition" data-type="reload"  lay-event="search">搜索</button>
 	</script>
-	
+	<%
+		
+	%>
 
 
 	<script> 
@@ -69,9 +72,22 @@
 	      ,{field:'name', width:130, title: '图书名称', sort: true}
 	      ,{field:'author', width:100, title: '作者', sort: true}
 	      ,{field:'library_id', title: '图书馆', width: 100, sort: true}
-	      ,{field:'sort_id', width:100, title: '分类', sort: true}
+	      ,{field:'sort_id', width:100, title: '分类', sort: true,templet: function (item) {
+	  
+       		}
+
+	    }
 	      ,{field:'position', width:100, title: '位置', sort: true}
-	      ,{field:'status', width:100, title: '状态', sort: true}
+	      ,{field:'status', width:100, title: '状态', sort: true,templet: function (item) {
+	    	  var btns="";
+	    	  if(item.status=='0'){
+	    		  btns += '<span class=""style="color:orange">已借出</span>';
+	    	  }else if(item.status=='1'){
+	    		  btns += '<span class=""style="color:green">未借出</span>';
+	    	  }
+	    	  return btns;
+	    	  }
+	      }
 	      ,{field:'description', minWidth:80, title: '描述'}
 
 	    ]]
