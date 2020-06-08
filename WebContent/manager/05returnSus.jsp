@@ -10,17 +10,15 @@
 <body>
 <jsp:useBean id="ret" scope="session" class="javabean.JDBCBean"></jsp:useBean>
 	<%
-		String user = request.getParameter("userid");
+
 		String book = request.getParameter("bookid");
 		String date1 = request.getParameter("date1");
 		String ill = request.getParameter("ill");
 		out.println(ill);
 		String managerid = request.getParameter("managerid");
-		String sql1 = "select * from borrow_card where ID =" + user;
-		
-		ResultSet rs1 = ret.executeQuery(sql1);
+
 		if(session.getAttribute("manager")!=null){
-			if (rs1.next()) {
+
 				String sql2 = "select * from books where ID =" + book;
 				ResultSet rs2 = ret.executeQuery(sql2);
 				
@@ -29,7 +27,7 @@
 					//String id = session.getAttribute("manager").toString();
 					int status=Integer.parseInt(rs2.getString("STATUS"));
 					if(status==0){
-						String sql = "update borrow_books set RETURN_DATE='" + date1 + "',ILLEGAL='" + ill + "',MANAGER_ID='" + managerid + "' where CARD_ID='" + user +"'and BOOK_ID="+ book;
+						String sql = "update borrow_books set RETURN_DATE='" + date1 + "',ILLEGAL='" + ill + "',MANAGER_ID='" + managerid + "' where BOOK_ID="+ book+" order by BORROW_DATE desc  limit 1";
 						try {
 							int i = ret.executeUpdate(sql);
 							if (i == 1) {
@@ -69,14 +67,7 @@
 						<%
 					}
 				}
-			}else{
-				%>
-				<script>
-					alert('用户不存在！');
-					window.location.href = "04return.jsp";
-				</script>
-				<%
-			}
+			
 		}else{
 			%>
 			<script>

@@ -56,10 +56,11 @@
         <li class="layui-nav-item">
           <a href="javascript:;">报表管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;" target="content">借书报表</a></dd>
+            <dd><a href="06borrowTable.jsp" target="content">借书报表</a></dd>
             <dd><a href="javascript:;" target="content">还书报表</a></dd>
           </dl>
         </li>
+        <li class="layui-nav-item"><a href="">发布公告</a></li>
       </ul>
     </div>
   </div>

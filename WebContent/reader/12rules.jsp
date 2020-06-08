@@ -42,9 +42,9 @@ $(function () {
 			while (rs.next()) {
 		if(Integer.parseInt(rs.getString("ID")) % 2== 1){
 %>
-	<button type="button" class="btn btn-lg btn-info" title="可借阅数量：<%=rs.getString("BORROW_NUM") %>"   data-html="true"
+	<button type="button" class="btn btn-lg btn-info" title="可借阅天数：<%=rs.getString("BORROW_NUM") %>"   data-html="true"
 			data-container="body" data-trigger="focus" data-toggle="popover" data-placement="left" 
-			data-content="可借阅图书馆：<%=rs.getString("BORROW_LIBRARY") %><br>过期扣费/天：<%=rs.getString("OVERTIME_FEE") %>" style="width:40%;height:100%;font-size:17px;margin-top:4%;">
+			data-content="可借阅数量：<%=rs.getString("LIMIT") %><br>可借阅图书馆：<%=rs.getString("BORROW_LIBRARY") %><br>过期扣费/天：<%=rs.getString("OVERTIME_FEE") %>" style="width:40%;height:100%;font-size:17px;margin-top:4%;">
 			
 			借阅证规则编号：<%=rs.getString("ID")%>
 		
@@ -52,9 +52,9 @@ $(function () {
 <%
 		}else{
 			%>
-			<button type="button" class="btn btn-lg  btn-primary" title="可借阅数量：<%=rs.getString("BORROW_NUM") %>"   data-html="true"
+			<button type="button" class="btn btn-lg  btn-primary" title="可借阅天数：<%=rs.getString("BORROW_NUM") %>"   data-html="true"
 					data-container="body" data-trigger="focus" data-toggle="popover" data-placement="right" 
-					data-content="可借阅图书馆：<%=rs.getString("BORROW_LIBRARY") %><br>过期扣费/天：<%=rs.getString("OVERTIME_FEE") %>" style="width:40%;height:100%;font-size:17px;margin-top:4%;">
+					data-content="可借阅数量：<%=rs.getString("LIMIT") %><br>可借阅图书馆：<%=rs.getString("BORROW_LIBRARY") %><br>过期扣费/天：<%=rs.getString("OVERTIME_FEE") %>" style="width:40%;height:100%;font-size:17px;margin-top:4%;">
 					
 			借阅证规则编号：<%=rs.getString("ID")%>
 				

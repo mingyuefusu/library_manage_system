@@ -19,14 +19,7 @@
 		style="margin-left:30%; margin-top: 5%; width: 40%;">
 
 		<form class="layui-form layui-form-pane" action="05returnSus.jsp">
-			<div class="layui-form-item">
-				<label class="layui-form-label">借阅证号</label>
-				<div class="layui-input-inline">
-					<input type="text" name="userid" lay-verify="required"
-						placeholder="请输入借阅证号" autocomplete="off" class="layui-input"><br>
-				</div>
-
-			</div>
+			
 			<div class="layui-form-item">
 				<label class="layui-form-label">图书编号</label>
 				<div class="layui-input-inline">
