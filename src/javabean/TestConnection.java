@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 public class TestConnection {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
