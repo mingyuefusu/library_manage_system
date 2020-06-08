@@ -38,7 +38,7 @@ public class BookList extends HttpServlet {
     	String condition = (String) req.getParameter("condition");
     	String conditionValue = (String) req.getParameter("conditionValue");
     	Map where = new HashMap<String, String>();
-    	System.out.println(condition +"" +conditionValue);
+    	//System.out.println(condition +"" +conditionValue);
     	// 传输数据过滤
     	if(page == null) {
     		page = "1";
@@ -68,7 +68,6 @@ public class BookList extends HttpServlet {
     		json.put("code", 0);
     		json.put("msg", "success");
 			json.put("count", map.get("count"));
-			System.out.println("count: " +map.get("count"));
     		result = "[" +result +"]";
     		json.put("data", result);
     	}

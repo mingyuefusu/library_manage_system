@@ -74,8 +74,7 @@ public class Admin {
 			whereString += " where "+where.get("condition") +" like '%" +where.get("conditionValue") +"%' ";
 			sql += whereString;
 		}
-		sql += " limit ?,? ";
-		System.out.println("sql: " +sql);
+		sql += "order by id desc limit ?,? ";
 		pstmt = (PreparedStatement) connection.prepareStatement(sql);
 		pstmt.setInt(1, (number-1) * size );
 		pstmt.setInt(2, size);
@@ -90,6 +89,7 @@ public class Admin {
 			//System.out.println("????-------" +resultSet.getInt("count"));
 			json.put("id", resultSet.getInt("id"));
 			json.put("name", resultSet.getString("name"));
+			json.put("author", resultSet.getString("author"));
 			json.put("library_id", resultSet.getInt("library_id"));
 			json.put("sort_id", resultSet.getInt("sort_id"));
 			json.put("position", resultSet.getString("position"));
@@ -146,6 +146,7 @@ public class Admin {
 		}else {
 			result = "查询失败";
 		}
+		Base.closeResource(connection, pstmt, null);
 		return result;
 	}
 	
@@ -172,6 +173,31 @@ public class Admin {
 		}
 		
 		return null;
+	}
+	
+	/* 没用 */
+	public static JSONArray getRules() throws ClassNotFoundException, SQLException {
+		Connection connection = null;
+	 	PreparedStatement pstmt = null;
+	 	ResultSet resultSet = null;
+	 	String sql = "select * from rules";
+	 	JSONObject jsonObject = new JSONObject();
+	 	JSONArray jsonArray = new JSONArray();
+	 	String result = "";
+	 	connection = Base.getConnection();
+	 	pstmt = connection.prepareStatement(sql);
+	 	resultSet = pstmt.executeQuery();
+	 	while(resultSet.next()) {
+	 		jsonObject.put("id", resultSet.getString("id"));
+	 		jsonObject.put("borrow_num", resultSet.getString("borrow_num"));
+	 		jsonObject.put("borrow_library", resultSet.getString("borrow_library"));
+	 		jsonObject.put("overtime_fee", resultSet.getString("overtime_fee"));
+	 		jsonArray.add(jsonObject);
+	 		System.out.println(jsonArray.toString());
+	 	}
+	 	Base.closeResource(connection, pstmt, resultSet);
+		return jsonArray;
+		
 	}
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {

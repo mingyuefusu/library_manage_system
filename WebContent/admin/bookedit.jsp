@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>bookadd</title>
+  <title>bookedit</title>
   <!-- layui -->
   <link rel="stylesheet" href="../public/layui/css/layui.css">
   <script src="../public/layui/layui.js"></script>
@@ -15,7 +15,6 @@
   <style>
     .layui-form{
       margin: 10px 20px;
-      
     }
   </style>
 </head>
@@ -31,6 +30,7 @@
  	resultSet =  db.executeQuery(sql);
  	resultSet.next();
   	String name = resultSet.getString("name");
+  	String author = resultSet.getString("author");
   	int library_id = resultSet.getInt("library_id");
   	int sort_id = resultSet.getInt("sort_id");
   	String position = resultSet.getString("position");
@@ -49,13 +49,25 @@
   	bookSortSet = db3.executeQuery( bookSortSql );
   	
   %>
+  
   <form class="layui-form   layui-form-pane" action="">
+ <%-- 隐藏id --%>
+  <input type="id" name="id" value=<%=id %> class="layui-hide">
+  <!-- 书名 -->
   <div class="layui-form-item">
     <label class="layui-form-label">书名</label>
     <div class="layui-input-block">
       <input type="text" name="name" value=<%=name %> required  lay-verify="required" placeholder="请输入书名" autocomplete="off" class="layui-input">
     </div>
   </div>
+  <!-- 作者 -->
+  <div class="layui-form-item">
+    <label class="layui-form-label">作者</label>
+    <div class="layui-input-block">
+      <input type="text" name="author" value=<%=author %> required  lay-verify="required" placeholder="请输入作者" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <!-- 图书馆 -->
   <div class="layui-form-item">
     <label class="layui-form-label">图书馆</label>
     <div class="layui-input-block">
@@ -68,23 +80,26 @@
       </select>
     </div>
   </div>
+  <!-- 分类 -->
   <div class="layui-form-item">
     <label class="layui-form-label">分类</label>
     <div class="layui-input-block">
       <select name="sort_id" lay-verify="required">
-        <option value=""></option>
+      <option value=""></option>
         <% while(bookSortSet.next()){ %>
         <option value=<%=bookSortSet.getInt("id") %> <% if(bookSortSet.getInt("id") == sort_id) out.print("selected"); %>><%=bookSortSet.getString("name") %></option>
         <%} %>
       </select>
     </div>
   </div>
+  <!-- 位置 -->
   <div class="layui-form-item">
     <label class="layui-form-label">位置</label>
     <div class="layui-input-block">
       <input type="text" name="position" value=<%=position %> required  lay-verify="required" placeholder="请输入位置编号" autocomplete="off" class="layui-input">
     </div>
   </div>
+  <!-- 位置 -->
   <div class="layui-form-item">
     <label class="layui-form-label">状态</label>
     <div class="layui-input-block">
@@ -92,18 +107,11 @@
       <input type="radio" name="status" value="0" title="不可借" <%if(status==0) out.print("checked"); %> >
     </div>
   </div>
-  <!-- 
-  <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">书籍简介</label>
-    <div class="layui-input-block">
-      <textarea name="description" placeholder="请输入内容" class="layui-textarea"></textarea>
-    </div>
-  </div>-->
    
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">书籍简介</label>
     <div class="layui-input-block">
-      <textarea class="layui-textarea layui-hide"  name="content" lay-verify="content" id="LAY_demo_editor"><%=description %></textarea>
+      <textarea class="layui-textarea layui-hide"  name="description" lay-verify="content" id="LAY_demo_editor"><%=description %></textarea>
     </div>
   </div>
   
@@ -116,20 +124,47 @@
 </form>
 <script>
 
-layui.use(['form', 'layedit'], function(){
+layui.use(['form', 'layedit', 'jquery'], function(){
   //layer.closeAll();
+  $ = layui.jquery;
   var form = layui.form
   ,layer = layui.layer
   ,layedit = layui.layedit;
   var editIndex = layedit.build('LAY_demo_editor');
+  // 自定义验证规则
+  form.verify({
+	  // 解决异步传输问题
+	  content: function(value){
+		  return layedit.sync(editIndex);
+	  }
+  })
   //监听提交
   form.on('submit(formDemo)', function(data){
-    layer.msg(JSON.stringify(data.field));
-    var index = parent.layer.getFrameIndex(window.name);
-    parent.layer.msg('您将标记 [ sdf ] 成功传送给了父窗口');
-    parent.layer.close(index);
+    $.ajax({
+    	url: './bookEdit',
+    	method: 'post',
+    	data: data.field, //JSON.stringify(data.field),
+    	dataType: 'json',
+    	success: function(data){
+    		if(data.code == "0"){
+    			parent.layer.msg("修改成功",{
+    				icon: 6,
+    				time: 500
+    			});
+    			setTimeout(function(){
+    				var index = parent.layer.getFrameIndex(window.name); //操作父页面
+            		parent.layer.close(index);
+    			}, 500);
+        		
+    		}else{
+    			leyer.msg("修改失败");
+    		}
+    	    
+    	}
+    })
     
-    //return false;
+    
+    return false;
   });
 });
 
