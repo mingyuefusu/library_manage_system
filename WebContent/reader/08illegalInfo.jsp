@@ -5,28 +5,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title></title>
-
-<!-- Bootstrap -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/bootstrap-table.css" rel="stylesheet">
-<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-<script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap-table.js"></script>
-<script src="../bootstrap-table-zh-CN.js"></script>
-<link rel="stylesheet" href="../public/layui/css/layui.css"  media="all">
+	<!-- Bootstrap -->
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/bootstrap-table.css" rel="stylesheet">
+	<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap-table.js"></script>
+	<script src="../bootstrap-table-zh-CN.js"></script>
+	<link rel="stylesheet" href="../public/layui/css/layui.css"  media="all">
+	<link rel="stylesheet" href="../public/layui/css/layui.css"  media="all">
 	<style>
 		.layui-table,.layui-table-view{
 			margin: 0 0px;
 		}
-		.layui-form-select dl dd.layui-this { background-color: #01AAED; }
+		.layui-form-select dl dd.layui-this { background-color: #FF5722; }
 	</style>
 	
 </head>
 <body>
+	<%
+		if(session.getAttribute("reader") == null){
+	%>
+	<script>
+		location.href="../loginReader.html";
+	</script>
+	<%
+		}
+	%>
 	<script src="../public/layui/layui.js" charset="utf-8"></script>
 	<!-- 表单 -->
 	<table class="layui-hide" id="cardTable" lay-filter="formFilter"></table>
@@ -37,20 +42,19 @@
 		<div class="layui-inline">
 	  	  <select id="condition" name="condition" lay-verify="required">
         	<option value=""></option>
-			<option value="id">图书编号</option>
-			<option value="name">图书名称</option>
-        	<option value="author">作者</option>
-        	<option value="library_id">图书馆</option>
-			<option value="sort_id">分类</option>
-			<option value="position">位置</option>
-			<option value="status">状态</option>
-			<option value="description">描述</option>
+        	<option value="card_id">借阅证号</option>
+			<option value="book_id">图书编号</option>
+        	<option value="borrow_date">借阅日期</option>
+        	<option value="end_date">截止日期</option>
+			<option value="return_date">归还日期</option>
+			<option value="illegal">违章信息</option>
+			<option value="manager_id">处理人</option>
 		  </select>
 	 	 </div>
   		<div class="layui-inline">
     		<input class="layui-input" id="conditionValue" name="conditionValue" id="demoReload" autocomplete="off">
   		</div>
-  		<button class="layui-btn layui-bg-blue" name="condition" data-type="reload"  lay-event="search">搜索</button>
+  		<button class="layui-btn layui-btn-danger" name="condition" data-type="reload"  lay-event="search">搜索</button>
 	</script>
 	
 
@@ -62,21 +66,20 @@
 	  // 进行渲染
 	  var tableIns =  table.render({
 	    elem: '#cardTable'
-	    ,url:'./book'
+	    ,url:'./illegal'
 	    ,toolbar: '#headBar'
 	    ,cols: [[
-	      {field:'id', width:120, title: '图书编号', sort: true}
-	      ,{field:'name', width:130, title: '图书名称', sort: true}
-	      ,{field:'author', width:100, title: '作者', sort: true}
-	      ,{field:'library_id', title: '图书馆', width: 100, sort: true}
-	      ,{field:'sort_id', width:100, title: '分类', sort: true}
-	      ,{field:'position', width:100, title: '位置', sort: true}
-	      ,{field:'status', width:100, title: '状态', sort: true}
-	      ,{field:'description', minWidth:80, title: '描述'}
+	      {field:'card_id', width:180, title: '借阅证号', sort: true}
+	      ,{field:'book_id', minwidth:80, title: '图书编号', sort: true}
+	      ,{field:'borrow_date', width:250, title: '借阅日期', sort: true}
+	      ,{field:'end_date', title: '截止日期', width: 250, sort: true}
+	      ,{field:'return_date', width:250, title: '归还时间', sort: true}
+	      ,{field:'illegal', width:180, title: '违章信息', sort: true}
+	      ,{field:'manager_id', width:90, title: '处理人', sort: true}
 
 	    ]]
 	    ,page: true
-	    ,page: {theme: '#2F88FF'},
+	    ,page: {theme: '#FF5722'},
 	  });
 	  
 	  // 头部工具栏事件

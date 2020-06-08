@@ -24,7 +24,7 @@
 		<%
 			if(session.getAttribute("reader") == null){
 		%>
-				<frame src="06borrowBooks.jsp" name="view_frame">
+				<frame src="06borrow.jsp" name="view_frame">
 		<%
 			}else{
 				%>

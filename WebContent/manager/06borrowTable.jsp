@@ -24,12 +24,11 @@
 		<div class="layui-inline">
 	  	  <select id="condition" name="condition" lay-verify="required">
         	<option value=""></option>
-        	<option value="id">ID</option>
         	<option value="card_id">借阅证号</option>
 			<option value="book_id">图书编号</option>
         	<option value="borrow_date">借阅日期</option>
         	<option value="end_date">截止日期</option>
-			<option value="return_date">返还日期</option>
+			<option value="return_date">归还日期</option>
 			<option value="illegal">违章信息</option>
 			<option value="manager_id">处理人</option>
 		  </select>
@@ -52,14 +51,13 @@
 	    ,url:'./borrowTable'
 	    ,toolbar: '#headBar'
 	    ,cols: [[
-	      {field:'id', width:80, title: 'ID', sort: true}
-	      ,{field:'card_id', width:180, title: '借阅证号'}
-	      ,{field:'book_id', width:180, title: '图书编号', sort: true}
-	      ,{field:'borrow_date', width:180, title: '借阅日期'}
-	      ,{field:'end_date', title: '截止日期', minWidth: 150}
-	      ,{field:'return_date', width:180, title: '归还时间', sort: true}
-	      ,{field:'illegal', width:80, title: '违章信息', sort: true}
-	      ,{field:'manager_id', width:80, title: '处理人'}
+	      {field:'card_id', width:180, title: '借阅证号', sort: true}
+	      ,{field:'book_id', width:130, title: '图书编号', sort: true}
+	      ,{field:'borrow_date', width:250, title: '借阅日期', sort: true}
+	      ,{field:'end_date', title: '截止日期', width: 250, sort: true}
+	      ,{field:'return_date', width:250, title: '归还时间', sort: true}
+	      ,{field:'illegal', width:180, title: '违章信息', sort: true}
+	      ,{field:'manager_id', minWidth:80, title: '处理人'}
 
 	    ]]
 	    ,page: true
@@ -85,7 +83,7 @@
 				    }
 				  });
 		    break;
-		    // 添加借书证
+		  
 		    case 'add':
 		    	var addCardLayer = layer.open({
 		    		type: 2,
