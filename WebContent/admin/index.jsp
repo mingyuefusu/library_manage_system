@@ -15,15 +15,12 @@
     <div class="layui-logo">系统管理员</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
-      <li class="layui-nav-item"><a href="">控制台</a></li>
-      <li class="layui-nav-item"><a href="">商品管理</a></li>
-      <li class="layui-nav-item"><a href="">用户</a></li>
+      <li class="layui-nav-item"><a href="">首页</a></li>
       <li class="layui-nav-item">
         <a href="javascript:;">其它系统</a>
         <dl class="layui-nav-child">
-          <dd><a href="">邮件管理</a></dd>
-          <dd><a href="">消息管理</a></dd>
-          <dd><a href="">授权管理</a></dd>
+          <dd><a href="../loginReader.html">图书馆首页</a></dd>
+          <dd><a href="../loginManager.html">图书管理员</a></dd>
         </dl>
       </li>
     </ul>
@@ -54,7 +51,7 @@
         </li>
         <li class="layui-nav-item"><a href="./borrowlist.jsp" target="content"><i class="layui-icon layui-icon-chart-screen" style="font-size: 16px; color: #1E9FFF;"></i> 借阅信息查询</a></li>
         <li class="layui-nav-item"><a href="./rulelist.jsp"  target="content"><i class="layui-icon layui-icon-file-b" style="font-size: 16px; color: #1E9FFF;"> </i>借阅规则管理</a></li>
-        <li class="layui-nav-item"><a href="./managelist.jsp" target="content"><i class="layui-icon layui-icon-group" style="font-size: 16px; color: #1E9FFF;"></i>图书管理员管理</a></li>
+        <li class="layui-nav-item"><a href="./managerlist.jsp" target="content"><i class="layui-icon layui-icon-group" style="font-size: 16px; color: #1E9FFF;"></i>图书管理员管理</a></li>
         <li class="layui-nav-item"><a href="./system.jsp" target="content"><i class="layui-icon layui-icon-windows" style="font-size: 16px; color: #1E9FFF;"> </i>系统管理</a></li>
       </ul>
     </div>

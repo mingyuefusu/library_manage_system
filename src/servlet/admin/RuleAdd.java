@@ -24,6 +24,7 @@ import javabean.Util;
 public class RuleAdd extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("application/json; charset=utf8");
 		// 准备数据
 		Connection connection = null;
 		PreparedStatement pstmt = null;

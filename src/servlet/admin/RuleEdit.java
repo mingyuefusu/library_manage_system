@@ -26,6 +26,7 @@ import javabean.Util;
 public class RuleEdit extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("application/json; charset=utf8");
 		// 准备数据
 		Connection connection = null;
 		PreparedStatement pstmt = null;
@@ -73,7 +74,6 @@ public class RuleEdit extends HttpServlet {
 			pstmt.setString(3, borrow_library);
 			pstmt.setString(4, overtime_fee);
 			pstmt.setString(5, id);
-			System.out.println(overtime_fee);
 			result = pstmt.executeUpdate();
 			if(result == 1) {
 				code = 0;

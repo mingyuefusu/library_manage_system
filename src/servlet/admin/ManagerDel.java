@@ -18,27 +18,24 @@ import javabean.Base;
 import javabean.Util;
 
 
-@WebServlet("/admin/ruleDel")
-public class RuleDel extends HttpServlet {
+@WebServlet("/admin/managerDel")
+public class ManagerDel extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("application/json; charset=utf8");
-		// 接受数据
 		String id = req.getParameter("id");
-		// 准备数据
-		Connection connection = null;
-		PreparedStatement  pstmt  = null;
+		// 准备参数
+		String sql = "";
+		Connection  connection = null;
+		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
 		int result = 0;
-		String sql = "";
-		// 返回数据
+		// 返回参数
 		int code = 1;
-		String msg = "error";
-		PrintWriter out  = resp.getWriter();
-		// 进行查询
+		String msg = "";
+		PrintWriter out = resp.getWriter();
 		try {
 			connection = (Connection) Base.getConnection();
-			sql = "delete from rules where id = ?";
+			sql = "delete from manager where id=?";
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, id);
 			result = pstmt.executeUpdate();
@@ -49,11 +46,12 @@ public class RuleDel extends HttpServlet {
 				msg = "删除失败";
 			}
 		} catch (ClassNotFoundException e) {
-			msg = "class没找到";
+			msg = "class not found";
 		} catch (SQLException e) {
 			msg = "sql错误";
 		}
 		out.print(Util.jsonResponse(code, msg, null));
+		
 	}
 
 }

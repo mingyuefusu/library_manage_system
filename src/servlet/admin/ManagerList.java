@@ -16,44 +16,51 @@ import com.mysql.jdbc.Connection;
 
 import javabean.Base;
 import javabean.Util;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 
-@WebServlet("/admin/ruleDel")
-public class RuleDel extends HttpServlet {
+@WebServlet("/admin/managerList")
+public class ManagerList extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("application/json; charset=utf8");
-		// 接受数据
-		String id = req.getParameter("id");
 		// 准备数据
 		Connection connection = null;
-		PreparedStatement  pstmt  = null;
-		ResultSet resultSet = null;
-		int result = 0;
+		PreparedStatement pstmt = null;
 		String sql = "";
+		ResultSet resultSet = null;
 		// 返回数据
 		int code = 1;
 		String msg = "error";
-		PrintWriter out  = resp.getWriter();
-		// 进行查询
+		JSONObject jsonObject = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+		PrintWriter out = resp.getWriter();
 		try {
 			connection = (Connection) Base.getConnection();
-			sql = "delete from rules where id = ?";
+			sql = "select * from manager";
 			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, id);
-			result = pstmt.executeUpdate();
-			if(result == 1) {
+			resultSet = pstmt.executeQuery();
+			while(resultSet.next()) {
+				jsonObject.put("id", resultSet.getString("id"));
+				jsonObject.put("name", resultSet.getString("name"));
+				jsonObject.put("account", resultSet.getString("account"));
+				jsonObject.put("password", resultSet.getString("password"));
+				jsonObject.put("email", resultSet.getString("email"));
+				jsonArray.add(jsonObject);
+			}
+			if(!jsonArray.isEmpty()) {
 				code = 0;
-				msg = "删除成功";
+				msg = "查询成功";
 			}else {
-				msg = "删除失败";
+				msg = "数据为空";
 			}
 		} catch (ClassNotFoundException e) {
-			msg = "class没找到";
+			msg = "class找不到";
 		} catch (SQLException e) {
 			msg = "sql错误";
 		}
-		out.print(Util.jsonResponse(code, msg, null));
+		out.print( Util.jsonResponse(code, msg, jsonArray.toString()) );
 	}
 
 }
