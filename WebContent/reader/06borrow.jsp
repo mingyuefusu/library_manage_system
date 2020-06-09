@@ -37,7 +37,6 @@
 		<div class="layui-inline">
 	  	  <select id="condition" name="condition" lay-verify="required">
         	<option value=""></option>
-        	<option value="card_id">借阅证号</option>
 			<option value="book_id">图书编号</option>
         	<option value="borrow_date">借阅日期</option>
         	<option value="end_date">截止日期</option>
@@ -77,11 +76,11 @@
 	  table.on('toolbar(formFilter)', function(obj){
 		  var checkStatus = table.checkStatus(obj.config.id);
 		  switch(obj.event){
-		  	// 条件查找图书证
+		  	// 条件查找借阅记录
 		    case 'search':
 		      var conditionValue = $('#conditionValue');
 	    	  var condition = $('#condition');
-	    	  layer.msg(condition.val());
+	    	  
 	    	  // 进行搜索，重新渲染
 	    	  tableIns.reload({
 				    where: { //设定异步数据接口的额外参数，任意设

@@ -1,7 +1,8 @@
-package servlet.admin;
+package servlet.manager;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,15 +13,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.sql.Connection;
-
 import javabean.Base;
 import javabean.Util;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-@WebServlet("/admin/managerList")
-public class ManagerList extends HttpServlet {
+/**
+ * Servlet implementation class Announcement
+ */
+@WebServlet("/manager/announcement")
+public class Announcement extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("application/json; charset=utf8");
@@ -31,21 +33,21 @@ public class ManagerList extends HttpServlet {
 		ResultSet resultSet = null;
 		// 返回数据
 		int code = 1;
-		String msg = "error";
+		String msg = "无数据";
 		JSONObject jsonObject = new JSONObject();
 		JSONArray jsonArray = new JSONArray();
-		PrintWriter out = resp.getWriter();
+
 		try {
 			connection = (Connection) Base.getConnection();
-			sql = "select * from manager";
+			sql = "select * from announcement";
 			pstmt = connection.prepareStatement(sql);
 			resultSet = pstmt.executeQuery();
 			while (resultSet.next()) {
 				jsonObject.put("id", resultSet.getString("id"));
-				jsonObject.put("name", resultSet.getString("name"));
-				jsonObject.put("account", resultSet.getString("account"));
-				jsonObject.put("password", resultSet.getString("password"));
-				jsonObject.put("email", resultSet.getString("email"));
+				jsonObject.put("title", resultSet.getString("title"));
+				jsonObject.put("detail", resultSet.getString("detail"));
+				jsonObject.put("publish_date", resultSet.getString("publish_date"));
+
 				jsonArray.add(jsonObject);
 			}
 			if (!jsonArray.isEmpty()) {
@@ -58,8 +60,14 @@ public class ManagerList extends HttpServlet {
 			msg = "class找不到";
 		} catch (SQLException e) {
 			msg = "sql错误";
+		} finally {
+			try {
+				Base.closeResource(connection, pstmt, resultSet);
+			} catch (SQLException e) {
+				msg = "关闭失败";
+			}
 		}
+		PrintWriter out = resp.getWriter();
 		out.print(Util.jsonResponse(code, msg, jsonArray.toString()));
 	}
-
 }

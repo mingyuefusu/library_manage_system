@@ -56,7 +56,7 @@
 	      ,{field:'borrow_date', width:250, title: '借阅日期', sort: true}
 	      ,{field:'end_date', title: '截止日期', width: 250, sort: true}
 	      ,{field:'return_date', width:250, title: '归还时间', sort: true}
-	      ,{field:'illegal', width:180, title: '违章信息', sort: true}
+	      ,{field:'illegal', width:180, title: '违章信息', sort: true,style:'color: red;'}
 	      ,{field:'manager_id', minWidth:80, title: '处理人'}
 
 	    ]]

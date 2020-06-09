@@ -43,14 +43,7 @@
 				</div>
 
 			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">截止日期</label>
-				<div class="layui-input-inline">
-					<input type="text" name="date2" lay-verify="required" id="date2" autocomplete="off"
-						class="layui-input"><br>
-				</div>
 
-			</div>
 
 			<div class="layui-form-item" align="center">
 				<button class="layui-btn" lay-submit="" lay-filter="demo2">借阅</button>

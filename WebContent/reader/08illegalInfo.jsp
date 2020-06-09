@@ -74,7 +74,7 @@
 	      ,{field:'borrow_date', width:250, title: '借阅日期', sort: true}
 	      ,{field:'end_date', title: '截止日期', width: 250, sort: true}
 	      ,{field:'return_date', width:250, title: '归还时间', sort: true}
-	      ,{field:'illegal', width:180, title: '违章信息', sort: true}
+	      ,{field:'illegal', width:180, title: '违章信息', sort: true,style:'color: red;'}
 	      ,{field:'manager_id', width:90, title: '处理人', sort: true}
 
 	    ]]
@@ -90,7 +90,7 @@
 		    case 'search':
 		      var conditionValue = $('#conditionValue');
 	    	  var condition = $('#condition');
-	    	  layer.msg(condition.val());
+	    	  
 	    	  // 进行搜索，重新渲染
 	    	  tableIns.reload({
 				    where: { //设定异步数据接口的额外参数，任意设

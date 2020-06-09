@@ -47,7 +47,7 @@ public class ReturnTable extends HttpServlet {
 		String countSql = "";
 		// 准备返回参数
 		int code = 1;
-		String msg = "error";
+		String msg = "无数据";
 		int count = 0;
 
 		JSONObject jsonData = new JSONObject();
