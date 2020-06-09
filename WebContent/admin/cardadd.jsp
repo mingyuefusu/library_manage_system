@@ -1,7 +1,7 @@
 <%@page import="javabean.Base"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="com.mysql.jdbc.Connection"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="net.sf.json.JSONObject"%>
 <%@page import="net.sf.json.JSONArray"%>
 <%@page import="javabean.Admin"%>

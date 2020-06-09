@@ -1,7 +1,7 @@
 <%@page import="javabean.Base"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="com.mysql.jdbc.Connection"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="net.sf.json.JSONObject"%>
 <%@page import="net.sf.json.JSONArray"%>
 <%@page import="javabean.Admin"%>
@@ -66,7 +66,7 @@
   <div class="layui-form-item">
     <label class="layui-form-label">密码</label>
     <div class="layui-input-block">
-      <input type="password" name="password"  value=<%=infoSet.getString("reader") %> placeholder="请输入密码" autocomplete="off" class="layui-input"  lay-verify="required">
+      <input type="password" name="password"  value=<%=infoSet.getString("password") %> placeholder="请输入密码" autocomplete="off" class="layui-input"  lay-verify="required">
     </div>
   </div>
   

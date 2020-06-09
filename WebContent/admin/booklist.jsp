@@ -69,7 +69,7 @@
 	  	  <input class="layui-input" name="conditionValue" id="conditionValue" autocomplete="off" placeholder="请输入搜索内容">
 	 	 </div>
 	 	 <button class="layui-btn" data-type="reload" lay-event="search">搜索</button>
-		 <button type="button" class="layui-btn  layui-btn-sm"  lay-event="add"><i class="layui-icon"></i></button>
+		 <button type="button" class="layui-btn  layui-btn-sm"  lay-event="add"><i class="layui-icon">添加书籍</i></button>
 	</div>
 	</script>
     

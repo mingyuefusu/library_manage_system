@@ -35,7 +35,7 @@ public class Admin {
 		connection = Base.getConnection();
 		pstmt = (PreparedStatement) connection.prepareStatement(sql);
 		pstmt.setString(1, username);
-		pstmt.setString(2, password);
+		pstmt.setString(2, Util.passMd5(password));
 		resultSet = pstmt.executeQuery();
 		try{
 			if (resultSet.next()) {

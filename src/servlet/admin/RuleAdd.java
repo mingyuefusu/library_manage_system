@@ -42,7 +42,6 @@ public class RuleAdd extends HttpServlet {
 		int num = 0;
 		try {
 			Map<String, String> libraryMap = Common.getLibraryMap();
-			System.out.println(libraryMap);
 			for(String key : libraryMap.keySet()) {
 				if(req.getParameter("borrow_library[" +key +"]") != null) {
 					if(num == 0) {

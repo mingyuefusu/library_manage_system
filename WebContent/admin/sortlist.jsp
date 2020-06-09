@@ -15,14 +15,14 @@
 </head>
 <body>
 	<!-- 表单 -->
-	<table class="layui-hide" id="managerTable" lay-filter="formFilter"></table>
+	<table class="layui-hide" id="cardTable" lay-filter="formFilter"></table>
 	<script src="../public/layui/layui.js" charset="utf-8"></script>
 	<!-- 头部工具栏 -->
 	<script type="text/html" id="headBar">
-		<button type="button" class="layui-btn  layui-btn-sm" lay-event="add"><i class="layui-icon">添加管理员</i></button>
+		<button type="button" class="layui-btn  layui-btn-sm" lay-event="add"><i class="layui-icon">添加分类</i></button>
 	</script>
 	
-	<!-- 表格侧边栏 -->
+	<!-- 表格后面的操作 -->
 	<script type="text/html" id="operateBar">
   		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
  	 	<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
@@ -33,15 +33,14 @@
 	  var table = layui.table;
 	  // 进行渲染
 	  var tableIns =  table.render({
-	    elem: '#managerTable'
-	    ,url:'./managerList'
+	    elem: '#cardTable'
+	    ,url:'./sortList'
 	    ,toolbar: '#headBar'
 	    ,height: 600
 	    ,cols: [[
 	      {field:'id', width:80, title: 'ID', sort: true}
-	      ,{field:'account', width:80, title: '账号', sort: true}
-	      ,{field:'name', width:80, title: '姓名'}
-	      ,{field:'email', title: '邮箱', minWidth: 150}
+	      ,{field:'name', width:180, title: '分类名', sort: true}
+	      ,{field:'description', width:480, title: '描述', sort: true}
 	      ,{fixed: 'right', title:'操作', toolbar: '#operateBar', align: 'center', width:150}
 	    ]]
 	  });
@@ -50,17 +49,16 @@
 	  table.on('toolbar(formFilter)', function(obj){
 		  var checkStatus = table.checkStatus(obj.config.id);
 		  switch(obj.event){
-		    // 添加管理员
+		    // 添加分类
 		    case 'add':
 		    	var addCardLayer = layer.open({
 		    		type: 2,
-		    		title: '添加管理员',
+		    		title: '添加借书证',
 		    		area: ['800px', '500px'],
 		  	  	  	maxmin: true,
 		  	  	  	shadeClose: true,
-		  	  	  	content: 'manageradd.jsp',
+		  	  	  	content: 'sortadd.jsp',
 		    	});
-		    	//layer.full(addCardLayer);
 		  };
 		});
 	 
@@ -68,8 +66,8 @@
 	  table.on(('tool(formFilter)'), function(obj){
 	  	var data = obj.data;
 	  	var layEvent = obj.event;
-	  	var id = data.id;
 	  	var tr = obj.tr;
+	  	var id = data.id;
 	  	switch(obj.event){
 	  	  case 'edit':
 	  	  	  layer.open({
@@ -78,35 +76,27 @@
 	  	  	  	area: ['800px', '600px'],
 	  	  	  	maxmin: true,
 	  	  	  	shadeClose: true,
-	  	  	  	content: 'manageredit.jsp?id=' +id,
+	  	  	  	content: 'sortedit.jsp?id=' +id,
 	  	  	  })
 	  	  	break;
 	  	  case 'del':
-	  		  layer.confirm('确定要删除么？',function(){
-	  			  layer.msg("ok");
+	  		  layer.confirm('确认删除么？<br><span style="color:red;">这将会将该分类下的书籍归为未分类</span>', function(){
 	  			  $.ajax({
-	  				  url: './managerDel',
-	  				  data: 'id=' +id,
+	  				  url: './sortDel',
 	  				  type: 'get',
-	  				  dataType: 'json',
-	  				  timeout: 3000,
+	  				  data: 'id=' +id,
 	  				  success: function(data){
-	  					  layer.msg("???");
-	  					  if(data.code == 0){
-	  						  layer.msg(data.msg,{
-	  							  icon: 6,
-	  							  anim: 5,
-	  							  time: 500
-	  						  });
-	  						  setTimeout(function(){
-	  							  parent.location.reload();
-	  						  },500);
-	  					  }else{
-	  						  layer.msg(data.code);
-	  					  }
-	  				  },
-	  				  error: function(){
-	  					  layer.msg("连接超时");
+	  					if(data.code == 0){
+	  		    			parent.layer.msg(data.msg,{
+	  		    				icon: 6,
+	  		    				time: 500
+	  		    			});
+	  		    			setTimeout(function(){
+	  		    				parent.location.reload();
+	  		    			}, 500);
+	  		    		}else{
+	  		    			layer.msg(data.msg);
+	  		    		}
 	  				  }
 	  			  })
 	  		  })
