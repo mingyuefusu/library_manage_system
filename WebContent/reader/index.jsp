@@ -98,7 +98,7 @@
 				<p><span class="glyphicon glyphicon-star-empty">&nbsp;状态：
 					<%
 					if(rs.getString("STATUS").equals("1")){
-						out.println("正常");
+						out.println("可用");
 					}
 					else{
 						out.println("挂失");

@@ -48,7 +48,7 @@ public class Illegal extends HttpServlet {
 		String countSql = "";
 		// 准备返回参数
 		int code = 1;
-		String msg = "error";
+		String msg = "无数据";
 		int count = 0;
 		HttpSession session = req.getSession();
 

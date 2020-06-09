@@ -18,14 +18,13 @@ import javabean.Util;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-
 @WebServlet("/admin/sortList")
 public class SortList extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("application/json; charset:utf8");
+		resp.setContentType("application/json; charset=utf8");
 		// 接受参数
-		
+
 		// 准备参数
 		Connection connection = null;
 		PreparedStatement pstmt = null;
@@ -44,16 +43,16 @@ public class SortList extends HttpServlet {
 			sql = "select * from book_sort";
 			pstmt = connection.prepareStatement(sql);
 			resultSet = pstmt.executeQuery();
-			while(resultSet.next()) {
+			while (resultSet.next()) {
 				jsonObject.put("id", resultSet.getString("id"));
 				jsonObject.put("name", resultSet.getString("name"));
 				jsonObject.put("description", resultSet.getString("description"));
 				jsonArray.add(jsonObject.toString());
 			}
-			if(!jsonArray.isEmpty()) {
+			if (!jsonArray.isEmpty()) {
 				code = 0;
-				msg =  "查询成功";
-			}else {
+				msg = "查询成功";
+			} else {
 				msg = "数据为空";
 			}
 		} catch (ClassNotFoundException e) {
@@ -61,15 +60,15 @@ public class SortList extends HttpServlet {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			msg = "sql错误";
-		}finally {
+		} finally {
 			try {
 				Base.closeResource(connection, pstmt, resultSet);
 			} catch (SQLException e) {
 				msg = "关闭失败";
 			}
 		}
-		out.print( Util.jsonResponse(code, msg, jsonArray.toString()) );
-		
+		out.print(Util.jsonResponse(code, msg, jsonArray.toString()));
+
 	}
 
 }
