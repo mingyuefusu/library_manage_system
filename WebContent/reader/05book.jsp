@@ -72,11 +72,7 @@
 	      ,{field:'name', width:130, title: '图书名称', sort: true}
 	      ,{field:'author', width:100, title: '作者', sort: true}
 	      ,{field:'library_id', title: '图书馆', width: 100, sort: true}
-	      ,{field:'sort_id', width:100, title: '分类', sort: true,templet: function (item) {
-	  
-       		}
-
-	    }
+	      ,{field:'sort_id', width:100, title: '分类', sort: true,}
 	      ,{field:'position', width:100, title: '位置', sort: true}
 	      ,{field:'status', width:100, title: '状态', sort: true,templet: function (item) {
 	    	  var btns="";
@@ -103,7 +99,7 @@
 		    case 'search':
 		      var conditionValue = $('#conditionValue');
 	    	  var condition = $('#condition');
-	    	  layer.msg(condition.val());
+	    	  
 	    	  // 进行搜索，重新渲染
 	    	  tableIns.reload({
 				    where: { //设定异步数据接口的额外参数，任意设

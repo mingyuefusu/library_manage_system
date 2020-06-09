@@ -20,7 +20,7 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 
-<link rel="shortcut icon" href="../../../favicon.ico">
+
 <link rel="stylesheet" type="text/css" href="../public/css/default.css" />
 <link rel="stylesheet" type="text/css"
 	href="../public/css/component.css" />
@@ -101,7 +101,7 @@
 						out.println("正常");
 					}
 					else{
-						out.println("注销");
+						out.println("挂失");
 					}
 					%>
 				</span></p>

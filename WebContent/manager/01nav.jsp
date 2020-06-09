@@ -21,7 +21,7 @@
          <%=session.getAttribute("manager") %>
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="">基本资料</a></dd>
+          <dd><a href="09managerSelf.jsp"  target="content">基本资料</a></dd>
         </dl>
       </li>
       <li class="layui-nav-item"><a href="./quit" target="_parent">退出</a></li>
@@ -47,7 +47,7 @@
             <dd><a href="07returnTable.jsp" target="content">还书报表</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item"><a href=""><i class="layui-icon layui-icon-release" style="font-size: 20px; color: yellow;"></i>&nbsp;发布公告</a></li>
+        <li class="layui-nav-item"><a href="08announcement.jsp" target="content"><i class="layui-icon layui-icon-release" style="font-size: 20px; color: yellow;"></i>&nbsp;发布公告</a></li>
       </ul>
     </div>
   </div>
