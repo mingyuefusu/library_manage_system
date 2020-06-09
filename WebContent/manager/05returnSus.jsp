@@ -14,7 +14,7 @@
 		String book = request.getParameter("bookid");
 		String date1 = request.getParameter("date1");
 		String ill = request.getParameter("ill");
-		out.println(ill);
+		//out.println(ill);
 		String managerid = request.getParameter("managerid");
 
 		if(session.getAttribute("manager")!=null){
@@ -27,34 +27,31 @@
 					//String id = session.getAttribute("manager").toString();
 					int status=Integer.parseInt(rs2.getString("STATUS"));
 					if(status==0){
-						String sql = "update borrow_books set RETURN_DATE='" + date1 + "',ILLEGAL='" + ill + "',MANAGER_ID='" + managerid + "' where BOOK_ID="+ book+" order by BORROW_DATE desc  limit 1";
+						String sql = "update borrow_books set RETURN_DATE='" + date1 + "',ILLEGAL='" + ill + "',MANAGER_ID='" + managerid + "' where BOOK_ID="+ book;
+						
+						//out.println(sql);
 						try {
 							int i = ret.executeUpdate(sql);
-							if (i == 1) {
+							
+							
+								String sql1 = "update borrow_books set RETURN_DATE='" + date1 + "',ILLEGAL='" + ill + "',MANAGER_ID='" + managerid + "' order by BORROW_DATE desc  limit 1 ";
+								int k = ret.executeUpdate(sql1);
 								
 										String sql3="update books set STATUS=1 where ID="+book;
 										ret.executeUpdate(sql3);
 										%>
 										<script>
 											alert('归还成功！');
-											window.location.href = "04return.jsp";
+											window.location.href = "04judge.jsp";
 										</script>
 									
 										<%
 								
-							} else {
-								%>
-								<script>
-									alert('归还未成功！');
-									window.location.href = "04return.jsp";
-								</script>
-								<%
-									}
 										} catch (Exception e) {
 								%>
 								<script>
 									alert('归还未成功！');
-									window.location.href = "04return.jsp";
+									window.location.href = "04judge.jsp";
 								</script>
 								<%
 									}
@@ -62,7 +59,7 @@
 						%>
 						<script>
 							alert('该图书未借出！');
-							window.location.href = "04return.jsp";
+							window.location.href = "04judge.jsp";
 						</script>
 						<%
 					}

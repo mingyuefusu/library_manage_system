@@ -36,7 +36,7 @@
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-read" style="font-size: 20px; color: lightblue;"></i>&nbsp;图书管理</a>
           <dl class="layui-nav-child">
             <dd><a href="02borrow.jsp" target="content">借阅图书</a></dd>
-            <dd><a href="04return.jsp;" target="content">归还图书</a></dd>
+            <dd><a href="04judge.jsp;" target="content">归还图书</a></dd>
 
           </dl>
         </li>
