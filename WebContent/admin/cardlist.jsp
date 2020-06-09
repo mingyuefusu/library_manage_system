@@ -33,7 +33,7 @@
     		<input class="layui-input" id="conditionValue" name="conditionValue" id="demoReload" autocomplete="off" placeholder="请输入搜索内容">
   		</div>
   		<button class="layui-btn" name="condition" data-type="reload"  lay-event="search">搜索</button>
-		<button type="button" class="layui-btn  layui-btn-sm" lay-event="add"><i class="layui-icon"></i></button>
+		<button type="button" class="layui-btn  layui-btn-sm" lay-event="add"><i class="layui-icon">添加借阅证</i></button>
 	</script>
 	
 	<!-- 表格侧边栏的操作 -->

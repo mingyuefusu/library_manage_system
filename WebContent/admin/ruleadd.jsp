@@ -5,7 +5,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="com.mysql.jdbc.Connection"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="javabean.Base"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

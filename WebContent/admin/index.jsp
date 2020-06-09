@@ -45,6 +45,9 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="./booklist.jsp"  target="content"><i class="layui-icon layui-icon-read" style="font-size: 16px; color: #1E9FFF;"></i> 书籍管理</a>
         </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="./sortlist.jsp"  target="content"><i class="layui-icon layui-icon-tabs" style="font-size: 16px; color: #1E9FFF;"></i> 书籍类型</a>
+        </li>
         <li class="layui-nav-item">
           <a href="./cardlist.jsp"  target="content"><i class="layui-icon layui-icon-template-1" style="font-size: 16px; color: #1E9FFF;"> </i>借阅证管理</a>
         </li>
