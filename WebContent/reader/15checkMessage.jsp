@@ -33,7 +33,7 @@
 	<jsp:useBean id="msg" scope="session" class="javabean.JDBCBean"></jsp:useBean>
 	<div align="center"><h3 style="color:#F08080;">☆★留言板★☆</h3></div>
 <%		
-		String sql = "select CARD_ID,DETAIL,PUBLIC_DATE from message";
+		String sql = "select CARD_ID,DETAIL,PUBLIC_DATE from message order by PUBLIC_DATE desc";
 		
 			ResultSet rs = msg.executeQuery(sql);
 		
