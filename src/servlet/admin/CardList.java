@@ -25,7 +25,7 @@ import net.sf.json.JSONObject;
 public class CardList extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("application/json; charset:utf8");
+		resp.setContentType("application/json; charset=utf8");
 		// 接收参数
 		String limit = req.getParameter("limit");
 		String page = req.getParameter("page");
