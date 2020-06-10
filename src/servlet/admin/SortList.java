@@ -23,7 +23,7 @@ import net.sf.json.JSONObject;
 public class SortList extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("application/json; charset:utf8");
+		resp.setContentType("application/json; charset=utf8");
 		// 接受参数
 		
 		// 准备参数

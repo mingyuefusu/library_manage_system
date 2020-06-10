@@ -1,6 +1,6 @@
 <%@page import="javabean.Util"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="com.mysql.jdbc.Connection"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="javabean.Base"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="javabean.JDBCBean"%>
