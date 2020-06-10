@@ -41,7 +41,7 @@ public class ReaderLogin extends HttpServlet {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		if (result.equals("1")) {
+		if (result != null && result.equals("1")) {
 			HttpSession session = request.getSession();
 			session.setAttribute("reader", user);
 			session.setAttribute("reader_first", "1"); // 登录

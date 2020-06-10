@@ -19,7 +19,7 @@
       <li class="layui-nav-item">
         <a href="javascript:;">其它系统</a>
         <dl class="layui-nav-child">
-          <dd><a href="../loginReader.html">图书馆首页</a></dd>
+          <dd><a href="../reader/04readerFrame.jsp">图书馆首页</a></dd>
           <dd><a href="../loginManager.html">图书管理员</a></dd>
         </dl>
       </li>
