@@ -13,7 +13,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <link rel="stylesheet" href="./public/css/animate.css">
 <link rel="stylesheet" href="./public/css/login.css" />
-
+<style>
+	button:hover{
+		background-color:#ffd6e7;
+	}
+</style>
 </head>
 <body>
 	<div class="container main">
@@ -24,7 +28,12 @@
 					<input type="password" name="psw" class="form-control my_input" placeholder="请输入密码" required="required">
 					<input type="submit" class="form-control" value="登录" onclick="javascript:void(0);">
 			</form>
+			
 		</div>
+	</div>
+	<div style="position:fixed; bottom:0; right:0;">
+		<a href="loginManager.html" target="_blank"><img src="public/image/login.png" width="50px" height="50px"></a><br>
+		<a href="adminLogin.html" target="_blank"><img src="public/image/manager.png" width="50px" height="50px"></a>
 	</div>
 	<script src="./public/js/layer/layer.js"></script>
 	<script>

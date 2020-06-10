@@ -68,11 +68,30 @@ public class Book extends HttpServlet {
 			pstmt.setInt(2, Integer.parseInt(limit));
 			resultSet = pstmt.executeQuery();
 			while (resultSet.next()) {
+
+				String library = resultSet.getString("library_id");
+				String sql1 = "select * from library where ID =" + library;
+				PreparedStatement pstmt1 = connection.prepareStatement(sql1);
+				ResultSet rs1 = pstmt1.executeQuery();
+				String lib = "";
+				while (rs1.next()) {
+					lib = rs1.getString("name");
+				}
+
+				String sortid = resultSet.getString("sort_id");
+				String sql2 = "select * from book_sort where ID =" + sortid;
+				PreparedStatement pstmt2 = connection.prepareStatement(sql2);
+				ResultSet rs2 = pstmt2.executeQuery();
+				String sort = "";
+				while (rs2.next()) {
+					sort = rs2.getString("name");
+				}
+
 				jsonData.put("id", resultSet.getString("id"));
 				jsonData.put("name", resultSet.getString("name"));
 				jsonData.put("author", resultSet.getString("author"));
-				jsonData.put("library_id", resultSet.getString("library_id"));
-				jsonData.put("sort_id", resultSet.getString("sort_id"));
+				jsonData.put("library_id", lib);
+				jsonData.put("sort_id", sort);
 				jsonData.put("position", resultSet.getString("position"));
 				jsonData.put("status", resultSet.getString("status"));
 				jsonData.put("description", resultSet.getString("description"));

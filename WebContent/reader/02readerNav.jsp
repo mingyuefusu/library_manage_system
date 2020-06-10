@@ -13,9 +13,12 @@
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<style>
+
+</style>
 </head>
 <body>
-	<nav class="navbar navbar-inverse " role="navigation">
+	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -33,6 +36,7 @@
 				<ul class="nav navbar-nav">
         			<li><p style="margin-top:25%;color:grey;">借阅者页面<span class="sr-only">(current)</span></p></li>
 				</ul>
+				
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="javascript:;">
