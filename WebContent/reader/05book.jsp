@@ -41,21 +41,17 @@
 			<option value="id">图书编号</option>
 			<option value="name">图书名称</option>
         	<option value="author">作者</option>
-        	<option value="library_id">图书馆</option>
-			<option value="sort_id">分类</option>
 			<option value="position">位置</option>
-			<option value="status">状态</option>
 			<option value="description">描述</option>
 		  </select>
 	 	 </div>
   		<div class="layui-inline">
+
     		<input class="layui-input" id="conditionValue" name="conditionValue" id="demoReload" autocomplete="off">
   		</div>
   		<button class="layui-btn layui-bg-blue" name="condition" data-type="reload"  lay-event="search">搜索</button>
 	</script>
-	<%
-		
-	%>
+
 
 
 	<script> 
@@ -99,7 +95,7 @@
 		    case 'search':
 		      var conditionValue = $('#conditionValue');
 	    	  var condition = $('#condition');
-	    	  
+
 	    	  // 进行搜索，重新渲染
 	    	  tableIns.reload({
 				    where: { //设定异步数据接口的额外参数，任意设

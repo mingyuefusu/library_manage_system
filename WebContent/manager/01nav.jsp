@@ -15,6 +15,17 @@
     <div class="layui-logo">图书馆管理人员页面</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
    
+   <ul class="layui-nav layui-layout-left">
+
+      <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="../reader/04readerFrame.jsp" target="parent">图书馆首页</a></dd>
+          <dd><a href="../adminLogin.html" target="parent">系统管理员</a></dd>
+        </dl>
+      </li>
+    </ul>
+    
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
@@ -36,7 +47,7 @@
           <a class="" href="javascript:;"><i class="layui-icon layui-icon-read" style="font-size: 20px; color: lightblue;"></i>&nbsp;图书管理</a>
           <dl class="layui-nav-child">
             <dd><a href="02borrow.jsp" target="content">借阅图书</a></dd>
-            <dd><a href="04return.jsp;" target="content">归还图书</a></dd>
+            <dd><a href="04judge.jsp;" target="content">归还图书</a></dd>
 
           </dl>
         </li>

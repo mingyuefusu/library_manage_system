@@ -135,7 +135,7 @@
 				}else{
 					%>
 					<script>
-						alert('借阅证已被挂失或注销！');
+						alert('借阅证已挂失！');
 						window.location.href = "02borrow.jsp";
 					</script>
 					<%

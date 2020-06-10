@@ -1,3 +1,4 @@
+<%@ page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,20 +15,68 @@
 </style>
 </head>
 <body>
+<jsp:useBean id="judge" scope="session" class="javabean.JDBCBean"></jsp:useBean>
 		<div align="center" style=" margin-top: 2%;"><h1>归还图书</h1></div>
 	<div align="center"
 		style="margin-left:30%; margin-top: 5%; width: 40%;">
 
+		<%
+  				Object days = session.getAttribute("days");
+				Object fee = session.getAttribute("fee");
+  				int d = Integer.parseInt(days.toString());
+  				float f = Float.parseFloat(fee.toString());
+  				String book = session.getAttribute("book").toString();
+  				String mes = "";
+  				String mes2 = "";
+  				float sum = 0;
+  				if(d<0){
+  					mes = "已逾期"+(-d)+"天";
+  					sum = d*f*(-1);
+  					mes2 = "罚款"+sum;
+  				}
+  				else{
+  					mes = "还剩"+d+"天";
+  					//mes2 = "无需罚款";
+  				}
+  				session.setAttribute("mes",mes);
+  				session.setAttribute("mes2",mes2);
+  		%>
+		
 		<form class="layui-form layui-form-pane" action="05returnSus.jsp">
-			
+			<div><blockquote class="layui-elem-quote layui-quote-nm">
+  				
+  				<%=session.getAttribute("mes") %><br>
+  				<%=session.getAttribute("mes2") %>
+				 </blockquote>
+			</div>
 			<div class="layui-form-item">
 				<label class="layui-form-label">图书编号</label>
 				<div class="layui-input-inline">
 					<input type="text" name="bookid" lay-verify="required"
-						placeholder="请输入图书编号" autocomplete="off" class="layui-input"><br>
+						value=<%=session.getAttribute("book") %> autocomplete="off" class="layui-input"><br>
 				</div>
 			</div>
 
+			<%
+				
+				String sql2="select*from borrow_books where return_date is null and book_id = "+book;
+				ResultSet rs2 = judge.executeQuery(sql2);
+				String end = "";
+				while (rs2.next()) {
+				
+				
+			%>
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">截止日期</label>
+				<div class="layui-input-inline">
+					<input type="text" name="end"  autocomplete="off"
+						class="layui-input" value=<%=rs2.getString("end_date") %>><br>
+				</div>
+
+			</div>
+			
+			<%} %>
 			<div class="layui-form-item">
 				<label class="layui-form-label">归还日期</label>
 				<div class="layui-input-inline">
@@ -69,7 +118,7 @@
 								laydate.render({
 									elem : '#date1',
 									type : 'datetime',
-									format : 'yyyy-M-d H:m:s',
+									format : 'yyyy-MM-dd H:m:s',
 									min:0,
 									max:0,
 									value: new Date()
