@@ -47,7 +47,7 @@ public class AdminLogin extends HttpServlet {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		if (result.equals("1")) {
+		if (result != null && result.equals("1")) {
 			HttpSession session = request.getSession();
 			session.setAttribute("admin", username);
 			hashMap.put("code", 0);

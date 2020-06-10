@@ -17,7 +17,6 @@ public class Manager {
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
-		System.out.println("????");
 		String sql = "select * from manager where ACCOUNT=? and PASSWORD=?";
 		connection = Base.getConnection();
 		pstmt = (PreparedStatement) connection.prepareStatement(sql);

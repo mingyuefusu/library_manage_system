@@ -22,6 +22,7 @@ import javabean.Util;
 public class ManagerDel extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("application/json; charset=utf8");
 		String id = req.getParameter("id");
 		// 准备参数
 		String sql = "";
