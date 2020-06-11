@@ -58,21 +58,21 @@ font{
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="../public/image/Carousel1.jpg" alt="...">
+      <img src="../public/image/1.jpg" alt="...">
       <div class="carousel-caption">
-		<font>hello world!</font>
+		<font style="color:white;">唯有知识永不负你!</font>
       </div>
     </div>
     <div class="item">
-      <img src="../public/image/Carousel2.jpg" alt="...">
+      <img src="../public/image/2.jpg" alt="...">
       <div class="carousel-caption">
-		<font>冲鸭！</font>
+		<font style="color:white;">学海无涯，书韵悠扬</font>
       </div>
     </div>
 	<div class="item">
-      <img src="../public/image/Carousel3.jpg" alt="...">
+      <img src="../public/image/3.jpg" alt="...">
       <div class="carousel-caption">
-		<font>今天你掉头发了吗？</font>
+		<font style="color:white;">图一份神闲气静，书几笔悦目赏心</font>
       </div>
     </div>
   </div>
