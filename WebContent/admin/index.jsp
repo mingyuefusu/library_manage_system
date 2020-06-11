@@ -19,7 +19,7 @@
       <li class="layui-nav-item">
         <a href="javascript:;">其它系统</a>
         <dl class="layui-nav-child">
-          <dd><a href="../loginReader.html">图书馆首页</a></dd>
+          <dd><a href="../reader/04readerFrame.jsp">图书馆首页</a></dd>
           <dd><a href="../loginManager.html">图书管理员</a></dd>
         </dl>
       </li>
@@ -54,14 +54,14 @@
         <li class="layui-nav-item"><a href="./borrowlist.jsp" target="content"><i class="layui-icon layui-icon-chart-screen" style="font-size: 16px; color: #1E9FFF;"></i> 借阅信息查询</a></li>
         <li class="layui-nav-item"><a href="./rulelist.jsp"  target="content"><i class="layui-icon layui-icon-file-b" style="font-size: 16px; color: #1E9FFF;"> </i>借阅规则管理</a></li>
         <li class="layui-nav-item"><a href="./managerlist.jsp" target="content"><i class="layui-icon layui-icon-group" style="font-size: 16px; color: #1E9FFF;"></i>图书管理员管理</a></li>
-        <li class="layui-nav-item"><a href="./system.jsp" target="content"><i class="layui-icon layui-icon-windows" style="font-size: 16px; color: #1E9FFF;"> </i>系统管理</a></li>
+        <li class="layui-nav-item"><a href="./librarydata.jsp" target="content"><i class="layui-icon layui-icon-windows" style="font-size: 16px; color: #1E9FFF;"> </i>系统管理</a></li>
       </ul>
     </div>
   </div>
   
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <iframe src="test.html" name="content" height="100%" width="100%" frameborder="0" scrolling="no"></iframe>
+    <iframe src="librarydata.jsp" name="content" height="100%" width="100%" frameborder="0" scrolling="no"></iframe>
   </div>
   
   <div class="layui-footer">

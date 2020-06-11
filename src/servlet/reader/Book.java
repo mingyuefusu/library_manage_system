@@ -62,7 +62,6 @@ public class Book extends HttpServlet {
 				sql += where;
 			}
 			sql += " limit ?,?";// 1 10 (1-1)*10
-			System.out.println("???" + sql);
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, (Integer.parseInt(page) - 1) * Integer.parseInt(limit));
 			pstmt.setInt(2, Integer.parseInt(limit));

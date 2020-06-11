@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>hello</h1>
+	<%
+		response.sendRedirect("./reader/04readerFrame.jsp");
+	%>
 </body>
 </html>

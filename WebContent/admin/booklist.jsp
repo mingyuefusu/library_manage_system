@@ -93,7 +93,7 @@
 	<!-- 状态模板 -->
 	<script type="text/html" id="statusTpl">
   		{{#  if(d.status == 1){ }}
-   	 		可借
+   	 		<span style="color:#5FB878;">可借</span>
   		{{#  } else { }}
     	        借出
   		{{#  } }}
@@ -123,7 +123,7 @@
 		          ,templet: function(d){
 		              return libraryJson[d.library_id];
 		            }}
-		      ,{field: 'sort_id', title: '分类', width: 80, sort: true
+		      ,{field: 'sort_id', title: '分类', width: 80, sort: true, edit:true
 		    	  ,templet: function(d){
 		    		  return bookSortJson[d.sort_id];
 		    	  }}

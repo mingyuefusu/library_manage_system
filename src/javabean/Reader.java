@@ -17,7 +17,6 @@ public class Reader {
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
-		System.out.println("????");
 		String sql = "select * from borrow_card where ID=? and PASSWORD=?";
 		connection = Base.getConnection();
 		pstmt = (PreparedStatement) connection.prepareStatement(sql);
