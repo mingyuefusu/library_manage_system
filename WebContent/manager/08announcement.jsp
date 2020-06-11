@@ -83,7 +83,6 @@
 	  				  dataType: 'json',
 	  				  timeout: 3000,
 	  				  success: function(data){
-	  					  layer.msg("???");
 	  					  if(data.code == 0){
 	  						  layer.msg(data.msg,{
 	  							  icon: 6,

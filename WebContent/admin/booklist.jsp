@@ -59,7 +59,7 @@
         	<option value="id">ID</option>
         	<option value="name">书名</option>
 			<option value="author">作者</option>
-        	<option value="library">图书馆</option>
+        	<option value="library_id">图书馆</option>
         	<option value="position">位置</option>
         	<option value="status">状态</option>
 			<option value="description">描述</option>

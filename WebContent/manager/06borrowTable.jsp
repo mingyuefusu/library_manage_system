@@ -71,7 +71,6 @@
 		    case 'search':
 		      var conditionValue = $('#conditionValue');
 	    	  var condition = $('#condition');
-	    	  layer.msg(condition.val());
 	    	  // 进行搜索，重新渲染
 	    	  tableIns.reload({
 				    where: { //设定异步数据接口的额外参数，任意设

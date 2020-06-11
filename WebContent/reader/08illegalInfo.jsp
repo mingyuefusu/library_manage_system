@@ -42,7 +42,6 @@
 		<div class="layui-inline">
 	  	  <select id="condition" name="condition" lay-verify="required">
         	<option value=""></option>
-        	<option value="card_id">借阅证号</option>
 			<option value="book_id">图书编号</option>
         	<option value="borrow_date">借阅日期</option>
         	<option value="end_date">截止日期</option>
