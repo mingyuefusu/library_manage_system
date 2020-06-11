@@ -34,7 +34,7 @@
           <dd id="updatePassword"><a href="javascript:;">修改密码</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="./logOut">注销</a></li>
+      <li class="layui-nav-item"><a href="./logOut">退出</a></li>
     </ul>
   </div>
   

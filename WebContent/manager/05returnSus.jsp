@@ -27,15 +27,15 @@
 					//String id = session.getAttribute("manager").toString();
 					int status=Integer.parseInt(rs2.getString("STATUS"));
 					if(status==0){
-						String sql = "update borrow_books set RETURN_DATE='" + date1 + "',ILLEGAL='" + ill + "',MANAGER_ID='" + managerid + "' where BOOK_ID="+ book;
+						String sql = "update borrow_books set RETURN_DATE='" + date1 + "',ILLEGAL='" + ill + "',MANAGER_ID='" + managerid + "' where manager_id is null and BOOK_ID="+ book;
 						
 						//out.println(sql);
 						try {
 							int i = ret.executeUpdate(sql);
 							
 							
-								String sql1 = "update borrow_books set RETURN_DATE='" + date1 + "',ILLEGAL='" + ill + "',MANAGER_ID='" + managerid + "' order by BORROW_DATE desc  limit 1 ";
-								int k = ret.executeUpdate(sql1);
+								//String sql1 = "update borrow_books set RETURN_DATE='" + date1 + "',ILLEGAL='" + ill + "',MANAGER_ID='" + managerid + "' order by BORROW_DATE desc  limit 1 ";
+								//int k = ret.executeUpdate(sql1);
 								
 										String sql3="update books set STATUS=1 where ID="+book;
 										ret.executeUpdate(sql3);
