@@ -67,7 +67,7 @@
       <tr>
       <%} %>
         <td><%=resultSet.getString("card_id") %></td>
-        <td><%=resultSet.getString("id") %></td>
+        <td><%=resultSet.getString("book_id") %></td>
         <td><%=resultSet.getString("books.name") %></td>
         <td><%=Util.getFormatDateTime(resultSet.getString("borrow_date")) %></td>
         <td><%=Util.getFormatDateTime(resultSet.getString("end_date"))%></td>
