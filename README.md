@@ -1,6 +1,6 @@
 # 一、项目介绍
 
-使用jsp、layui、mysql完成的图书馆系统，包含用户图书借阅、图书管理员、系统管理员界面，功能齐全。
+使用jsp、layui、mysql完成的图书馆系统，包含用户图书借阅、图书管理员、系统管理员界面，功能齐全。在·
 
 开发工具为eclipse
 
@@ -14,7 +14,7 @@
 
 **系统管理员账号密码：admin admin**
 
-<img src="C:\Users\Mingyue\AppData\Roaming\Typora\typora-user-images\image-20201117122227215.png" alt="image-20201117122227215" style="zoom: 33%;" />
+![](https://ming-edu.oss-cn-beijing.aliyuncs.com/image-20201117122227215.png)
 
 # 项目演示
 
@@ -22,7 +22,7 @@
 
 **图书查询**
 
-![image-20201117124235584](C:\Users\Mingyue\AppData\Roaming\Typora\typora-user-images\image-20201117124235584.png)
+![](https://ming-edu.oss-cn-beijing.aliyuncs.com/image-20201117124235584.png)
 
 
 
