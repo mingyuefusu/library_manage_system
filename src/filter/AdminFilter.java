@@ -20,6 +20,10 @@ import javax.servlet.http.HttpSession;
  */
 public class AdminFilter implements Filter {
 
+	public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
+	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
@@ -31,9 +35,4 @@ public class AdminFilter implements Filter {
 		}
 		chain.doFilter(request, response);
 	}
-
-	public void init(FilterConfig fConfig) throws ServletException {
-		
-	}
-
 }

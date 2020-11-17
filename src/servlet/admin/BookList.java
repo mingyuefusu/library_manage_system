@@ -27,54 +27,52 @@ public class BookList extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("application/json; charset=utf8");
-    	JSONObject json = new JSONObject();
-    	String result = null;
-    	Map<String, Object> map = null;
-    	int code = 1;
-    	String msg = "";
-    	String data = "";
-    	String page = (String) req.getParameter("page");
-    	String limit = (String) req.getParameter("limit");
-    	String condition = (String) req.getParameter("condition");
-    	String conditionValue = (String) req.getParameter("conditionValue");
-    	Map where = new HashMap<String, String>();
-    	//System.out.println(condition +"" +conditionValue);
-    	// 传输数据过滤
-    	if(page == null) {
-    		page = "1";
-    	}
-    	if(limit == null) {
-    		limit = "10";
-    	}
-    	if(condition == null || conditionValue == null || condition.isEmpty() || conditionValue.isEmpty()) {
-    		condition = null;
-    		conditionValue = null;
-    	}else {
-    		where.put("condition", condition);
-    		where.put("conditionValue", conditionValue);
-    	}
-    	Admin admin = new Admin();
-    	try {
+		JSONObject json = new JSONObject();
+		String result = null;
+		Map<String, Object> map = null;
+		int code = 1;
+		String msg = "";
+		String data = "";
+		String page = (String) req.getParameter("page");
+		String limit = (String) req.getParameter("limit");
+		String condition = (String) req.getParameter("condition");
+		String conditionValue = (String) req.getParameter("conditionValue");
+		Map where = new HashMap<String, String>();
+		// 传输数据过滤
+		if(page == null) {
+			page = "1";
+		}
+		if(limit == null) {
+			limit = "10";
+		}
+		if(condition == null || conditionValue == null || condition.isEmpty() || conditionValue.isEmpty()) {
+			condition = null;
+			conditionValue = null;
+		}else {
+			where.put("condition", condition);
+			where.put("conditionValue", conditionValue);
+		}
+		Admin admin = new Admin();
+		try {
 			map = admin.getBookList(page, limit, where);
 			result = (String) map.get("data");
 		} catch (ClassNotFoundException | SQLException e) {
 			msg =  "数据库获取信息失败";
 		}
-    	
-    	if(result == null || result.isEmpty() || result.equals("1")) {
-    		json.put("code", 1);
-    		json.put("msg", "数据为空");
-    	} else {
-    		json.put("code", 0);
-    		json.put("msg", "success");
+		
+		if(result == null || result.isEmpty() || result.equals("1")) {
+			json.put("code", 1);
+			json.put("msg", "数据为空");
+		} else {
+			json.put("code", 0);
+			json.put("msg", "success");
 			json.put("count", map.get("count"));
-    		result = "[" +result +"]";
-    		json.put("data", result);
-    	}
-    	
-    	PrintWriter out = resp.getWriter();
-    	out.print(json.toString());
-    	//out.print("{\"code\":0,\"msg\":\"\",\"count\":10,\"data\":[{\"id\":10000,\"name\":\"夏洛特的烦恼\",\"library_name\":\"南图\",\"sort_id\":\"言情\",\"position_id\":\"sdf\",\"state\":\"借出\",\"descript\":\"好看\",\"operate\":\"234\"},{\"id\":10000,\"name\":\"夏洛特的烦恼\",\"library_name\":\"南图\",\"sort_id\":\"言情\",\"position_id\":\"sdf\",\"state\":\"借出\",\"descript\":\"好看\",\"operate\":\"234\"},{\"id\":10000,\"name\":\"夏洛特的烦恼\",\"library_name\":\"南图\",\"sort_id\":\"言情\",\"position_id\":\"sdf\",\"state\":\"借出\",\"descript\":\"好看\",\"operate\":\"234\"},{\"id\":10010,\"name\":\"夏洛特的烦恼\",\"library_name\":\"南图\",\"sort_id\":\"言情\",\"position_id\":\"sdf\",\"state\":\"借出\",\"descript\":\"好看\",\"operate\":\"234\"}]}");
+			result = "[" +result +"]";
+			json.put("data", result);
+		}
+		
+		PrintWriter out = resp.getWriter();
+		out.print(json.toString());
 	}
 	
     @Override

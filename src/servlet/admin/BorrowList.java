@@ -68,8 +68,8 @@ public class BorrowList extends HttpServlet {
 				where = " where return_date is null and curtime()>end_date ";
 				sql +=where;
 			}
-			sql += " limit ?,?";//1 10  (1-1)*10;
- 			pstmt = connection.prepareStatement(sql);
+			sql += " limit ?,?";
+			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, (Integer.parseInt(page)-1) * Integer.parseInt(limit));
 			pstmt.setInt(2, Integer.parseInt(limit));
 			resultSet = pstmt.executeQuery();

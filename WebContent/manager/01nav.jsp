@@ -70,7 +70,7 @@
   
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    © layui.com - 底部固定区域
+    © 图书管理系统 
   </div>
 </div>
 <script src="../src/layui.js"></script>

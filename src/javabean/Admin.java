@@ -45,7 +45,7 @@ public class Admin {
 			return "发生未知错误";
 		}finally {
 			if(Base.closeResource(connection, pstmt, resultSet) == false) {
-				System.out.println("关闭失败");
+				return "关闭失败";
 			}
 		}
 		

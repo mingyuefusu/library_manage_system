@@ -49,7 +49,7 @@ public class SortDel extends HttpServlet {
 				pstmt.setString(1, defaultId);
 				pstmt.setString(2, id);
 				result = pstmt.executeUpdate();
-	
+			
 				// 进行删除
 				sql = "delete from book_sort where id=?";
 				pstmt = connection.prepareStatement(sql);

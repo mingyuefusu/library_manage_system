@@ -70,25 +70,25 @@
     </div>
   </div>
   
-  <!-- 借阅规则 -->
-  <div class="layui-form-item">
-    <label class="layui-form-label">规则</label>
-    <div class="layui-input-block">
-      <select name="rule_id" lay-filter="rule_id"  lay-verify="required">
-        <% while(ruleSet.next()){ %>
-          <option value=<%=ruleSet.getString("id") %> <%if(ruleSet.getString("id").equals(infoSet.getString("rule_id"))) out.print("selected"); %>><%=ruleSet.getString("id") %></option>
-        <%} %>
-      </select>
-    </div>
-  </div>
-  
-  <div class="layui-form-item">
-    <label class="layui-form-label">状态</label>
-    <div class="layui-input-block">
-      <input type="radio" name="status" value="1" title="可用" <%if(infoSet.getString("status").equals("1")) out.print("checked"); %>>
-      <input type="radio" name="status" value="0" title="挂失" <%if(infoSet.getString("status").equals("0")) out.print("checked"); %>>
-    </div>
-  </div>
+ <!-- 借阅规则 -->
+ <div class="layui-form-item">
+   <label class="layui-form-label">规则</label>
+   <div class="layui-input-block">
+     <select name="rule_id" lay-filter="rule_id"  lay-verify="required">
+       <% while(ruleSet.next()){ %>
+         <option value=<%=ruleSet.getString("id") %> <%if(ruleSet.getString("id").equals(infoSet.getString("rule_id"))) out.print("selected"); %>><%=ruleSet.getString("id") %></option>
+       <%} %>
+     </select>
+   </div>
+ </div>
+ 
+ <div class="layui-form-item">
+   <label class="layui-form-label">状态</label>
+   <div class="layui-input-block">
+     <input type="radio" name="status" value="1" title="可用" <%if(infoSet.getString("status").equals("1")) out.print("checked"); %>>
+     <input type="radio" name="status" value="0" title="挂失" <%if(infoSet.getString("status").equals("0")) out.print("checked"); %>>
+   </div>
+ </div>
  
   <div class="layui-form-item">
     <div class="layui-input-block">
@@ -118,25 +118,12 @@ layui.use(['form', 'jquery'], function(){
     				anim: 5,
     				time: 500,
     			});
-    			
     			setTimeout(function(){
     				var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
     				parent.layer.close(index); //再执行关闭   
     			}, 500)
-    			/*
-    			parent.layer.open({
-    				title: '注册账号为',
-    				content: data.data['id'],
-    				end: function(){
-    					parent.location.reload();
-    				}
-    			});
-    			*/
-    			/*setTimeout(function(){
-    				parent.location.reload();
-    			}, 500);*/
     		}else{
-    			leyer.msg("添加失败");
+    			leyer.msg("修改失败");
     		}
     	},
     	error: function(){

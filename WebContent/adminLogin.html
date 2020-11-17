@@ -32,36 +32,36 @@
 	</div>
 	<script src="./public/js/layer/layer.js"></script>
 	<script>
-	$(function(){
-		//登录	
-		$("input[type=submit]").click(function(){
-			
-			$.ajax({
-				url: "./adminLogin",
-				type: "post",
-				data: $("form").serialize(),
-				dataType: "json",
-				success: function( data ){
-					if(data.code == 0){
-						layer.msg("登录成功", {
-							icon: 6,
-							time: 1000
-						}, function(){
-							location.href = data.url;
-						})
-					}else{
-						layer.open({
-							title: "登录失败",
-							content: data.msg,
-							icon: 5,
-							anim: 6
-						})
+		$(function(){
+			//登录	
+			$("input[type=submit]").click(function(){
+				
+				$.ajax({
+					url: "./adminLogin",
+					type: "post",
+					data: $("form").serialize(),
+					dataType: "json",
+					success: function( data ){
+						if(data.code == 0){
+							layer.msg("登录成功", {
+								icon: 6,
+								time: 1000
+							}, function(){
+								location.href = data.url;
+							})
+						}else{
+							layer.open({
+								title: "登录失败",
+								content: data.msg,
+								icon: 5,
+								anim: 6
+							})
+						}
 					}
-				}
+				})
+				return false;
 			})
-			return false;
 		})
-	})
 	</script>
 </body>
 </html>

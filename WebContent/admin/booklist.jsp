@@ -59,7 +59,7 @@
         	<option value="id">ID</option>
         	<option value="name">书名</option>
 			<option value="author">作者</option>
-        	<option value="library">图书馆</option>
+        	<option value="library_id">图书馆</option>
         	<option value="position">位置</option>
         	<option value="status">状态</option>
 			<option value="description">描述</option>
@@ -79,7 +79,7 @@
     </table>
     
 	<!-- 行操作  -->
-	<script type="text/html" id="barDemo">
+	<script type="text/html" id="operateBar">
 		<a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="bookBorrowList">查看借阅</a>
   		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
@@ -108,12 +108,10 @@
 		  var tableIns =  table.render({
 		     elem: '#demo'
 		    ,height: 600
-		    //,url: './data.json' 
 		    ,url: './bookList'
 		    ,title: '数据表单'
 		    ,toolbar: '#search'
 		    ,page: true 
-		    //,size: 'lg'
 		    ,cols: [[
 		   	  {type: 'numbers', width:50, fixed:'left'}
 		      ,{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
@@ -130,10 +128,8 @@
 		      ,{field: 'position', title: '位置', width: 110, sort: true}
 		      ,{field: 'status', title: '状态', width: 60, templet:'#statusTpl'}
 		      ,{field: 'description', title: '描述', width: 340}
-		      //,{field: 'operate', title: '操作', width: 200, templet: 'titleTpl'}
-		      ,{fixed: 'right', title:'操作', width: 200, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
+		      ,{fixed: 'right', title:'操作', width: 200, align:'center', toolbar: '#operateBar'} //这里的toolbar值是模板元素的选择器
 		    ]]
-		  	,id: 'idTest'
 		  });
 		  
 		  // 直接编辑
