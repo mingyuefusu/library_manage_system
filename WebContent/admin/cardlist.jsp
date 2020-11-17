@@ -145,7 +145,6 @@
  								  icon: 6,
  								  time: 1500
  							  })
- 							 //obj.del();
  							 // 还是本页数据
  							 $(".layui-laypage-btn").click();
  						  }else{

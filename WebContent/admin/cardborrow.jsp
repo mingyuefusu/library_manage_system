@@ -59,23 +59,23 @@
     <%
     	System.out.println(Util.getCurrentTimeString());
     %>
-    <% while(resultSet.next()){ %>
-      <%-- 图书超期 --%>
-      <%if(Util.getFormatDateTime(resultSet.getString("end_date")).compareTo(Util.getCurrentTimeString()) < 0 && resultSet.getString("return_date") == null){  %>
-      <tr style="color:#FF5722;">
-      <%} else{ %>
-      <tr>
-      <%} %>
-        <td><%=resultSet.getString("card_id") %></td>
-        <td><%=resultSet.getString("book_id") %></td>
-        <td><%=resultSet.getString("books.name") %></td>
-        <td><%=Util.getFormatDateTime(resultSet.getString("borrow_date")) %></td>
-        <td><%=Util.getFormatDateTime(resultSet.getString("end_date"))%></td>
-        <td><%=resultSet.getString("return_date")!=null?Util.getFormatDateTime(resultSet.getString("return_date")) : "未归还"  %></td>
-        <td><%=resultSet.getString("illegal")!=null?resultSet.getString("illegal"):""%></td>
-        <td><%=resultSet.getString("manager_id")!=null?resultSet.getString("manager_id"):"" %></td>
-      </tr>
-     <%} %>
+	 <% while(resultSet.next()){ %>
+	   <%-- 图书超期 --%>
+	   <%if(Util.getFormatDateTime(resultSet.getString("end_date")).compareTo(Util.getCurrentTimeString()) < 0 && resultSet.getString("return_date") == null){  %>
+	   <tr style="color:#FF5722;">
+	   <%} else{ %>
+	   <tr>
+	   <%} %>
+	     <td><%=resultSet.getString("card_id") %></td>
+	     <td><%=resultSet.getString("book_id") %></td>
+	     <td><%=resultSet.getString("books.name") %></td>
+	     <td><%=Util.getFormatDateTime(resultSet.getString("borrow_date")) %></td>
+	     <td><%=Util.getFormatDateTime(resultSet.getString("end_date"))%></td>
+	     <td><%=resultSet.getString("return_date")!=null?Util.getFormatDateTime(resultSet.getString("return_date")) : "未归还"  %></td>
+	     <td><%=resultSet.getString("illegal")!=null?resultSet.getString("illegal"):""%></td>
+	     <td><%=resultSet.getString("manager_id")!=null?resultSet.getString("manager_id"):"" %></td>
+	   </tr>
+	  <%} %>
     </tbody>
   </table>
 </div>
