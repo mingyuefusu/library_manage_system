@@ -32,7 +32,9 @@
 
 ## 图书管理员
 
-![image-20201117124314632](C:\Users\Mingyue\AppData\Roaming\Typora\typora-user-images\image-20201117124314632.png)
+![](https://ming-edu.oss-cn-beijing.aliyuncs.com/1605588522320.png)
+
+![](https://ming-edu.oss-cn-beijing.aliyuncs.com/image-20201117124314632.png)
 
 ## 系统管理员
 
