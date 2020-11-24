@@ -4,6 +4,10 @@
 
 开发工具为eclipse，mysql5.7（mysql8）
 
+**演示地址**：http://library.mingyuefusu.cn/library_manager_system
+
+`（谢谢手下留情）`
+
 # 二、部署
 
 需要修改以下两个数据库连接相关属性，并将**sql文件导入mysql数据库**
