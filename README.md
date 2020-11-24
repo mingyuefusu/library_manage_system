@@ -1,8 +1,14 @@
 # 一、项目介绍
 
-使用jsp、layui、mysql完成的图书馆系统，包含用户图书借阅、图书管理员、系统管理员界面，功能齐全。在·
+使用jsp、layui、mysql完成的图书馆系统，包含用户图书借阅、图书管理员、系统管理员界面，功能齐全。
 
-开发工具为eclipse
+开发工具为eclipse，其中mysql为5.7（mysql8也行）
+
+**演示地址**：http://library.mingyuefusu.cn/library_manager_system
+
+`（谢谢手下留情）`
+
+如果遇到解决不了的问题请联系QQ：284908631或者771832800
 
 # 二、部署
 
