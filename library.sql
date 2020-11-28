@@ -219,7 +219,7 @@ CREATE TABLE `manager` (
 -- ----------------------------
 INSERT INTO `manager` VALUES ('1', '辰', 'chen', 'chen', '232222@qq.com');
 INSERT INTO `manager` VALUES ('2', '明', 'ming', 'ming', '234234@qq.com');
-INSERT INTO `manager` VALUES ('3', '明月', 'root', 'root', '284908631@qq.com');
+INSERT INTO `manager` VALUES ('3', '明月', 'root', '1234', '284908631@qq.com');
 INSERT INTO `manager` VALUES ('11', 'root', '1234', 'root', '123456@qq.com');
 INSERT INTO `manager` VALUES ('12', '测试员', 'test', 'test', 'test@qq.com');
 INSERT INTO `manager` VALUES ('13', '明月', '1', 'root', '1');
