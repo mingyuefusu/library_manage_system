@@ -6,7 +6,8 @@
 
 开发工具为eclipse，其中mysql为5.7（mysql8也行）
 
-**演示地址**：http://library.mingyuefusu.cn/library_manager_system
+**演示地址**：http://library.mingyuefusu.cn
+**最新代码存放在码云：https://gitee.com/mingyuefusu/tushuguanlixitong**
 
 `（谢谢手下留情）`
 
@@ -16,7 +17,7 @@
 
 **系统管理员账号密码：admin admin**
 
-如果遇到解决不了的问题或需要课设相关文档，请联系QQ：284908631或者771832800
+如果遇到解决不了的问题或需要课设相关文档，请添加Q群1021590105
 
 ## 项目详细介绍
 
